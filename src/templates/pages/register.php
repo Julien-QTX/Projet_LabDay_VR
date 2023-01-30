@@ -10,9 +10,23 @@ ob_start();
 
 <h1>Inscription</h1>
 
+<?php
+
+if (isset($_SESSION['user_id'])) {
+    echo "Session id = " . $_SESSION['user_id'];
+}
+
+?>
+
 <div id="center">
 
     <form action="actions/register.php" method="post">
+
+        <?php
+
+        include_once __DIR__ . '/../../utils/alert_errors.php';
+
+        ?>
 
         <label for="fullname">Nom complet</label>
         <input type="text" name="fullname" id="fullname">
@@ -34,3 +48,7 @@ ob_start();
     </form>
     
 </div>
+
+<?php
+
+$page_content = ob_get_clean();

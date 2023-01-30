@@ -10,3 +10,7 @@ input {
 button {
     margin-top: 15px;
 }
+
+label, input, button {
+    margin-left: 15px;
+}
