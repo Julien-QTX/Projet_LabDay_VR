@@ -12,19 +12,19 @@ ob_start();
 
 <div id="pfp"></div>
 
-<h2>name: </h2>
-<h2>username: </h2>
-<h2>email: </h2>
-
 <?php
 
-//echo '<p>'.var_dump($user).'</p>';
+$usr_info = $db->prepare("SELECT * FROM users WHERE user_id=?");
+$usr_info->execute([$_SESSION['user_id']]);
+$info = $usr_info->fetch();
 
+?>
 
+<h2>Name: <?= $info['name']; ?></h2>
+<h2>Username: <?= $info['pseudo']; ?></h2>
+<h2>Email: <?= $info['email']; ?></h2>
 
-/*if (isset($_SESSION['user_id'])) {
-    echo '<p>'.$_SESSION['user_id'].'</p>';
-}*/
+<?php
 
 $page_content = ob_get_clean();
 
