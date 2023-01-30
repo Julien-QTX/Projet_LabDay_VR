@@ -18,7 +18,6 @@ if ($email_used->rowCount() == 0) {
     display_errors("Cet email n'est pas enregistré", "/?page=login");
 }
 
-
 // Verifier le mot de passe
 $pass_good = $db->prepare("SELECT password FROM users WHERE email=?");
 $pass_good->execute([$_POST['email']]);
@@ -31,8 +30,10 @@ if ($pass == hash('sha256', $_POST['password'])) {
 // on verra pourquoi on ne stock que l'id
 $usr = $db->prepare("SELECT user_id FROM users WHERE email=?");
 $usr->execute([$_POST['email']]);
-$us = $usr->fetch();
+$us = $usr->fetchAll();
 
-$_SESSION['user_id'] = $us;
+//display_errors($us[0]['user_id'], "/?page=login");
+
+$_SESSION['user_id'] = $us[0]['user_id'];
 
 header('Location: /?page=home');

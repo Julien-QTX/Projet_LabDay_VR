@@ -1,8 +1,13 @@
-
 #pfp{
     background-color: black;
     border: 7px solid gray;
     border-radius: 100%;
     width: 100px;
     height: 100px;
+}
+
+#pic {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 55%;
 }

@@ -20,7 +20,7 @@ if (isset($_SESSION['user_id'])) {
 
 <div id="center">
 
-    <form action="actions/register.php" method="post">
+    <form action="actions/register.php" method="post" enctype="multipart/form-data">
 
         <?php
 
@@ -42,6 +42,9 @@ if (isset($_SESSION['user_id'])) {
 
         <label for="fullname">Confirmation du Mot de Passe</label>
         <input type="password" name="cpassword" id="cpassword">
+
+        <label for="profile_pic">Image de Profil</label>
+        <input type="file" name="profile_pic" id="profile_pic" accept="image/*">
 
         <button type="submit">Inscription</button>
 

@@ -32,11 +32,21 @@ if ($pseudo_used->rowCount() != 0) {
     display_errors("Ce pseudo est déjà utilisé", "/?page=register");
 }
 
+if (empty($_POST['profile_pic'])) {
+    //display_errors(__DIR__, "/?page=register");
+    $image = file_get_contents('/../assets/images/def.jpeg');
+}
+else {
+    $image = file_get_contents($_FILES['profile_pic']['tmp_name']);
+}
+//$image = $_FILES['profile_pic']['tmp_name'];
+//$image_data = file_get_contents($image);
+
 $hashed_password = hash('sha256', $_POST['password']);
 
-$create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`) VALUES(?, ?, ?, ?)");
+$create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
 $create_user->execute([
-    $_POST['fullname'], $_POST['pseudo'], $_POST['email'], $hashed_password
+    $_POST['fullname'], $_POST['pseudo'], $_POST['email'], $hashed_password, $image
 ]);
 
 $_SESSION['user_id'] = $db->lastInsertId();
