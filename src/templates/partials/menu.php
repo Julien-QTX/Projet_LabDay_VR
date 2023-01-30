@@ -1,6 +1,6 @@
 <ul>
     <li><a href="/?page=home">Home</a></li>
-    
+
     <?php if ($user === false) { ?>
 
         <li><a href="/?page=signup">SignUp</a></li>
