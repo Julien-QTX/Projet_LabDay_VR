@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+}
+
+input {
+    display: block;
+    max-width: fit-content;
+}
+
+button {
+    margin-top: 15px;
+}
