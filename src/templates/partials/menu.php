@@ -1,9 +1,9 @@
 <ul>
     <li><a href="/?page=home">Home</a></li>
 
-    <?php if ($user === false) { ?>
+    <?php if (!isset($_SESSION['user_id'])) { ?>
 
-        <li><a href="/?page=signup">SignUp</a></li>
+        <li><a href="/?page=register">SignUp</a></li>
         <li><a href="/?page=login">Login</a></li>
 
     <?php } else { ?>

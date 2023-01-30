@@ -16,12 +16,7 @@ ob_start();
 <h2>username: </h2>
 <h2>email: </h2>
 
-
-
 <?php
-
-
-
 
 //echo '<p>'.var_dump($user).'</p>';
 

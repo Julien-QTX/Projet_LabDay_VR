@@ -1,10 +1,15 @@
-*{
+/**{
     margin: 0;
     padding: 0;
-}
+}*/
 body{
     width: 100%;
 }
+
+h1 {
+    text-align: center;
+}
+
 .appel{
     display: flex;
     flex-direction:row;
@@ -21,7 +26,7 @@ body{
     text-align: center;
     width: 30%;
     margin: auto;
-    height: 8vh;
+    /*height: 8vh;*/
     text-decoration: none;
     border-radius:20%;
 }

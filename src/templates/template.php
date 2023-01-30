@@ -9,6 +9,9 @@
   </head>
   <body>
      
+	<div>
+		<?php include_once __DIR__ . '/partials/menu.php'; ?>
+	</div>
 	
 	<?= $page_content ;?>
 	<?= $page_scripts ;?>
