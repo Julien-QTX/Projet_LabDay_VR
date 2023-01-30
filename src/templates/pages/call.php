@@ -2,14 +2,14 @@
 
 require_once __DIR__ . '/../../init.php';
 
-$page_title = "Accueil";
+$page_title = "Appel";
 
 ob_start();
 
 ?>
-<link rel="stylesheet" href="assets/CSS/home.css">
+<link rel="stylesheet" href="assets/CSS/call.css">
 
-<h1>Bienvenue sur VRC </h1>
+<h1>Appel</h1>
 
 <?php
 //echo '<p>'.var_dump($user).'</p>';
@@ -19,7 +19,6 @@ ob_start();
 }*/
 ?>
 
-<button class="appel"><a href="/?page=call" class="lien">Lancer un appel VR</a></button>
 
 
 <?php

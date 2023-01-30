@@ -1,0 +1,32 @@
+/**{
+    margin: 0;
+    padding: 0;
+}*/
+body{
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.appel{
+    display: flex;
+    flex-direction:row;
+    width: 30%;
+    margin: 15vh auto;
+    height: 8vh;
+    text-decoration: none;
+    border-radius:20%;
+}
+
+.lien{
+    display: flex;
+    flex-direction:center;
+    text-align: center;
+    width: 30%;
+    margin: auto;
+    /*height: 8vh;*/
+    text-decoration: none;
+    border-radius:20%;
+}
