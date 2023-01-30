@@ -32,7 +32,7 @@ if ($pseudo_used->rowCount() != 0) {
     display_errors("Ce pseudo est déjà utilisé", "/?page=register");
 }
 
-$hashed_password = hash('sha256', $password);
+$hashed_password = hash('sha256', $_POST['password']);
 
 $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`) VALUES(?, ?, ?, ?)");
 $create_user->execute([

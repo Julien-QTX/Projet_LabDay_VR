@@ -10,13 +10,22 @@ ob_start();
 
 <h1>Connexion</h1>
 
+<?php
+
+if (isset($_SESSION['user_id'])) {
+    echo "Session id = " . $_SESSION['user_id'][0];
+}
+
+?>
+
 <div id="center">
 
 <form action="/actions/login.php" method="post" id="login_form">
 
     <?php
-    //include_once __DIR__ . '/../partials/alert_errors.php';
-    //include_once __DIR__ . '/../partials/alert_success.php';
+
+    include_once __DIR__ . '/../../utils/alert_errors.php';
+
     ?>
 
     <div class="form_input">
