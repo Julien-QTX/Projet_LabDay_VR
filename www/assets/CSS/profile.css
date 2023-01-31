@@ -6,29 +6,30 @@ body{
     background: linear-gradient(#141e30, #243b55);
     font-family: sans-serif;
     color: white;
+    margin: 0px;
 }
 
 /* unvisited link */
 a:link {
-    color: white;
+    color: #16d7e2;
     text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-    color: white;
+    color: #16d7e2;
     text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-    color: white;
+    color: #16d7e2;
     text-decoration: none;
 }
 
 /* selected link */
 a:active {
-    color: white;
+    color: #16d7e2;
     text-decoration: none;
 }
   
