@@ -24,9 +24,9 @@ ob_start();
         <!--<img src="assets/images/def.jpeg" alt="profile picture" id="pic">-->
     </div>
 
-    <h2>Name: <?= $info['name']; ?></h2>
-    <h2>Username: <?= $info['pseudo']; ?></h2>
-    <h2>Email: <?= $info['email']; ?></h2>
+    <h2><?= $info['name']; ?></h2>
+    <h2><?= $info['pseudo']; ?></h2>
+    <h2><?= $info['email']; ?></h2>
 </div>
 <?php
 

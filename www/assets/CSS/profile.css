@@ -49,7 +49,7 @@ a:active {
     display: flex;
     align-self: center;
     background-color: black;
-    border: 7px solid rgb(31, 70, 128);
+    border: 2px solid rgb(105, 146, 208);
     border-radius: 100%;
     width: 100px;
     height: 100px;
