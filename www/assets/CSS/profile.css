@@ -8,10 +8,6 @@ body{
     color: white;
 }
 
-h1{
-    text-decoration: underline;
-}
-
 /* unvisited link */
 a:link {
     color: white;
@@ -46,7 +42,7 @@ a:active {
     margin-left: 35%;
     margin-right: 35%;
     border-radius: 10px;
-    border: white solid 1px;
+    box-shadow: 0 15px 25px black;
 }
 
 #pfp{
