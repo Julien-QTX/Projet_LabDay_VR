@@ -8,6 +8,10 @@ body{
     color: white;
 }
 
+h1{
+    text-decoration: underline;
+}
+
 /* unvisited link */
 a:link {
     color: white;
@@ -49,7 +53,7 @@ a:active {
     display: flex;
     align-self: center;
     background-color: black;
-    border: 2px solid rgb(105, 146, 208);
+    border: 2px solid white;
     border-radius: 100%;
     width: 100px;
     height: 100px;

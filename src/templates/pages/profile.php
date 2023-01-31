@@ -8,8 +8,6 @@ ob_start();
 
 ?>
 <link rel="stylesheet" href="assets/CSS/profile.css">
-<h1>PROFILE</h1>
-
 <?php
 
     include_once __DIR__ . '/../../utils/alert_errors.php';
@@ -19,6 +17,8 @@ ob_start();
     $info = $usr_info->fetch();
 ?>
 <div id="infos">
+    <h1>PROFILE</h1>
+
     <div id="pfp">
         <img src="actions/show_img.php" alt="profile picture" id="pic">
         <!--<img src="assets/images/def.jpeg" alt="profile picture" id="pic">-->
