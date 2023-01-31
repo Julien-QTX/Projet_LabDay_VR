@@ -32,13 +32,13 @@ if ($pseudo_used->rowCount() != 0) {
     display_errors("Ce pseudo est déjà utilisé", "/?page=register");
 }
 
-if (empty($_POST['profile_pic'])) {
+//if (empty($_POST['profile_pic'])) {
     //display_errors(__DIR__, "/?page=register");
-    $image = file_get_contents('/../assets/images/def.jpeg');
-}
-else {
+//    $image = file_get_contents('/../assets/images/def.jpeg');
+//}
+//else {
     $image = file_get_contents($_FILES['profile_pic']['tmp_name']);
-}
+//}
 //$image = $_FILES['profile_pic']['tmp_name'];
 //$image_data = file_get_contents($image);
 
