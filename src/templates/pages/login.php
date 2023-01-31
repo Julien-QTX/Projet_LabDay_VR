@@ -4,6 +4,7 @@ $page_title = "Connexion";
 
 $head_metas = "<link rel=stylesheet href=assets/CSS/login.css>";
 
+
 ob_start();
 
 
@@ -12,6 +13,8 @@ if (isset($_SESSION['user_id'])) {
 }
 
 ?>
+
+
 
    
 <div id="center" class="login-box">

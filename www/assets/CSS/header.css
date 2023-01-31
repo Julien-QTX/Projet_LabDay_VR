@@ -1,0 +1,36 @@
+
+body {
+  font-size: 28px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: rgba(20, 15, 15, 0.5);
+  box-shadow: 0 15px 25px rgba(0,0,0,.44);
+  border-radius: 7px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #03e9f4;
+  border: 2px solid #03e9f4;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 100px;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
