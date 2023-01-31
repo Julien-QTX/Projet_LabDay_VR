@@ -8,17 +8,8 @@ ob_start();
 
 ?>
 
-<h1>Inscription</h1>
-
-<?php
-
-if (isset($_SESSION['user_id'])) {
-    echo "Session id = " . $_SESSION['user_id'];
-}
-
-?>
-
-<div id="center">
+<div class="login-box">
+    <h2>Inscription</h2>
 
     <form action="actions/register.php" method="post" enctype="multipart/form-data">
 
@@ -28,29 +19,70 @@ if (isset($_SESSION['user_id'])) {
 
         ?>
 
+    <div class="user-box">
+        <input type="text" name="fullname" id="fullname" required>
         <label for="fullname">Nom complet</label>
-        <input type="text" name="fullname" id="fullname">
+    </div>
 
+    <div class="user-box">
+        <input type="text" name="pseudo" id="pseudo" required>
         <label for="pseudo">Pseudo</label>
-        <input type="text" name="pseudo" id="pseudo">
+    </div>
 
+    <div class="user-box">
+        <input type="text" name="email" id="email" required>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+    </div>
 
+    <div class="user-box">
+        <input type="password" name="password" id="password" required>
         <label for="fullname">Mot de Passe</label>
-        <input type="password" name="password" id="password">
+    </div>
 
+    <div class="user-box">
+        <input type="password" name="cpassword" id="cpassword" required>
         <label for="fullname">Confirmation du Mot de Passe</label>
-        <input type="password" name="cpassword" id="cpassword">
+    </div>
 
-        <label for="profile_pic">Image de Profil</label>
+    <div class="user-box">
         <input type="file" name="profile_pic" id="profile_pic" accept="image/*">
+        <label for="profile_pic">Image de Profil</label>
+    </div>
+
+    <!--<a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Inscription
+    </a>-->
 
         <button type="submit">Inscription</button>
 
     </form>
     
 </div>
+
+<!--<div class="login-box">
+  <h2>Login</h2>
+  <form>
+    <div class="user-box">
+      <input type="text" name="" required="">
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="" required="">
+      <label>Password</label>
+    </div>
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+</div>-->
 
 <?php
 
