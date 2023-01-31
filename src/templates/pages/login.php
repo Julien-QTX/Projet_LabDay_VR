@@ -7,20 +7,22 @@ $head_metas = "<link rel=stylesheet href=assets/CSS/login.css>";
 ob_start();
 
 
-
-
-
-
 if (isset($_SESSION['user_id'])) {
     echo "Session id = " . $_SESSION['user_id'][0];
 }
 
 ?>
 
-
+   
 <div id="center" class="login-box">
   <h2>Login</h2>
+  
+
+
   <form form action="/actions/login.php" method="post" id="login_form">
+       
+  
+    
         <?php
 
         include_once __DIR__ . '/../../utils/alert_errors.php';
@@ -29,20 +31,19 @@ if (isset($_SESSION['user_id'])) {
 
     
         <div class="user-box">
+            <input type="text" id="email" name="email" required>
             <label for="email">Email</label>
-            <input type="text" id="email" name="email">
+            
+            
         </div>
         <div class="user-box">
+            <input type="password" id="password" name="password" required>
             <label for="password">Mot de Passe</label>
-            <input type="password" id="password" name="password">
+            
         </div>
-        <a href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        Submit
-        </a>
+    
+            <button class="sub" type="submit">Login</button>
+        
   </form>
 </div>
 
