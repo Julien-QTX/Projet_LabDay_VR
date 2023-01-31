@@ -18,7 +18,20 @@ ob_start();
     echo '<p>'.$_SESSION['user_id'].'</p>';
 }*/
 ?>
+<div class="participant"><h1>Nom du participant</h1></div>
 
+<div class="call">
+
+    
+    
+    <img src="assets/images/Decrocher.png" alt="decrocher" class="decrocher"><a href="JavaScript"></a></img>
+    
+
+    
+    <img src="assets/images/Raccrocher.png" alt="raccrocher" class="decrocher"><a href="JavaScript"></a></img>
+    
+
+</div>
 
 
 <?php
