@@ -26,7 +26,7 @@ ob_start();
 
     <h3><?= $info['name']; ?></h3>
     <h3><?= $info['pseudo']; ?></h3>
-    <h3><?= $info['email']; ?></h3w>
+    <h3><?= $info['email']; ?></h3>
 </div>
 <?php
 
