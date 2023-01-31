@@ -25,9 +25,18 @@ h1 {
     margin: 25vh 0 10vh;
 }
 
+.appell{
+    margin: 5vh 0 20vh;
+}
+
+.destinataire{
+    margin: 22vh 0;
+}
+
 .call{
     width: 30%;
-    margin: 25vh auto 0;
+    margin: 13vh auto 4vh;
+    padding: 0 0 10vh;
     display: flex;
     flex-direction: row;
 }

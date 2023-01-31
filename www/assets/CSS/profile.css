@@ -6,6 +6,7 @@ body{
     background: linear-gradient(#141e30, #243b55);
     font-family: sans-serif;
     color: white;
+    margin: 0px;
 }
 
 /* unvisited link */
@@ -39,8 +40,8 @@ a:active {
     text-align: center;
     background-color: rgba(0, 0, 0, .5);
     padding: 10px;
-    margin-left: 35%;
-    margin-right: 35%;
+    width: 60%;
+    margin: 5vh auto 9vh;
     border-radius: 10px;
     box-shadow: 0 15px 25px black;
 }

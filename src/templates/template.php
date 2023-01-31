@@ -6,6 +6,7 @@
     <title><?= $page_title; ?></title>
 	<?= $head_metas ;?>
 	<link rel="stylesheet" href="assets/CSS/header.css">
+	<link rel="stylesheet" href=assets/CSS/footer.css>
   </head>
   <body>
      
@@ -15,6 +16,10 @@
 	
 	<?= $page_content ;?>
 	<?= $page_scripts ;?>
+
+	<div>
+		<?php include_once __DIR__ . '/partials/footer.php'; ?>
+	</div>
 	
 	</body>
 </html>
