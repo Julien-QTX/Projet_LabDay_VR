@@ -3,7 +3,7 @@ $head_metas = "<link rel=stylesheet href=assets/CSS/header.css>";
 ?>
 
 <ul>
-    <li><a href="/?page=home">Home</a></li>
+    <li class="boutton"><a href="/?page=home">Home</a></li>
 
     <?php if (!isset($_SESSION['user_id'])) { ?>
 
