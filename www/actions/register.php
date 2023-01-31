@@ -31,23 +31,50 @@ $pseudo_used->execute([$_POST['pseudo']]);
 if ($pseudo_used->rowCount() != 0) {
     display_errors("Ce pseudo est déjà utilisé", "/?page=register");
 }
+    
+if (empty($_FILES['profile_pic']['name'])) {
+    $target_file = './../assets/images/def.jpeg';
 
-//if (empty($_POST['profile_pic'])) {
-    //display_errors(__DIR__, "/?page=register");
-//    $image = file_get_contents('/../assets/images/def.jpeg');
-//}
-//else {
-    $image = file_get_contents($_FILES['profile_pic']['tmp_name']);
-//}
-//$image = $_FILES['profile_pic']['tmp_name'];
-//$image_data = file_get_contents($image);
+    $hashed_password = hash('sha256', $_POST['password']);
 
-$hashed_password = hash('sha256', $_POST['password']);
+    $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
+    $create_user->execute([
+        $_POST['fullname'], $_POST['pseudo'], $_POST['email'], $hashed_password, $target_file
+    ]);
 
-$create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
-$create_user->execute([
-    $_POST['fullname'], $_POST['pseudo'], $_POST['email'], $hashed_password, $image
-]);
+}
+
+else {
+    $filename = $_FILES['profile_pic']['name'];
+    $target_file = './../assets/users_pfp/'.$filename;
+
+    // file extension
+    $file_extension = pathinfo($target_file, PATHINFO_EXTENSION);
+            
+    $file_extension = strtolower($file_extension);
+
+    // Valid image extension
+    $valid_extension = array("png","jpeg","jpg", "svg", "webp");
+
+    if(in_array($file_extension, $valid_extension)) {
+
+        // Upload file
+        if(move_uploaded_file($_FILES['profile_pic']['tmp_name'],$target_file)) {
+
+            $hashed_password = hash('sha256', $_POST['password']);
+
+            $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
+            $create_user->execute([
+                $_POST['fullname'], $_POST['pseudo'], $_POST['email'], $hashed_password, $target_file
+            ]);
+
+        }
+        else {
+            display_errors($target_file, "/?page=register");
+        }
+    }
+
+}
 
 $_SESSION['user_id'] = $db->lastInsertId();
 

@@ -2,9 +2,16 @@
     margin: 0;
     padding: 0;
 }*/
-body{
-    width: 100%;
-}
+html {
+    height: 100%;
+  }
+  body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
+    color: #fff;
+  }
 
 h1 {
     text-align: center;
@@ -13,20 +20,20 @@ h1 {
 .appel{
     display: flex;
     flex-direction:row;
-    width: 30%;
+    width: 20%;
     margin: 15vh auto;
     height: 8vh;
     text-decoration: none;
-    border-radius:20%;
+    border-radius: 10px;
+    background: linear-gradient(#141e30, #243b55);
+    
 }
 
 .lien{
     display: flex;
     flex-direction:center;
     text-align: center;
-    width: 30%;
     margin: auto;
-    /*height: 8vh;*/
+    color: #16d7e2;
     text-decoration: none;
-    border-radius:20%;
 }
