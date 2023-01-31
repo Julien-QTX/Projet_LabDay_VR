@@ -1,13 +1,62 @@
+html{
+    height: 100%;
+}
+
+body{
+    background: linear-gradient(#141e30, #243b55);
+    font-family: sans-serif;
+    color: white;
+}
+
+/* unvisited link */
+a:link {
+    color: white;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: white;
+    text-decoration: none;
+}
+  
+
+#infos{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 10px;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 10px;
+    border: white solid 1px;
+}
+
 #pfp{
+    display: flex;
+    align-self: center;
     background-color: black;
-    border: 7px solid gray;
+    border: 7px solid rgb(31, 70, 128);
     border-radius: 100%;
     width: 100px;
     height: 100px;
 }
 
 #pic {
-    max-width: 100px;
-    max-height: 100px;
+    object-fit: cover;
     border-radius: 55%;
+    max-width: 100px;
 }
