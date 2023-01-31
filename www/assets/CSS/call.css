@@ -1,3 +1,28 @@
+body{
+    width: 100%;
+    background-image: url("/assets/images/stars.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
 h1 {
     text-align: center;
+}
+
+.participant{
+    margin: 25vh 0 10vh;
+}
+
+.call{
+    width: 30%;
+    margin: 25vh auto 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.decrocher{
+    margin: auto;
+    width: 22%;
+
 }

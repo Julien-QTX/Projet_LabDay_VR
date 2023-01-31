@@ -4,6 +4,11 @@
 }*/
 body{
     width: 100%;
+    background-image: url("/assets/images/stars.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: sans-serif;
 }
 
 h1 {
@@ -13,20 +18,21 @@ h1 {
 .appel{
     display: flex;
     flex-direction:row;
-    width: 30%;
+    width: 20%;
     margin: 15vh auto;
     height: 8vh;
     text-decoration: none;
-    border-radius:20%;
+    border-radius: 10px;
+    background: linear-gradient(#141e30, #243b55);
+    
 }
 
 .lien{
     display: flex;
     flex-direction:center;
     text-align: center;
-    width: 30%;
     margin: auto;
-    /*height: 8vh;*/
+    color: #16d7e2;
     text-decoration: none;
-    border-radius:20%;
+    
 }
