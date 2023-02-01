@@ -26,7 +26,7 @@
 </div>
 
 <div class="row">
-VRC Copyright © 2023 vrc - All rights reserved || Designed By: Jean Fourest, Julien Quatravaux, Adam Boissy, Bastien Vitour. 
+VRC Copyright © 2023 vrc - All rights reserved || Designed By: Jean Fourest, Julien Quatravaux, Bastien Vitour, Adam Boissy. 
 </div>
 </div>
 </footer>
