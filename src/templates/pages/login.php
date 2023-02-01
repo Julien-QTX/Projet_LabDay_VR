@@ -14,45 +14,45 @@ if (isset($_SESSION['user_id'])) {
 
 ?>
 
-
+<div class="center">
 
    
-<div id="center" class="login-box">
-  <h2>Login</h2>
-  
-
-
-  <form form action="/actions/login.php" method="post" id="login_form">
-       
-  
+    <div id="center" class="login-box">
+    <h2>Login</h2>
     
-        <?php
 
-        include_once __DIR__ . '/../../utils/alert_errors.php';
 
-        ?>
-
-    
-        <div class="user-box">
-            <input type="text" id="email" name="email" required>
-            <label for="email">Email</label>
-            
-            
-        </div>
-        <div class="user-box">
-            <input type="password" id="password" name="password" required>
-            <label for="password">Mot de Passe</label>
-            
-        </div>
-    
-            <button class="sub" type="submit">Login</button>
+    <form form action="/actions/login.php" method="post" id="login_form">
         
-  </form>
+    
+        
+            <?php
+
+            include_once __DIR__ . '/../../utils/alert_errors.php';
+
+            ?>
+
+        
+            <div class="user-box">
+                <input type="text" id="email" name="email" required>
+                <label for="email">Email</label>
+                
+                
+            </div>
+            <div class="user-box">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Mot de Passe</label>
+                
+            </div>
+        
+                <button class="sub" type="submit">Login</button>
+            
+    </form>
+    </div>
+
+
+    </div>
 </div>
-
-
-</div>
-
 <?php
 
 $page_content = ob_get_clean();

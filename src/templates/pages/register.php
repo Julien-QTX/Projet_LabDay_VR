@@ -7,7 +7,7 @@ $head_metas = "<link rel=stylesheet href=assets/CSS/register.css>";
 ob_start();
 
 ?>
-
+<div class="center">
 <div class="login-box">
     <h2>Inscription</h2>
 
@@ -62,7 +62,7 @@ ob_start();
     </form>
     
 </div>
-
+</div>
 <!--<div class="login-box">
   <h2>Login</h2>
   <form>
