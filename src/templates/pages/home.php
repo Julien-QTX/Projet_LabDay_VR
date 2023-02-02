@@ -19,7 +19,7 @@ ob_start();
 }*/
 ?>
 
-<button class="appel"><a href="/?page=call" class="lien">Lancer un appel VR</a></button>
+<button class="appel"><a href="/?page=lobby" class="lien">Lancer un appel VR</a></button>
 
 
 <?php
