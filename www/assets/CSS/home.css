@@ -13,13 +13,14 @@
 
 h1 {
     text-align: center;
+    margin-top: 75px;
 }
 
 .appel{
     display: flex;
     flex-direction:row;
     width: 20%;
-    margin: 15vh auto;
+    margin: 25vh auto;
     height: 8vh;
     text-decoration: none;
     border-radius: 10px;

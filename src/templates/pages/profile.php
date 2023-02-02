@@ -2,6 +2,10 @@
 $user = true;
 require_once __DIR__ . '/../../init.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /?page=login');
+}
+
 $page_title = "Accueil";
 
 ob_start();

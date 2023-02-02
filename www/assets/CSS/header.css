@@ -1,4 +1,3 @@
-
 body {
   font-size: 28px;
 }
@@ -44,3 +43,10 @@ li a:hover {
   background-color: #111;
 }
 
+.side_btns {
+  padding-left: 78%;
+}
+
+.side_btns .logout_btn {
+  padding-left: 40%;
+}
