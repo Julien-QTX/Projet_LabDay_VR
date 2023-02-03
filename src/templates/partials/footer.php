@@ -8,7 +8,7 @@
 <body>
 <footer>
 <div class="footer">
-<div class="row">
+<!--<div class="row">
 <a href="#"><i class="fa fa-facebook"></i></a>
 <a href="#"><i class="fa fa-instagram"></i></a>
 <a href="#"><i class="fa fa-youtube"></i></a>
@@ -23,7 +23,7 @@
 <li><a href="#">Terms & Conditions</a></li>
 <li><a href="#">Career</a></li>
 </ul>
-</div>
+</div>-->
 
 <div class="row">
 VRC Copyright © 2023 vrc - All rights reserved || Designed By: Jean Fourest, Julien Quatravaux, Bastien Vitour, Adam Boissy. 

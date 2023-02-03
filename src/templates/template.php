@@ -25,13 +25,13 @@
 	<?= $page_content ;?>
 	<?= $page_scripts ;?>
 
-	<div>
+	
 		<?php 
 		if (!strpos($_SERVER['REQUEST_URI'], 'call')) {
 			include_once __DIR__ . '/partials/footer.php';
 		}
 		 ?>
-	</div>
+	
 	
 	</body>
 	<?php

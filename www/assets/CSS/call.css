@@ -7,8 +7,14 @@
 }*/
 
 html {
+    overflow: hidden;
     height: 100%;
-}
+  }
+  
+  body {
+    overflow: auto;
+    height: 100%;
+  }
 
   body {
     margin:0;
@@ -49,7 +55,7 @@ html {
     height: 170px;
     width: 300px;
     border-radius: 5px;
-    border: 2px solid #b366f9;
+    border: 2px solid #03e9f4;
     -webkit-box-shadow: 3px 3px 15px -1px rgba(0, 0, 0, 0.77);
     box-shadow: 3px 3px 15px -1px rgba(0, 0, 0, 0.77);
     z-index: 999;
@@ -65,7 +71,8 @@ html {
 }
 
 .control-container {
-    background-color: rgb(179, 102, 249, .9);
+    background-color: rgb(12, 16, 23);
+    border: 1px solid #03e9f4;
     padding: 20px;
     border-radius: 50%;
     display: flex;
@@ -73,6 +80,10 @@ html {
     align-items: center;
     cursor: pointer;
     /*width: fit-content;*/
+}
+
+#leave-btn {
+    border-color: rgb(255, 80, 80);
 }
 
 .control-container img {

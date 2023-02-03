@@ -50,3 +50,13 @@ li a:hover {
 .side_btns .logout_btn {
   padding-left: 40%;
 }
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  height: 100%;
+}

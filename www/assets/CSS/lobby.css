@@ -1,3 +1,7 @@
+html {
+    background-color: #141e30;
+}
+
 body {
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
@@ -20,7 +24,7 @@ body {
     border-radius: 10px;*/
     width: 400px;
     padding: 40px;
-    margin: 10% auto;
+    margin: 14% auto;
     /*transform: translate(-50%, -50%);*/
     background: rgba(0,0,0,.5);
     box-sizing: border-box;

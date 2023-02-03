@@ -21,16 +21,16 @@ ob_start();
     <div id="controls">
 
         <div class="control-container" id="camera-btn">
-            <img src="assets/images/cameraIcon.png" width="70">
+            <img src="assets/images/camera2.png" width="70">
         </div>
 
         <div class="control-container" id="mic-btn">
-            <img src="assets/images/micIcon.png" width="70">
+            <img src="assets/images/mic2.png" width="70">
         </div>
 
         <a href="/?page=call">
             <div class="control-container" id="leave-btn">
-                <img src="assets/images/phoneIcon.png" width="70">
+                <img src="assets/images/phone2.png" width="70">
             </div>
         </a>
 

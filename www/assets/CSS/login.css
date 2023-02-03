@@ -1,4 +1,6 @@
-
+html {
+  background-color: #141e30;
+}
   body {
     margin:0;
     padding:0;
@@ -19,7 +21,7 @@
     left: 50%;*/
     width: 400px;
     padding: 40px;
-    margin: 10% auto;
+    margin: 15% auto;
     /*transform: translate(-50%, -50%);*/
     background: rgba(0,0,0,.5);
     box-sizing: border-box;

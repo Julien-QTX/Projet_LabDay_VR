@@ -157,10 +157,12 @@ let toggleCamera = async () => {
     if (videoTrack.enabled) {
         videoTrack.enabled = false;
         document.getElementById('camera-btn').style.backgroundColor = 'rgb(255, 80, 80)';
+        document.getElementById('camera-btn').style.border = 'rgb(255, 80, 80)';
     }
     else {
         videoTrack.enabled = true;
-        document.getElementById('camera-btn').style.backgroundColor = 'rgb(179, 102, 249, .9)';
+        document.getElementById('camera-btn').style.backgroundColor = 'rgb(12, 16, 23)';
+        document.getElementById('camera-btn').style.border = '1px solid #03e9f4';
     }
 }
 
@@ -170,10 +172,12 @@ let toggleMic = async () => {
     if (audioTrack.enabled) {
         audioTrack.enabled = false;
         document.getElementById('mic-btn').style.backgroundColor = 'rgb(255, 80, 80)';
+        document.getElementById('mic-btn').style.border = 'rgb(255, 80, 80)';
     }
     else {
         audioTrack.enabled = true;
-        document.getElementById('mic-btn').style.backgroundColor = 'rgb(179, 102, 249, .9)';
+        document.getElementById('mic-btn').style.backgroundColor = 'rgb(12, 16, 23)';
+        document.getElementById('mic-btn').style.border = '1px solid #03e9f4';
     }
 }
 
