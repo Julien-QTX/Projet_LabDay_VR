@@ -36,6 +36,9 @@ ob_start();
 
     </div>
 
+    <script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>
+    <script src="assets/JS/peerConnection.js"></script>
+
 <?php
 $page_content = ob_get_clean();
 ?>

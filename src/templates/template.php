@@ -34,13 +34,5 @@
 	
 	
 	</body>
-	<?php
-
-	if (strpos($_SERVER['REQUEST_URI'], 'call')) {
-			echo '<script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>';
-			echo '<script src="assets/JS/main.js"></script>';
-		}
-
-	?>
 
 </html>
