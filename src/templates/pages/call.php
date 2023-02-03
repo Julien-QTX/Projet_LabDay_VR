@@ -18,7 +18,7 @@ ob_start();
     echo '<p>'.$_SESSION['user_id'].'</p>';
 }*/
 ?>
-<div class="participant"><h1>Nom du participant</h1></div>
+<div class="participant"><h1><?php echo $_SESSION['pseudo'] ?></h1></div>
 
 <div class="call">
 

@@ -17,7 +17,7 @@ ob_start();
     $info = $usr_info->fetch();
 ?>
 <div id="infos">
-    <h1>PROFILE</h1>
+    <h1><?php echo $_SESSION['name'] ?></h1>
 
     <div id="pfp">
         <img src=<?= $info['img'] ?> alt="profile picture" id="pic">

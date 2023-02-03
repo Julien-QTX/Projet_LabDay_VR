@@ -14,8 +14,10 @@ $head_metas = "<link rel=stylesheet href=assets/CSS/header.css>";
         
 
         <li><a href="/?page=profile">Profil</a></li> 
-        <li><a href="/?page=call">Call</a></li>      
+        <li><a href="/?page=call">Call</a></li>
+        <li><a href="/?page=contact">Contact</a></li>     
         <li><a href="/actions/logout.php">Logout</a></li>
+
     
     <?php    } ?>
    
