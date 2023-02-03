@@ -14,7 +14,7 @@ cpassEye.addEventListener("click", () => {
 
 function switchEye(eye, input) {
     console.log(eye.src)
-    if (eye.src == "http://localhost:8888/assets/images/ceye2.png") {
+    if (eye.src.includes("ceye2")) {
         console.log('was open')
         eye.src = "assets/images/oeye2.png";
         input.type = 'text'
