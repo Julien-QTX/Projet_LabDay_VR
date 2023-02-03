@@ -23,7 +23,9 @@ $pass_good = $db->prepare("SELECT password FROM users WHERE email=?");
 $pass_good->execute([$_POST['email']]);
 $pass = $pass_good->fetch();
 
-if ($pass == hash('sha256', $_POST['password'])) {
+//display_errors($pass['password'], "/?page=login");
+
+if ($pass['password'] != hash('sha256', $_POST['password'])) {
     display_errors("Le mot de passe est faux", "/?page=login");
 }
 
