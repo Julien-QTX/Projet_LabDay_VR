@@ -3,13 +3,9 @@
     background-image: url("/assets/images/stars.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    position: fixed;
     color: white;
 }*/
 
-html {
-    height: 100%;
-  }
   body {
     margin:0;
     padding:0;
@@ -26,9 +22,18 @@ h1 {
     margin: 25vh 0 10vh;
 }
 
+.appell{
+    margin: 5vh 0 20vh;
+}
+
+.destinataire{
+    margin: 22vh 0;
+}
+
 .call{
     width: 30%;
-    margin: 25vh auto 0;
+    margin: 13vh auto 4vh;
+    padding: 0 0 10vh;
     display: flex;
     flex-direction: row;
 }
