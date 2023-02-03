@@ -2,6 +2,10 @@
 
 require_once __DIR__ . '/../../init.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /?page=login');
+}
+
 $page_title = "Appel";
 
 ob_start();
@@ -9,23 +13,28 @@ ob_start();
 ?>
 <link rel="stylesheet" href="assets/CSS/call.css">
 
-<h1 class="apell">Appel</h1>
+    <div id="videos">
+        <video class="video-player" id="user-1" autoplay playsinline></video>
+        <video class="video-player" id="user-2" autoplay playsinline></video>
+    </div>
 
-<h1 class="destinataire">Nom du participant</h1>
+    <div id="controls">
 
-<div class="call">
+        <div class="control-container" id="camera-btn">
+            <img src="assets/images/camera2.png" width="70">
+        </div>
 
-    
-    
-    <img src="assets/images/Decrocher.png" alt="decrocher" class="decrocher"><a href="JavaScript"></a></img>
-    
+        <div class="control-container" id="mic-btn">
+            <img src="assets/images/mic2.png" width="70">
+        </div>
 
-    
-    <img src="assets/images/Raccrocher.png" alt="raccrocher" class="decrocher"><a href="JavaScript"></a></img>
-    
+        <a href="/?page=call">
+            <div class="control-container" id="leave-btn">
+                <img src="assets/images/phone2.png" width="70">
+            </div>
+        </a>
 
-</div>
-
+    </div>
 
 <?php
 $page_content = ob_get_clean();

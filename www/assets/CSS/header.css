@@ -1,4 +1,3 @@
-
 body {
   font-size: 28px;
 }
@@ -30,6 +29,7 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
   border-radius: 8px;
+  transition: .5s;
 }
 
 li a:hover {
@@ -44,3 +44,21 @@ li a:hover {
   background-color: #111;
 }
 
+.side_btns {
+  padding-left: 71%;
+}
+
+.side_btns .logout_btn {
+  /*padding-left: 40%*/
+  padding-left: 28%;
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  height: 100%;
+}

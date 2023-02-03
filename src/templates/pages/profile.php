@@ -2,6 +2,10 @@
 $user = true;
 require_once __DIR__ . '/../../init.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /?page=login');
+}
+
 $page_title = "Accueil";
 
 ob_start();
@@ -17,7 +21,7 @@ ob_start();
     $info = $usr_info->fetch();
 ?>
 <div id="infos">
-    <h1>PROFILE</h1>
+    <h1>PROFIL</h1>
 
     <div id="pfp">
         <img src=<?= $info['img'] ?> alt="profile picture" id="pic">

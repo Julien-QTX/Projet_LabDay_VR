@@ -1,24 +1,21 @@
-<?php
-/**#######################  HEADTER  ####################*/
-
-
-$head_metas = "<link rel=stylesheet href=assets/CSS/header.css>";
-?>
-
 <ul>
-    <li class="boutton"><a href="/?page=home">Home</a></li>
+    <li class="boutton"><a href="/?page=home">Accueil</a></li>
 
     <?php if (!isset($_SESSION['user_id'])) { ?>
 
-        <li><a href="/?page=register">SignUp</a></li>
-        <li><a href="/?page=login">Login</a></li>
+        <div class="side_btns">
+            <li><a href="/?page=register">Inscription</a></li>
+            <li><a href="/?page=login">Connexion</a></li>
+        </div>
 
     <?php } else { ?>
         
 
         <li><a href="/?page=profile">Profil</a></li> 
-        <li><a href="/?page=call">Call</a></li>      
-        <li><a href="/actions/logout.php">Logout</a></li>
+        <li><a href="/?page=lobby">Appel</a></li>
+        <div class="side_btns">
+            <li class="logout_btn"><a href="/actions/logout.php">Déconnexion</a></li>
+        </div>
     
     <?php    } ?>
    

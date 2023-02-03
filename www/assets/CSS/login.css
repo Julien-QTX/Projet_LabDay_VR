@@ -1,4 +1,6 @@
-
+html {
+  background-color: #141e30;
+}
   body {
     margin:0;
     padding:0;
@@ -208,3 +210,12 @@ input:-webkit-autofill:active{
     -webkit-text-fill-color: #fff;
 }
 
+.user-box img {
+  position: absolute;
+  top: 6px;
+  left: 275px;
+}
+
+button, img {
+  cursor: pointer;
+}

@@ -6,6 +6,16 @@
     color: white;
 }*/
 
+html {
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  body {
+    overflow: auto;
+    height: 100%;
+  }
+
   body {
     margin:0;
     padding:0;
@@ -14,32 +24,84 @@
     color: #fff;
   }
 
-h1 {
-    text-align: center;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.participant{
-    margin: 25vh 0 10vh;
+#videos {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.appell{
-    margin: 5vh 0 20vh;
+.video-player {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.destinataire{
-    margin: 22vh 0;
+#user-2 {
+    display: none;
 }
 
-.call{
-    width: 30%;
-    margin: 13vh auto 4vh;
-    padding: 0 0 10vh;
+.smallFrame {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    height: 170px;
+    width: 300px;
+    border-radius: 5px;
+    border: 2px solid #03e9f4;
+    -webkit-box-shadow: 3px 3px 15px -1px rgba(0, 0, 0, 0.77);
+    box-shadow: 3px 3px 15px -1px rgba(0, 0, 0, 0.77);
+    z-index: 999;
+}
+
+#controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: row;
+    gap: 1em;
 }
 
-.decrocher{
-    margin: auto;
-    width: 22%;
+.control-container {
+    background-color: rgb(12, 16, 23);
+    border: 1px solid #03e9f4;
+    padding: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /*width: fit-content;*/
+}
 
+#leave-btn {
+    border-color: rgb(255, 80, 80);
+}
+
+.control-container img {
+    height: 30px;
+    width: 30px;
+}
+
+#leave-btn {
+    background-color: rgb(255, 80, 80);
+}
+
+@media screen and (max-width:600px) {
+    .smallFrame{
+        height: 80px;
+        width:120px;
+    }
+    .control-container{
+        height: 20px;
+        width: 20px;
+    }
 }

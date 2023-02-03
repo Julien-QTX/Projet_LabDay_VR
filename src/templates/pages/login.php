@@ -8,9 +8,9 @@ $head_metas = "<link rel=stylesheet href=assets/CSS/login.css>";
 ob_start();
 
 
-if (isset($_SESSION['user_id'])) {
+/*if (isset($_SESSION['user_id'])) {
     echo "Session id = " . $_SESSION['user_id'][0];
-}
+}*/
 
 ?>
 
@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id'])) {
 
    
     <div id="center" class="login-box">
-    <h2>Login</h2>
+    <h2>Connexion</h2>
     
 
 
@@ -42,10 +42,11 @@ if (isset($_SESSION['user_id'])) {
             <div class="user-box">
                 <input type="password" id="password" name="password" required>
                 <label for="password">Mot de Passe</label>
+                <img src="assets/images/ceye2.png" width="25" id="pass-eye">
                 
             </div>
         
-                <button class="sub" type="submit">Login</button>
+                <button class="sub" type="submit">connexion</button>
             
     </form>
     </div>
@@ -53,6 +54,9 @@ if (isset($_SESSION['user_id'])) {
 
     </div>
 </div>
+
+<script src="assets/JS/password.js"></script>
+
 <?php
 
 $page_content = ob_get_clean();

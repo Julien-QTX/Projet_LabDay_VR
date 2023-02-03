@@ -3,6 +3,10 @@
     padding: 0;
 }*/
 
+html {
+  background: #141e30;
+}
+
   body {
     margin:0;
     padding:0;
@@ -13,18 +17,20 @@
 
 h1 {
     text-align: center;
+    margin-top: 75px;
 }
 
 .appel{
     display: flex;
     flex-direction:row;
     width: 20%;
-    margin: 15vh auto;
-    height: 8vh;
+    margin: 25vh auto;
+    /*height: 8vh;*/
     text-decoration: none;
     border-radius: 10px;
     background: linear-gradient(#141e30, #243b55);
-    
+    padding: 20px;
+    cursor: pointer;
 }
 
 .lien{
@@ -34,4 +40,5 @@ h1 {
     margin: auto;
     color: #16d7e2;
     text-decoration: none;
+    font-size: 2em;
 }

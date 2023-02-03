@@ -34,14 +34,16 @@ ob_start();
         <label for="email">Email</label>
     </div>
 
-    <div class="user-box">
+    <div class="user-box pass-box">
         <input type="password" name="password" id="password" required>
         <label for="fullname">Mot de Passe</label>
+        <img src="assets/images/ceye2.png" width="25" id="pass-eye">
     </div>
 
     <div class="user-box">
         <input type="password" name="cpassword" id="cpassword" required>
         <label for="fullname">Confirmation du Mot de Passe</label>
+        <img src="assets/images/ceye2.png" width="25" id="cpass-eye">
     </div>
 
     <div class="user-box">
@@ -49,40 +51,14 @@ ob_start();
         <label for="profile_pic">Image de Profil</label>
     </div>
 
-    <!--<a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Inscription
-    </a>-->
-
         <button type="submit">Inscription</button>
 
     </form>
     
 </div>
 </div>
-<!--<div class="login-box">
-  <h2>Login</h2>
-  <form>
-    <div class="user-box">
-      <input type="text" name="" required="">
-      <label>Username</label>
-    </div>
-    <div class="user-box">
-      <input type="password" name="" required="">
-      <label>Password</label>
-    </div>
-    <a href="#">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Submit
-    </a>
-  </form>
-</div>-->
+
+<script src="assets/JS/password.js"></script>
 
 <?php
 
