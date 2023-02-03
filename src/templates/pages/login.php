@@ -18,7 +18,7 @@ ob_start();
 
    
     <div id="center" class="login-box">
-    <h2>Login</h2>
+    <h2>Connexion</h2>
     
 
 
@@ -45,7 +45,7 @@ ob_start();
                 
             </div>
         
-                <button class="sub" type="submit">Login</button>
+                <button class="sub" type="submit">connexion</button>
             
     </form>
     </div>

@@ -44,11 +44,12 @@ li a:hover {
 }
 
 .side_btns {
-  padding-left: 78%;
+  padding-left: 71%;
 }
 
 .side_btns .logout_btn {
-  padding-left: 40%;
+  /*padding-left: 40%*/
+  padding-left: 28%;
 }
 
 html {

@@ -27,7 +27,7 @@ ob_start();
 
                     <div class="user_box">
                         <input type="text" name="invite_link" required>
-                        <label for="invite_link">Id de la salle</label>
+                        <label for="invite_link">Id du salon</label>
                     </div>
 
                     <input type="submit" value="Rejoindre le salon">
