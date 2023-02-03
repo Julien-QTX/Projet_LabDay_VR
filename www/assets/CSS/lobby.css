@@ -1,66 +1,62 @@
-/*h1 {
-    text-align: center;
-}
-
-input {
-    display: block;
-    max-width: fit-content;
-}
-
-button {
-    margin-top: 15px;
-}
-
-label, input, button {
-    margin-left: 15px;
-}*/
 html {
-  background-color: #141e30;
+    background-color: #141e30;
 }
 
-
-  body {
-    margin:0;
-    padding:0;
+body {
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
-  }
-  
-  .center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .login-box {
-    
-    /*position: absolute;*/
-    /*top: 50%;
-    left: 50%;*/
-    margin: 1% 0;
+    color: #FFF;
+}
+
+#form-container {
+    /*width: 90%;
+    max-width: 600px;
+    /*border-radius: 10px;
+    background-color: #141e30;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: 100px auto;
+    /*transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;*/
     width: 400px;
     padding: 40px;
+    margin: 11% auto;
     /*transform: translate(-50%, -50%);*/
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
-    /*border: 2px solid #03e9f4;*/
-  }
-  
-  .login-box h2 {
+}
+
+#form_container_header {
+    /*border-radius: 10px 10px 0 0;
+    padding: 30px;
+    text-align: center;
+    background-color: #243B55;
+    margin: 0;
+    font-size: 18px;
+    /*font-size: 300;
+    line-height: 0;*/
     margin: 0 0 30px;
     padding: 0;
-    margin-bottom: 25px;
     color: #fff;
     text-align: center;
-  }
-  
-  .login-box .user-box {
+    font-size: 20px;
+}
+
+#form_content_wrapper {
+    padding: 20px;
+}
+
+#form-container .user_box {
     position: relative;
-  }
-  
-  .login-box .user-box input {
+}
+
+#form-container .user_box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -70,9 +66,9 @@ html {
     border-bottom: 1px solid #fff;
     outline: none;
     background: transparent;
-    border-top: none;
-  }
-  .login-box .user-box label {
+}
+
+#form-container .user_box label {
     position: absolute;
     top:0;
     left: 0;
@@ -81,26 +77,17 @@ html {
     color: #fff;
     pointer-events: none;
     transition: .5s;
-  }
-  
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label {
+}
+
+#form-container .user_box input:focus ~ label,
+#form-container .user_box input:valid ~ label {
     top: -20px;
     left: 0;
     color: #03e9f4;
     font-size: 12px;
   }
 
-  /* Change the white to any color */
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px rgb(11,15,21) inset !important;
-    -webkit-text-fill-color: #fff;
-}
-
-button {
+  input[type='submit'] {
     background-color: rgb(11,15,21);
     border: 2px solid #03e9f4;
     border-radius: 5px;
@@ -117,7 +104,7 @@ button {
     letter-spacing: 4px
 }
 
-button:hover {
+  input[type='submit']:hover {
     background: #03e9f4;
     color: #fff;
     border-radius: 5px;
@@ -125,22 +112,12 @@ button:hover {
                 0 0 25px #03e9f4,
                 0 0 50px #03e9f4,
                 0 0 100px #03e9f4;
-}
+  }
 
-input::file-selector-button {
-    background-color: #141e30;
-    border: 2px solid #03E9F4;
-    border-radius: 3px;
-    color: #FFF;
-    cursor: pointer;
-}
-
-.user-box img {
-  position: absolute;
-  top: 6px;
-  left: 275px;
-}
-
-button, img {
-  cursor: pointer;
+  input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px rgb(11,15,21) inset !important;
+    -webkit-text-fill-color: #fff;
 }

@@ -1,11 +1,13 @@
-html{
-    height: 100%;
-}
+html {
+    background-color: #141e30;
+  }
 
 body{
     background: linear-gradient(#141e30, #243b55);
     font-family: sans-serif;
+    margin: 0px;
     color: white;
+    margin: 0px;
 }
 
 /* unvisited link */
@@ -39,8 +41,8 @@ a:active {
     text-align: center;
     background-color: rgba(0, 0, 0, .5);
     padding: 10px;
-    margin-left: 35%;
-    margin-right: 35%;
+    width: 60%;
+    margin: 3% auto;
     border-radius: 10px;
     box-shadow: 0 15px 25px black;
 }

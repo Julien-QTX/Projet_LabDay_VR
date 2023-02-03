@@ -31,6 +31,10 @@ $pseudo_used->execute([$_POST['pseudo']]);
 if ($pseudo_used->rowCount() != 0) {
     display_errors("Ce pseudo est déjà utilisé", "/?page=register");
 }
+
+$fullname = htmlspecialchars($_POST['fullname'], ENT_QUOTES, null, true);
+$pseudo = htmlspecialchars($_POST['pseudo'], ENT_QUOTES, null, true);
+//$fullname = htmlspecialchars($_POST['fullname'], ENT_QUOTES);
     
 if (empty($_FILES['profile_pic']['name'])) {
     $target_file = './../assets/images/def.jpeg';
@@ -39,7 +43,7 @@ if (empty($_FILES['profile_pic']['name'])) {
 
     $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
     $create_user->execute([
-        $_POST['fullname'], $_POST['pseudo'], $_POST['email'], $hashed_password, $target_file
+        $fullname, $pseudo, $_POST['email'], $hashed_password, $target_file
     ]);
 
 }
@@ -65,7 +69,7 @@ else {
 
             $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
             $create_user->execute([
-                $_POST['fullname'], $_POST['pseudo'], $_POST['email'], $hashed_password, $target_file
+                $fullname, $pseudo, $_POST['email'], $hashed_password, $target_file
             ]);
 
         }
