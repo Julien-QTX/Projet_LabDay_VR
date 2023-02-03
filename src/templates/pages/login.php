@@ -42,6 +42,7 @@ ob_start();
             <div class="user-box">
                 <input type="password" id="password" name="password" required>
                 <label for="password">Mot de Passe</label>
+                <img src="assets/images/ceye2.png" width="25" id="pass-eye">
                 
             </div>
         
@@ -53,6 +54,9 @@ ob_start();
 
     </div>
 </div>
+
+<script src="assets/JS/password.js"></script>
+
 <?php
 
 $page_content = ob_get_clean();

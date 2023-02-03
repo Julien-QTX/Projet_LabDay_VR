@@ -29,6 +29,7 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
   border-radius: 8px;
+  transition: .5s;
 }
 
 li a:hover {

@@ -132,10 +132,15 @@ input::file-selector-button {
     border: 2px solid #03E9F4;
     border-radius: 3px;
     color: #FFF;
+    cursor: pointer;
 }
 
 .user-box img {
   position: absolute;
   top: 6px;
   left: 275px;
+}
+
+button, img {
+  cursor: pointer;
 }
