@@ -95,12 +95,16 @@ html {
     background-color: rgb(255, 80, 80);
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:480px) {
     .smallFrame{
         height: 80px;
         width:120px;
     }
     .control-container{
+        height: 20px;
+        width: 20px;
+    }
+    .control-container img {
         height: 20px;
         width: 20px;
     }

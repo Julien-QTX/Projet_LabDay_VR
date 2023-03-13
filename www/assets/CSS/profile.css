@@ -62,3 +62,11 @@ a:active {
     border-radius: 55%;
     max-width: 100px;
 }
+
+@media screen and (max-width:480px) {
+
+    #infos {
+        width: 100%;
+    }
+
+}

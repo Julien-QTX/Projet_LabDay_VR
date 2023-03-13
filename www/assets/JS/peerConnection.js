@@ -157,7 +157,7 @@ let toggleCamera = async () => {
     if (videoTrack.enabled) {
         videoTrack.enabled = false;
         document.getElementById('camera-btn').style.backgroundColor = 'rgb(255, 80, 80)';
-        document.getElementById('camera-btn').style.border = 'rgb(255, 80, 80)';
+        document.getElementById('camera-btn').style.border = '1px solid rgb(255, 80, 80)';
     }
     else {
         videoTrack.enabled = true;
@@ -172,7 +172,7 @@ let toggleMic = async () => {
     if (audioTrack.enabled) {
         audioTrack.enabled = false;
         document.getElementById('mic-btn').style.backgroundColor = 'rgb(255, 80, 80)';
-        document.getElementById('mic-btn').style.border = 'rgb(255, 80, 80)';
+        document.getElementById('mic-btn').style.border = '1px solid rgb(255, 80, 80)';
     }
     else {
         audioTrack.enabled = true;
@@ -193,11 +193,13 @@ document.onkeydown = function (e) {
     if (e.key == 'm') {
         toggleMic();
     }
-    if (e.key == 'q') {
+    if (e.key == 'Escape') {
+        //console.log(channel)
         //console.log(e.key);
         //console.log(leaveChannel())
         //mmalert(e.key)
         leaveChannel();
+        window.location = '/?page=lobby'
     }
     /*[].forEach.call(hiddenElements, function (el) {
       el.classList.remove('hidden');

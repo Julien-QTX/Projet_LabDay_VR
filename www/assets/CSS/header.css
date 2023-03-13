@@ -10,8 +10,8 @@ ul {
   background: rgba(20, 15, 15, 0.5);
   box-shadow: 0 15px 25px rgba(0,0,0,.44);
   border-radius: 7px;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
+  /*position: -webkit-sticky; /* Safari 
+  position: sticky;*/
   top: 0;
 }
 
@@ -61,4 +61,16 @@ html {
 body {
   overflow: auto;
   height: 100%;
+}
+
+@media screen and (max-width:623px) {
+
+    li {
+      float: none;
+    }
+    .side_btns .logout_btn, .side_btns {
+      padding: inherit;
+      /*padding-left: 0%;*/
+    }
+
 }

@@ -144,3 +144,11 @@ input::file-selector-button {
 button, img {
   cursor: pointer;
 }
+
+@media screen and (max-width:480px) {
+
+    .login-box {
+      width: 100%;
+    }
+
+}
