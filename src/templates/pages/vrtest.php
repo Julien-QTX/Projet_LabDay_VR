@@ -2,21 +2,16 @@
 
 require_once __DIR__ . '/../../init.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: /?page=login');
-}
-
-$page_title = "Appel";
+$page_title = "Test Vr";
 
 ob_start();
 
 ?>
-<link rel="stylesheet" href="assets/CSS/call.css">
-<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<link rel="stylesheet" href="assets/CSS/home.css">
 
-    <div id="videos">
+<div id="videos">
         <video class="video-player" id="user-1" autoplay playsinline></video>
-        <!--<video class="video-player" id="user-2" autoplay playsinline></video>-->
+        <video class="video-player" id="user-2" autoplay playsinline></video>
     </div>
 
     <div id="controls">
@@ -37,15 +32,10 @@ ob_start();
 
     </div>
 
-    <a-scene>
-        <a-asset>
-            <video src="" id="user-2" autoplay playsinline></video>
-        </a-asset>
-        <a-video src="#user-2" width="16" height="9" position="0 0 -20"></a-video>
-    </a-scene>
+    <script src="assets/js/agora-rtm-sdk-1.5.1.js"></script>
+    <script src="assets/js/peerConnection.js"></script>
 
-    <script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>
-    <script src="assets/JS/peerConnection.js"></script>
+
 
 <?php
 $page_content = ob_get_clean();
