@@ -1,1 +1,7 @@
 .DS_Store
+
+# Unity VR files
+/Assets/SteamVR/
+/Assets/Oculus/
+/Assets/XR/
+/ProjectSettings/ProjectSettings.asset
