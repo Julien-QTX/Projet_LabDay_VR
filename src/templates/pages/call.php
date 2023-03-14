@@ -41,7 +41,7 @@ ob_start();
         <a-asset>
             <video src="" id="user-2" autoplay playsinline></video>
         </a-asset>
-        <a-video src="#user-2" width="16" height="9" position="0 0 -20"></a-video>
+        <a-video src="#user-2" width="16" height="9" position="0 0 -20" rotation="0 180 0"></a-video>
     </a-scene>
 
     <script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>
