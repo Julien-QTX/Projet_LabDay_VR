@@ -15,7 +15,7 @@ ob_start();
 <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 
     <div id="videos">
-        <video class="video-player" id="user-1" autoplay playsinline></video>
+        <!--<video class="video-player" id="user-1" autoplay playsinline></video>-->
         <!--<video class="video-player" id="user-2" autoplay playsinline></video>-->
     </div>
 
@@ -39,9 +39,27 @@ ob_start();
 
     <a-scene>
         <a-asset>
-            <video src="" id="user-2" autoplay playsinline></video>
+            <video src="" id="user-1" autoplay></video>
+            <video src="" id="user-2" autoplay></video>
         </a-asset>
-        <a-video src="#user-2" width="16" height="9" position="0 0 -20" rotation="0 180 0"></a-video>
+
+        <a-entity id="cubeP1" rotation="0 0 0" position="5 1.7 -10">
+            <a-plane id="front" material="shader: flat; src: #user-1" height="1" width="1" position="0 0 0.5"></a-plane>
+            <a-plane id="back" material="shader: flat; color: red" height="1" width="1" position="0 0 -0.5" rotation="0 180 0"></a-plane>
+            <a-plane id="left" material="shader: flat; color: blue" height="1" width="1" position="-0.5 0 0" rotation="0 -90 0"></a-plane>
+            <a-plane id="right" material="shader: flat; color: yellow" height="1" width="1" position="0.5 0 0" rotation="0 90 0"></a-plane>
+            <a-plane id="top" material="shader: flat; color: green" height="1" width="1" position="0 0.5 0" rotation="-90 0 0"></a-plane>
+            <a-plane id="bottom" material="shader: flat; color: purple" height="1" width="1" position="0 -0.5 0" rotation="-90 0 0"></a-plane>
+        </a-entity>
+
+        <a-entity id="cubeP2" rotation="0 0 0" position="3 1.7 -10">
+            <a-plane id="front" material="shader: flat; src: #user-2" height="1" width="1" position="0 0 0.5"></a-plane>
+            <a-plane id="back" material="shader: flat; color: red" height="1" width="1" position="0 0 -0.5" rotation="0 180 0"></a-plane>
+            <a-plane id="left" material="shader: flat; color: blue" height="1" width="1" position="-0.5 0 0" rotation="0 -90 0"></a-plane>
+            <a-plane id="right" material="shader: flat; color: yellow" height="1" width="1" position="0.5 0 0" rotation="0 90 0"></a-plane>
+            <a-plane id="top" material="shader: flat; color: green" height="1" width="1" position="0 0.5 0" rotation="-90 0 0"></a-plane>
+            <a-plane id="bottom" material="shader: flat; color: purple" height="1" width="1" position="0 -0.5 0" rotation="-90 0 0"></a-plane>
+        </a-entity>
     </a-scene>
 
     <script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>
