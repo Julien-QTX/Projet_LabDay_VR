@@ -44,6 +44,11 @@ html {
     object-fit: cover;
 }
 
+#user-1 {
+    /*transform: rotateY('180deg');*/
+    -webkit-transform:rotateY(180deg);
+}
+
 #user-2 {
     display: none;
 }

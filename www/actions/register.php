@@ -41,7 +41,7 @@ if (empty($_FILES['profile_pic']['name'])) {
 
     $hashed_password = hash('sha256', $_POST['password']);
 
-    $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img, connected, last_connection) VALUES(?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP)");
+    $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
     $create_user->execute([
         $fullname, $pseudo, $_POST['email'], $hashed_password, $target_file
     ]);
@@ -67,7 +67,7 @@ else {
 
             $hashed_password = hash('sha256', $_POST['password']);
 
-            $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img, connected, last_connection) VALUES(?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP)");
+            $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
             $create_user->execute([
                 $fullname, $pseudo, $_POST['email'], $hashed_password, $target_file
             ]);
