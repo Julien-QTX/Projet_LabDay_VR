@@ -183,6 +183,7 @@ let toggleMic = async () => {
 
 window.addEventListener('beforeunload', leaveChannel)
 
+//ajouter mouvement pour les players
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
 
