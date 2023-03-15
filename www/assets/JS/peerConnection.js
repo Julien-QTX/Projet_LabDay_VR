@@ -58,11 +58,6 @@ let handleUserLeft = (MemberId) => {
     document.getElementById('user-1').classList.remove('smallFrame')
 }
 
-let aFrameVideo = document.getElementById("a-frame-user-2").object3D
-let yourself = document.getElementById("camera").object3D
-
-console.log(aFrameVideo.position)
-
 let handleMessageFromPeer = async (message, MemberId) => {
     message = JSON.parse(message.text)
     //console.log('Message:', message)
@@ -99,6 +94,11 @@ let handleUserJoined = async (MemberId) => {
     console.log(otherPerson)
 }
 
+let aFrameVideo = document.getElementById("a-frame-user-2")
+let yourself = document.getElementById("camera").object3D
+
+console.log(aFrameVideo)
+
 let createPeerConnection = async (MemberId) => {
     peerConnection = new RTCPeerConnection(servers)
 
@@ -127,24 +127,32 @@ let createPeerConnection = async (MemberId) => {
         setInterval(() => {
             const position = yourself.position //{x: Math.random() * 100, y: Math.random() * 100}
             dataChannel.send(JSON.stringify(position))
-            console.log(position);
-            let user2 = document.getElementById("a-frame-user-2").object3D
-            console.log("user-2 position : " + user2.position)
+            //console.log(position);
+            console.log(yourself.rotation)
+            //let user2 = document.getElementById("a-frame-user-2").object3D
+            //console.log("user-2 position : " + user2.position)
         }, 1000)
     }
 
     // RECEIVE DATA
     peerConnection.ondatachannel = (event) => {
         const dataChannel = event.channel;
-
-
       
         dataChannel.onmessage = event => {
           const position = JSON.parse(event.data);
-          console.log(position);
-          const positionuser2 = aFrameVideo.position
-          //console.log("user-2 position : " + positionuser2)
-          aFrameVideo.position = position
+          //console.log(position);
+          if (aFrameVideo.hasLoaded) {
+            //console.log(aFrameVideo.getAttribute('position'))
+            aFrameVideo.setAttribute('position', position)
+          } else {
+            aFrameVideo.addEventListener('loaded', function () {
+              //console.log(aFrameVideo.getAttribute('position'))
+              aFrameVideo.getAttribute('position', position)
+            });
+          }  
+          //const positionuser2 = aFrameVideo.position
+          //console.log("user-2 position : " + aFrameVideo.object3D)
+          //aFrameVideo.position = position
           // do something with the position data
         };
     };
