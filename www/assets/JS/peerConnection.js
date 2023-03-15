@@ -58,6 +58,11 @@ let handleUserLeft = (MemberId) => {
     document.getElementById('user-1').classList.remove('smallFrame')
 }
 
+let aFrameVideo = document.getElementById("a-frame-user-2").object3D
+let yourself = document.getElementById("camera").object3D
+
+console.log(aFrameVideo.position)
+
 let handleMessageFromPeer = async (message, MemberId) => {
     message = JSON.parse(message.text)
     //console.log('Message:', message)
@@ -76,11 +81,22 @@ let handleMessageFromPeer = async (message, MemberId) => {
         }
     }
 
+    /*if (message.type === 'position') {
+        //alert(message.position)
+        aFrameVideo.position.x ++
+    }*/
+
 }
 
 let handleUserJoined = async (MemberId) => {
+    //alert("zaerhjdsv")
+    //console.log("ça marche ou pas ?")
     console.log('A new user has joined the channel:',  MemberId)
     createOffer(MemberId)
+    
+    var otherPerson = MemberId
+    console.log("this is the other person : ")
+    console.log(otherPerson)
 }
 
 let createPeerConnection = async (MemberId) => {
@@ -101,6 +117,38 @@ let createPeerConnection = async (MemberId) => {
         peerConnection.addTrack(track, localStream)
     })
 
+    //console.log(aFrameVideo.position)
+
+    //SEND DATA
+    dataChannel = peerConnection.createDataChannel("position");
+
+    dataChannel.onopen = () => {
+        console.log('Data channel opened')
+        setInterval(() => {
+            const position = yourself.position //{x: Math.random() * 100, y: Math.random() * 100}
+            dataChannel.send(JSON.stringify(position))
+            console.log(position);
+            let user2 = document.getElementById("a-frame-user-2").object3D
+            console.log("user-2 position : " + user2.position)
+        }, 1000)
+    }
+
+    // RECEIVE DATA
+    peerConnection.ondatachannel = (event) => {
+        const dataChannel = event.channel;
+
+
+      
+        dataChannel.onmessage = event => {
+          const position = JSON.parse(event.data);
+          console.log(position);
+          const positionuser2 = aFrameVideo.position
+          //console.log("user-2 position : " + positionuser2)
+          aFrameVideo.position = position
+          // do something with the position data
+        };
+    };
+
     peerConnection.ontrack = (event) => {
         event.streams[0].getTracks().forEach((track) => {
             remoteStream.addTrack(track)
@@ -113,6 +161,7 @@ let createPeerConnection = async (MemberId) => {
             client.sendMessageToPeer({text:JSON.stringify({'type':'candidate', 'candidate':event.candidate})}, MemberId)
         }
     }
+
 }
 
 let createOffer = async (MemberId) => {
@@ -201,6 +250,7 @@ document.onkeydown = function (e) {
         leaveChannel();
         window.location = '/?page=lobby'
     }
+
     /*[].forEach.call(hiddenElements, function (el) {
       el.classList.remove('hidden');
     });
@@ -212,3 +262,4 @@ document.onkeydown = function (e) {
   };
 
 init();
+

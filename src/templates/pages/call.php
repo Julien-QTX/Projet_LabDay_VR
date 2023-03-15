@@ -13,6 +13,8 @@ ob_start();
 ?>
 <link rel="stylesheet" href="assets/CSS/call.css">
 <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<!--   used for the pretty environment   -->
+<script src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"></script>
 
     <div id="videos">
         <video class="video-player" id="user-1" autoplay playsinline></video>
@@ -41,11 +43,15 @@ ob_start();
         <a-asset>
             <video src="" id="user-2" autoplay playsinline></video>
         </a-asset>
-        <a-video src="#user-2" width="16" height="9" position="0 0 -20" rotation="0 180 0"></a-video>
+        <a-camera id="camera" position="0 10 0"></a-camera>
+        <a-video src="#user-2" id="a-frame-user-2" width="16" height="9" position="3 5 -20" rotation="0 180 0"></a-video>
+        <a-entity environment="preset:forest;"></a-entity>
+        <a-box id="box-n-1" position="3 5 -10" rotation="0 0 0"></a-box>
     </a-scene>
 
     <script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>
     <script src="assets/JS/peerConnection.js"></script>
+    <!--<script src="assets/JS/trois.js"></script>-->
 
 <?php
 $page_content = ob_get_clean();
