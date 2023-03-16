@@ -126,12 +126,25 @@ let createPeerConnection = async (MemberId) => {
         console.log('Data channel opened')
         setInterval(() => {
             const position = yourself.position //{x: Math.random() * 100, y: Math.random() * 100}
-            dataChannel.send(JSON.stringify(position))
+            let rffrfref = document.getElementById('camera')
+            const rotation = rffrfref.getAttribute("rotation")
+            const coordinates = {
+                position : position,
+                rotation : rotation
+            }
+            dataChannel.send(JSON.stringify(coordinates))
+            //dataChannel.send(JSON.stringify(position))
+            //dataChannel.send(JSON.stringify(rotation))
+            
+            /*let direction = new THREE.Vector3();
+            camera.object3D.getWorldDirection(direction);
+            direction.negate(); // Flip the direction
+            cubeP1.object3D.lookAt(direction);*/
             //console.log(position);
-            console.log(yourself.rotation)
+            //console.log()
             //let user2 = document.getElementById("a-frame-user-2").object3D
             //console.log("user-2 position : " + user2.position)
-        }, 1000)
+        }, 10)
     }
 
     // RECEIVE DATA
@@ -139,15 +152,18 @@ let createPeerConnection = async (MemberId) => {
         const dataChannel = event.channel;
       
         dataChannel.onmessage = event => {
-          const position = JSON.parse(event.data);
-          //console.log(position);
+          const coordinates = JSON.parse(event.data);
+          const position = coordinates.position
+          const rotation = coordinates.rotation
           if (aFrameVideo.hasLoaded) {
             //console.log(aFrameVideo.getAttribute('position'))
             aFrameVideo.setAttribute('position', position)
+            aFrameVideo.setAttribute('rotation', rotation)
           } else {
             aFrameVideo.addEventListener('loaded', function () {
               //console.log(aFrameVideo.getAttribute('position'))
-              aFrameVideo.getAttribute('position', position)
+              aFrameVideo.setAttribute('position', position)
+              aFrameVideo.setAttribute('rotation', rotation)
             });
           }  
           //const positionuser2 = aFrameVideo.position
@@ -243,6 +259,11 @@ window.addEventListener('beforeunload', leaveChannel)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
 
+let wtf = document.getElementById('camera')
+let wtaf = wtf.getAttribute("position")
+var up = false
+var down = false
+
 document.onkeydown = function (e) {
     if (e.key == 'c') {
         toggleCamera();
@@ -259,6 +280,16 @@ document.onkeydown = function (e) {
         window.location = '/?page=lobby'
     }
 
+    if (e.key == 'e') {
+        up = true
+        //yourself.position.y += 0.1
+    }
+
+    if (e.key == 'a') {
+        down = true
+        //yourself.position.y -= 0.1
+    }
+
     /*[].forEach.call(hiddenElements, function (el) {
       el.classList.remove('hidden');
     });
@@ -268,6 +299,29 @@ document.onkeydown = function (e) {
     keyCode.innerHTML = e.keyCode;
     keyCodeLarge.innerHTML = e.keyCode;*/
   };
+
+  document.onkeyup = function(e) {
+
+    if (e.key == 'e') {
+        up = false
+        //yourself.position.y += 0.1
+    }
+
+    if (e.key == 'a') {
+        down = false
+        //yourself.position.y -= 0.1
+    }
+
+  }
+
+  setInterval(function () {
+    if (up) {
+      wtaf.y += 0.25;
+    } else if (down) {
+      wtaf.y -= 0.25;
+    }
+    wtf.setAttribute('position', wtaf);
+  }, 16);
 
 init();
 
