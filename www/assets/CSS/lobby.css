@@ -24,7 +24,7 @@ body {
     border-radius: 10px;*/
     width: 400px;
     padding: 40px;
-    margin: 11% auto;
+    margin: 9% auto;
     /*transform: translate(-50%, -50%);*/
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
@@ -48,10 +48,6 @@ body {
     font-size: 20px;
 }
 
-#form_content_wrapper {
-    padding: 20px;
-}
-
 #form-container .user_box {
     position: relative;
 }
@@ -61,7 +57,7 @@ body {
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -121,4 +117,23 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px rgb(11,15,21) inset !important;
     -webkit-text-fill-color: #fff;
+}
+
+#background_selection {
+    background-color: #141e30;
+    border: 2px solid #03E9F4;
+    border-radius: 3px;
+    color: #FFF;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#bg-slct {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#form-container #bg-slct label {
+    position: inherit;
 }

@@ -11,7 +11,7 @@ let urlParams = new URLSearchParams(queryString)
 let roomId = urlParams.get('room')
 
 if (!roomId) {
-    window.location = '/?page=lobby'
+    window.location = '/?page=lobby&action=null'
 }
 
 let localStream;
@@ -34,6 +34,18 @@ let constraints = {
     audio: true
 }
 
+let background = urlParams.get('background')
+
+let validBackgrounds = ["default", "contact", "egypt", "checkerboard", "forest", "goaland", "yavapai", "goldmine", "threetowers", "poison", "arches", "tron", "japan", "dream", "volcano", "starry", "osiris", "moon"]
+
+if (!validBackgrounds.includes(background)) {
+    console.error("background not in list")
+    environment.setAttribute('environment', 'preset:default')
+}
+else {
+    environment.setAttribute('environment', 'preset:'+background)
+}
+
 let init = async () => {
 
     client = await AgoraRTM.createInstance(APP_ID)
@@ -53,9 +65,12 @@ let init = async () => {
 
 }
 
+let interval
+
 let handleUserLeft = (MemberId) => {
     document.getElementById('user-2').style.display = 'none'
     document.getElementById('user-1').classList.remove('smallFrame')
+    clearInterval(interval)
 }
 
 let handleMessageFromPeer = async (message, MemberId) => {
@@ -76,11 +91,6 @@ let handleMessageFromPeer = async (message, MemberId) => {
         }
     }
 
-    /*if (message.type === 'position') {
-        //alert(message.position)
-        aFrameVideo.position.x ++
-    }*/
-
 }
 
 let handleUserJoined = async (MemberId) => {
@@ -97,7 +107,7 @@ let handleUserJoined = async (MemberId) => {
 let aFrameVideo = document.getElementById("a-frame-user-2")
 let yourself = document.getElementById("camera").object3D
 
-console.log(aFrameVideo)
+//console.log(aFrameVideo)
 
 let createPeerConnection = async (MemberId) => {
     peerConnection = new RTCPeerConnection(servers)
@@ -117,14 +127,12 @@ let createPeerConnection = async (MemberId) => {
         peerConnection.addTrack(track, localStream)
     })
 
-    //console.log(aFrameVideo.position)
-
     //SEND DATA
     dataChannel = peerConnection.createDataChannel("position");
 
     dataChannel.onopen = () => {
         console.log('Data channel opened')
-        setInterval(() => {
+        interval = setInterval(() => {
             const position = yourself.position //{x: Math.random() * 100, y: Math.random() * 100}
             let rffrfref = document.getElementById('camera')
             const rotation = rffrfref.getAttribute("rotation")
@@ -133,17 +141,15 @@ let createPeerConnection = async (MemberId) => {
                 rotation : rotation
             }
             dataChannel.send(JSON.stringify(coordinates))
-            //dataChannel.send(JSON.stringify(position))
-            //dataChannel.send(JSON.stringify(rotation))
+
+            if (yourself.position.y >= 5) {
+                yourself.position.y -= 0.1
+            }
+            else if (yourself.position.y < 4.9) {
+                yourself.position.y = 4.9
+            }
             
-            /*let direction = new THREE.Vector3();
-            camera.object3D.getWorldDirection(direction);
-            direction.negate(); // Flip the direction
-            cubeP1.object3D.lookAt(direction);*/
-            //console.log(position);
-            //console.log()
-            //let user2 = document.getElementById("a-frame-user-2").object3D
-            //console.log("user-2 position : " + user2.position)
+            
         }, 10)
     }
 
@@ -166,10 +172,7 @@ let createPeerConnection = async (MemberId) => {
               aFrameVideo.setAttribute('rotation', rotation)
             });
           }  
-          //const positionuser2 = aFrameVideo.position
-          //console.log("user-2 position : " + aFrameVideo.object3D)
-          //aFrameVideo.position = position
-          // do something with the position data
+          
         };
     };
 
@@ -290,6 +293,13 @@ document.onkeydown = function (e) {
         //yourself.position.y -= 0.1
     }
 
+    if (e.code == 'Space' && yourself.position.y <= 5) {
+        up = true
+        setTimeout(function() {
+            up = false
+        }, 500)
+    }
+
     /*[].forEach.call(hiddenElements, function (el) {
       el.classList.remove('hidden');
     });
@@ -316,9 +326,9 @@ document.onkeydown = function (e) {
 
   setInterval(function () {
     if (up) {
-      wtaf.y += 0.25;
+      wtaf.y += 0.5;
     } else if (down) {
-      wtaf.y -= 0.25;
+      wtaf.y -= 0.5;
     }
     wtf.setAttribute('position', wtaf);
   }, 16);

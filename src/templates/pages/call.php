@@ -46,7 +46,7 @@ ob_start();
         <a-video src="#user-2" id="a-frame-user-2" width="16" height="9" position="3 5 -20" rotation="0 180 0"></a-video>
         <a-camera id="camera" position="0 10 0"></a-camera>
         
-        <a-entity environment="preset:arches;"></a-entity>
+        <a-entity environment="preset:arches;" id="environment"></a-entity>
         <!--<a-box id="box-n-1" position="3 5 -10" rotation="0 0 0"></a-box>-->
     </a-scene>
 
