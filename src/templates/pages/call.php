@@ -53,8 +53,31 @@ ob_start();
             <a-text id="username" rotation="0 180 0"></a-text>
         </a-entity>
         
-        <a-video src="#user-2" id="a-frame-user-2" width="16" height="9" position="-100 -100 -100" rotation="0 0 0"></a-video>
+        <a-video src="#user-2" width="16" height="9" position="-100 -100 -100" rotation="0 0 0"></a-video>
         <a-camera id="camera" position="0 10 0"></a-camera>
+
+        <a-entity id="a-frame-user-2" position="0 1.6 -2" scale="1 1 1">
+          <a-entity id="head" position="0 1.6 0" sc>
+            <a-box color="#FFE4C4" position="0 -0.4 0" depth="0.1" height="0.2" width="0.2"></a-box>
+            <!--<a-box color="red" position="0 -0.08 0" scale="0.5 0.5 0.5"></a-box>-->
+            <a-entity geometry="primitive:box;" material="src:#user-2" position="0 -0.08 0" scale="0.5 0.5 0.5"></a-entity>
+          </a-entity>
+          <a-entity id="torso" rotation="0 90 0" position="0 1.2 0">
+            <a-box color="#6B8E23" position="0 -0.4 0" depth="0.5" height="0.8" width="0.3"></a-box>
+          </a-entity>
+          <a-entity id="left-arm" position="-0.5 1.3 0">
+            <a-box color="#FFE4C4" position="0 -0.5 0" depth="0.3" height="0.8" width="0.3"></a-box>
+          </a-entity>
+          <a-entity id="right-arm" position="0.5 1.3 0">
+            <a-box color="#FFE4C4" position="0 -0.5 0" depth="0.3" height="0.8" width="0.3"></a-box>
+          </a-entity>
+          <a-entity id="left-leg" position="-0.2 0.4 0">
+            <a-box color="#0000CD" position="0 -0.5 0" depth="0.3" height="1" width="0.3"></a-box>
+          </a-entity>
+          <a-entity id="right-leg" position="0.2 0.4 0">
+            <a-box color="#0000CD" position="0 -0.5 0" depth="0.3" height="1" width="0.3"></a-box>
+          </a-entity>
+        </a-entity>
         
         <a-entity environment="preset:arches;" id="environment"></a-entity>
         <!--<a-box id="box-n-1" position="3 5 -10" rotation="0 0 0"></a-box>-->

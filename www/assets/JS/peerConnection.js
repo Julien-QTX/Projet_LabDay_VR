@@ -114,6 +114,8 @@ let handleUserJoined = async (MemberId) => {
 
 let aFrameVideo = document.getElementById("a-frame-user-2")
 let yourself = document.getElementById("camera").object3D
+let head = document.getElementById('head').object3D
+//let avatar = document.getElementById('a-frame-user-2').object3D
 //userNameDisplay.setAttribute('value', username)
 
 //console.log(aFrameVideo)
@@ -153,11 +155,11 @@ let createPeerConnection = async (MemberId) => {
             }
             dataChannel.send(JSON.stringify(coordinates))
 
-            if (yourself.position.y >= 5) {
+            if (yourself.position.y >= 2.5) {
                 yourself.position.y -= 0.1
             }
-            else if (yourself.position.y < 4.9) {
-                yourself.position.y = 4.9
+            else if (yourself.position.y < 2.4) {
+                yourself.position.y = 2.4
             }
             
             
@@ -178,9 +180,9 @@ let createPeerConnection = async (MemberId) => {
           const rotation = coordinates.rotation
           if (aFrameVideo.hasLoaded) {
             //console.log(aFrameVideo.getAttribute('position'))
-            aFrameVideo.setAttribute('position', position)
+            aFrameVideo.setAttribute('position', {"x" : position.x, "y" : position.y - 1.5, "z" : position.z})
             aFrameVideo.setAttribute('rotation', rotation)
-            textEntity.setAttribute('position', {"x" : position.x, "y" : position.y + 5, "z" : position.z})
+            textEntity.setAttribute('position', {"x" : position.x, "y" : position.y + 1.5, "z" : position.z})
             textEntity.setAttribute('rotation', {"x" : rotation.x, "y" : rotation.y, "z" : rotation.z})
           } else {
             aFrameVideo.addEventListener('loaded', function () {
