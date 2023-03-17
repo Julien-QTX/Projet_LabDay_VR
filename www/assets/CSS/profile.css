@@ -45,6 +45,7 @@ a:active {
     margin: 3% auto;
     border-radius: 10px;
     box-shadow: 0 15px 25px black;
+    position: relative;
 }
 
 #pfp{
@@ -61,6 +62,12 @@ a:active {
     object-fit: cover;
     border-radius: 55%;
     max-width: 100px;
+}
+
+i {
+    position: absolute;
+    right: 5%;
+    top: 5%;
 }
 
 @media screen and (max-width:480px) {

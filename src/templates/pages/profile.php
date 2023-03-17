@@ -24,12 +24,14 @@ ob_start();
     <h1>PROFIL</h1>
 
     <div id="pfp">
-        <img src=<?= $info['img'] ?> alt="profile picture" id="pic">
+        <img src="<?= $info['img'] ?>" alt="profile picture" id="pic">
     </div>
 
     <h3><?= $info['name']; ?></h3>
     <h3><?= $info['pseudo']; ?></h3>
     <h3><?= $info['email']; ?></h3>
+
+    <a href="/?page=profile_modif"><i class="fa-solid fa-pen"></i></a>
 </div>
 <?php
 

@@ -114,7 +114,7 @@ let handleUserJoined = async (MemberId) => {
 
 let aFrameVideo = document.getElementById("a-frame-user-2")
 let yourself = document.getElementById("camera").object3D
-let head = document.getElementById('head').object3D
+let head = document.getElementById('head')
 //let avatar = document.getElementById('a-frame-user-2').object3D
 //userNameDisplay.setAttribute('value', username)
 
@@ -181,9 +181,10 @@ let createPeerConnection = async (MemberId) => {
           if (aFrameVideo.hasLoaded) {
             //console.log(aFrameVideo.getAttribute('position'))
             aFrameVideo.setAttribute('position', {"x" : position.x, "y" : position.y - 1.5, "z" : position.z})
-            aFrameVideo.setAttribute('rotation', rotation)
+            //aFrameVideo.setAttribute('rotation', rotation)
+            head.setAttribute('rotation', rotation)
             textEntity.setAttribute('position', {"x" : position.x, "y" : position.y + 1.5, "z" : position.z})
-            textEntity.setAttribute('rotation', {"x" : rotation.x, "y" : rotation.y, "z" : rotation.z})
+            textEntity.setAttribute('rotation', rotation)
           } else {
             aFrameVideo.addEventListener('loaded', function () {
               //console.log(aFrameVideo.getAttribute('position'))
