@@ -16,7 +16,7 @@ setInterval(() => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '/actions/getUserCount.php');
     xhr.onload = () => {
-        document.getElementById("utilis").innerHTML = `utilisateurs: ${xhr.responseText}`;
+        document.getElementById("utilis").innerHTML = `Utilisateurs: ${xhr.responseText}`;
     };
     xhr.send();
 }, 1000);
