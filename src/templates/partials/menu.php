@@ -12,7 +12,7 @@
         
 
         <li><a href="/?page=profile">Profil</a></li> 
-        <li><a href="/?page=lobby&action=null">Appel</a></li>
+        <li><a href="/?page=lobby">Appel</a></li>
         <div class="side_btns">
             <li class="logout_btn"><a href="/actions/logout.php">Déconnexion</a></li>
         </div>

@@ -6,6 +6,10 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: /?page=login');
 }
 
+$usr_info = $db->prepare("SELECT pseudo FROM users WHERE user_id=?");
+$usr_info->execute([$_SESSION['user_id']]);
+$info = $usr_info->fetch();
+
 $page_title = "Appel";
 
 ob_start();
@@ -15,6 +19,8 @@ ob_start();
 <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 <!--   used for the pretty environment   -->
 <script src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"></script>
+
+<p id="user_pseudo"><?= $info['pseudo'] ?></p>
 
     <div id="videos">
         <video class="video-player" id="user-1" autoplay playsinline></video>
@@ -43,7 +49,11 @@ ob_start();
         <a-asset>
             <video src="" id="user-2" autoplay playsinline></video>
         </a-asset>
-        <a-video src="#user-2" id="a-frame-user-2" width="16" height="9" position="3 5 -20" rotation="0 180 0"></a-video>
+        <a-entity scale="3 3 3" id="text_entity">
+            <a-text id="username" rotation="0 180 0"></a-text>
+        </a-entity>
+        
+        <a-video src="#user-2" id="a-frame-user-2" width="16" height="9" position="-100 -100 -100" rotation="0 0 0"></a-video>
         <a-camera id="camera" position="0 10 0"></a-camera>
         
         <a-entity environment="preset:arches;" id="environment"></a-entity>

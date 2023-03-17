@@ -11,7 +11,7 @@ let urlParams = new URLSearchParams(queryString)
 let roomId = urlParams.get('room')
 
 if (!roomId) {
-    window.location = '/?page=lobby&action=null'
+    window.location = '/?page=lobby'
 }
 
 let localStream;
@@ -66,10 +66,14 @@ let init = async () => {
 }
 
 let interval
+let username = document.getElementById("user_pseudo").innerText
+let userNameDisplay = document.getElementById("username")
+let textEntity = document.getElementById("text_entity")
 
 let handleUserLeft = (MemberId) => {
     document.getElementById('user-2').style.display = 'none'
     document.getElementById('user-1').classList.remove('smallFrame')
+    userNameDisplay.setAttribute("value", "Deconnecte")
     clearInterval(interval)
 }
 
@@ -91,6 +95,10 @@ let handleMessageFromPeer = async (message, MemberId) => {
         }
     }
 
+    if (message.type === 'pseudo') {
+        userNameDisplay.setAttribute('value', message.pseudo)
+    }
+
 }
 
 let handleUserJoined = async (MemberId) => {
@@ -106,6 +114,7 @@ let handleUserJoined = async (MemberId) => {
 
 let aFrameVideo = document.getElementById("a-frame-user-2")
 let yourself = document.getElementById("camera").object3D
+//userNameDisplay.setAttribute('value', username)
 
 //console.log(aFrameVideo)
 
@@ -132,10 +141,12 @@ let createPeerConnection = async (MemberId) => {
 
     dataChannel.onopen = () => {
         console.log('Data channel opened')
+        //const pseudo = {pseudo : username}
+        //dataChannel.send(JSON.stringify(pseudo))
         interval = setInterval(() => {
             const position = yourself.position //{x: Math.random() * 100, y: Math.random() * 100}
-            let rffrfref = document.getElementById('camera')
-            const rotation = rffrfref.getAttribute("rotation")
+            let cam = document.getElementById('camera')
+            const rotation = cam.getAttribute("rotation")
             const coordinates = {
                 position : position,
                 rotation : rotation
@@ -159,12 +170,18 @@ let createPeerConnection = async (MemberId) => {
       
         dataChannel.onmessage = event => {
           const coordinates = JSON.parse(event.data);
+          //console.log(coordinates)
+          if (coordinates.hasOwnProperty('pseudo')) {
+            userNameDisplay.setAttribute('value', coordinates.pseudo)
+          }
           const position = coordinates.position
           const rotation = coordinates.rotation
           if (aFrameVideo.hasLoaded) {
             //console.log(aFrameVideo.getAttribute('position'))
             aFrameVideo.setAttribute('position', position)
             aFrameVideo.setAttribute('rotation', rotation)
+            textEntity.setAttribute('position', {"x" : position.x, "y" : position.y + 5, "z" : position.z})
+            textEntity.setAttribute('rotation', {"x" : rotation.x, "y" : rotation.y, "z" : rotation.z})
           } else {
             aFrameVideo.addEventListener('loaded', function () {
               //console.log(aFrameVideo.getAttribute('position'))
@@ -199,6 +216,7 @@ let createOffer = async (MemberId) => {
     await peerConnection.setLocalDescription(offer)
 
     client.sendMessageToPeer({text:JSON.stringify({'type':'offer', 'offer':offer})}, MemberId)
+    client.sendMessageToPeer({text:JSON.stringify({'type':'pseudo', 'pseudo':username})}, MemberId)
 
 }
 
@@ -213,6 +231,7 @@ let createAnswer = async (MemberId, offer) => {
     await peerConnection.setLocalDescription(answer)
 
     client.sendMessageToPeer({text:JSON.stringify({'type':'answer', 'answer':answer})}, MemberId)
+    client.sendMessageToPeer({text:JSON.stringify({'type':'pseudo', 'pseudo':username})}, MemberId)
 
 }
 

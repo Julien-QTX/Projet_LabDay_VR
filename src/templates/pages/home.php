@@ -19,7 +19,7 @@ ob_start();
 }*/
 ?>
 
-<button class="appel" onclick="window.location = '/?page=lobby&action=null'"><a href="/?page=lobby&action=null" class="lien">Lancer un appel VR</a></button>
+<button class="appel" onclick="window.location = '/?page=lobby'"><a href="/?page=lobby" class="lien">Lancer un appel VR</a></button>
 
 
 <?php
