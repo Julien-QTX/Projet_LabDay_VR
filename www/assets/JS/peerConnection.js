@@ -9,10 +9,20 @@ let channel;
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString)
 let roomId = urlParams.get('room')
+let bg = urlParams.get('background')
 
 if (!roomId) {
     window.location = '/?page=lobby'
 }
+
+const xhr = new XMLHttpRequest();
+xhr.open('POST', '/actions/rooms.php?action=add&room='+roomId+'&background='+bg);
+xhr.onload = () => {
+    console.log(`${xhr.responseText}`)
+};
+xhr.send();
+
+let numberOfUsers = 1;
 
 let localStream;
 let remoteStream;
@@ -74,6 +84,7 @@ let handleUserLeft = (MemberId) => {
     document.getElementById('user-2').style.display = 'none'
     document.getElementById('user-1').classList.remove('smallFrame')
     userNameDisplay.setAttribute("value", "Deconnecte")
+    numberOfUsers--
     clearInterval(interval)
 }
 
@@ -110,6 +121,7 @@ let handleUserJoined = async (MemberId) => {
     var otherPerson = MemberId
     console.log("this is the other person : ")
     console.log(otherPerson)
+    numberOfUsers++
 }
 
 let aFrameVideo = document.getElementById("a-frame-user-2")
@@ -245,11 +257,34 @@ let addAnswer = async (answer) => {
 }
 
 let leaveChannel = async () => {
+
+    if (numberOfUsers == 1 || numberOfUsers == 0) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('DELETE', '/actions/rooms.php?action=delete&room='+roomId);
+        xhr.onload = () => {
+            console.log(`${xhr.responseText}`)
+        };
+        xhr.send();
+    }
+
     await channel.leave()
     await client.logout()
+    
 }
 
 let toggleCamera = async () => {
+
+    console.log(numberOfUsers)
+
+    /*if (numberOfUsers == 1 || numberOfUsers == 0) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('DELETE', '/actions/rooms.php?action=delete&room='+roomId);
+        xhr.onload = () => {
+            console.log(`${xhr.responseText}`)
+        };
+        xhr.send();
+    }*/
+
     let videoTrack = localStream.getTracks().find(track => track.kind === 'video')
 
     if (videoTrack.enabled) {
@@ -284,8 +319,21 @@ window.addEventListener('beforeunload', leaveChannel)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
 
-let wtf = document.getElementById('camera')
-let wtaf = wtf.getAttribute("position")
+document.getElementById('leave-btn').addEventListener('click', function() {
+    if (numberOfUsers == 1 || numberOfUsers == 0) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('DELETE', '/actions/rooms.php?action=delete&room='+roomId);
+        xhr.onload = () => {
+            console.log(`${xhr.responseText}`)
+        };
+        xhr.send();
+    }
+})
+
+document.getElementById('leave-btn').addEventListener('click', leaveChannel)
+
+let cam = document.getElementById('camera')
+let camPos = cam.getAttribute("position")
 var up = false
 var down = false
 
@@ -348,11 +396,11 @@ document.onkeydown = function (e) {
 
   setInterval(function () {
     if (up) {
-      wtaf.y += 0.5;
+      camPos.y += 0.5;
     } else if (down) {
-      wtaf.y -= 0.5;
+      camPos.y -= 0.5;
     }
-    wtf.setAttribute('position', wtaf);
+    cam.setAttribute('position', camPos);
   }, 16);
 
 init();

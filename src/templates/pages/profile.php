@@ -19,6 +19,7 @@ ob_start();
     $usr_info = $db->prepare("SELECT * FROM users WHERE user_id=?");
     $usr_info->execute([$_SESSION['user_id']]);
     $info = $usr_info->fetch();
+    
 ?>
 <div id="infos">
     <h1>PROFIL</h1>

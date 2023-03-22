@@ -24,6 +24,11 @@ ob_start();
 
             <div id="form_content_wrapper">
 
+                <div id="create-join">
+                    <button id="create">Créer</button>
+                    <button id="join">Rejoindre</button>
+                </div>
+
                 <form id="join-form">
 
                     <div class="user_box">
@@ -39,7 +44,7 @@ ob_start();
                         </select>
                     </div>
 
-                    <input type="submit" value="Rejoindre le salon">
+                    <input type="submit" value="Créer un salon" id="submit-btn">
                 </form>
             </div>
 
@@ -49,31 +54,7 @@ ob_start();
     
 </body>
 
-<script>
-    let form = document.getElementById('join-form')
-    let background_selection = document.getElementById('background_selection')
-    
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        let inviteCode = e.target.invite_link.value
-        let background = background_selection.value
-        window.location = `/?page=call&room=${inviteCode}&background=${background}`
-    })
-
-    let validBackgrounds = ["contact", "egypt", "checkerboard", "forest", "goaland", "yavapai", "goldmine", "threetowers", "poison", "arches", "tron", "japan", "dream", "volcano", "starry", "osiris", "moon"]
-
-    for (let i = 0; i < validBackgrounds.length; i++) {
-        
-        let cases = document.createElement('option')
-        cases.setAttribute('value', validBackgrounds[i])
-        let string = validBackgrounds[i]
-        string = string.charAt(0).toUpperCase() + string.slice(1);
-        cases.innerText = string
-        background_selection.append(cases)
-        
-    }
-
-</script>
+<script src="assets/JS/lobby.js"></script>
 
 <?php
 $page_content = ob_get_clean();

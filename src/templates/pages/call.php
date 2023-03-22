@@ -37,7 +37,7 @@ ob_start();
             <img src="assets/images/mic2.png" width="70">
         </div>
 
-        <a href="/?page=call">
+        <a href="/?page=lobby">
             <div class="control-container" id="leave-btn">
                 <img src="assets/images/phone2.png" width="70">
             </div>
