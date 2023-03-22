@@ -31,7 +31,7 @@ ob_start();
 
                 <form id="join-form">
 
-                    <div class="user_box">
+                    <div class="user_box" id="room-id">
                         <input type="text" name="invite_link" required>
                         <label for="invite_link">Id du salon</label>
                     </div>

@@ -125,7 +125,8 @@ input:-webkit-autofill:active{
     border-radius: 3px;
     color: #FFF;
     cursor: pointer;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
+    margin: 5px 0 5px 10px;
 }
 
 #bg-slct {

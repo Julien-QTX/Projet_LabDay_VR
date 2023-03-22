@@ -101,6 +101,17 @@ html {
     background-color: rgb(255, 80, 80);
 }
 
+#room-id {
+    position: fixed;
+    left: 50%;
+    top: 3%;
+    width: fit-content;
+    z-index: 100;
+    background-color: #243b55;
+    padding: 1%;
+    transform: translateX(-50%);
+}
+
 @media screen and (max-width:480px) {
     .smallFrame{
         height: 80px;

@@ -15,12 +15,9 @@ if (!roomId) {
     window.location = '/?page=lobby'
 }
 
-const xhr = new XMLHttpRequest();
-xhr.open('POST', '/actions/rooms.php?action=add&room='+roomId+'&background='+bg);
-xhr.onload = () => {
-    console.log(`${xhr.responseText}`)
-};
-xhr.send();
+let roomIdDisplay = document.getElementById('room-id')
+
+roomIdDisplay.innerText = "Id du salon : " + roomId
 
 let numberOfUsers = 1;
 

@@ -12,6 +12,12 @@ ob_start();
 <h1>Bienvenue sur VRC </h1>
 
 <script>
+const xhr = new XMLHttpRequest();
+xhr.open('GET', '/actions/getUserCount.php');
+xhr.onload = () => {
+    document.getElementById("utilis").innerHTML = `Utilisateurs: ${xhr.responseText}`;
+};
+xhr.send();
 setInterval(() => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '/actions/getUserCount.php');

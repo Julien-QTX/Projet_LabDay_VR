@@ -3,10 +3,12 @@
 require_once __DIR__.'/../../src/init.php';
 
 
-function getRooms($db) {
-    $usr_info = $db->prepare("SELECT * FROM rooms");
-    $usr_info->execute();
-    return $usr_info->fetchAll();
+function getRoom($db, $room_id) {
+    $usr_info = $db->prepare("SELECT background FROM rooms WHERE room_id = ?");
+    $usr_info->execute([$room_id]);
+    $result = $usr_info->fetch(); 
+
+    echo $result['background'];
 }
 
 function addRoom($db, $users, $room_id, $bg) {
@@ -25,7 +27,7 @@ if (isset($_GET['action'])) {
         header('Location: /?page=call&room='.$_GET['room'].'&background='.$_GET['background']);
     }
     else if ($_GET['action'] == 'show'){
-        getRooms($db);
+        getRoom($db, $_GET['room']);
     }
     else if ($_GET['action'] == 'delete') {
         delRoom($db, $_GET['room']);
