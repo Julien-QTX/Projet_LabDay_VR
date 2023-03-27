@@ -31,6 +31,15 @@ ob_start();
 
                 <form id="join-form">
 
+                    <p id="p"></p>
+
+                    <?php
+
+                    //echo __DIR__;
+                    include_once __DIR__ . '/../../utils/alert_errors.php';
+
+                    ?>
+
                     <div class="user_box" id="room-id">
                         <input type="text" name="invite_link" required>
                         <label for="invite_link">Id du salon</label>

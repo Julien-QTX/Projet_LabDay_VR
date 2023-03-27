@@ -70,17 +70,31 @@ form.addEventListener('submit', (e) => {
         var bg = ""
         
         xhr.open('GET', '/actions/rooms.php?action=show&room='+inviteLink.value);
-        xhr.onload = () => {
-            console.log(`${xhr.responseText}`)
-            console.log(inviteLink.value)
-            console.log(`/?page=call&room=${inviteLink.value}&background=${xhr.responseText}`)
-            bg = xhr.responseText
-            window.location = `/?page=call&room=${inviteLink.value}&background=${bg}`
-        };
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText.includes('<')) {
+                    //console.error("AAAAAAAAAAAA")
+                    // Room doesn't exist, show error message
+                    var errorMessage = document.getElementById("p");
+                    errorMessage.innerText = "Ce salon n'existe pas";
+                    errorMessage.classList.add("alert", "alert-error");
+                    errorMessage.style.color = "red";
+                    errorMessage.style.fontSize = "16px";
+                    errorMessage.style.textAlign = "center";
+                    //document.body.appendChild(errorMessage); // Append error message to the page
+                }
+                else {
+                    console.log(`${xhr.responseText}`)
+            
+                    console.log(inviteLink.value)
+                    console.log(`/?page=call&room=${inviteLink.value}&background=${xhr.responseText}`)
+                    bg = xhr.responseText
+                    window.location = `/?page=call&room=${inviteLink.value}&background=${bg}`
+                }
+          };
+        }
         xhr.send();
         
-        console.log(bg)
-
     }
 })
 
