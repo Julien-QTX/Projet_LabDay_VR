@@ -41,7 +41,7 @@ ob_start();
                     ?>
 
                     <div class="user_box" id="room-id">
-                        <input type="text" name="invite_link" required>
+                        <input type="text" name="invite_link" required maxlength="6" minlength="6">
                         <label for="invite_link">Id du salon</label>
                     </div>
 

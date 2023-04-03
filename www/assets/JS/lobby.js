@@ -36,6 +36,10 @@ joinBtn.addEventListener('click', function() {
     console.log(action)
 })
 
+inviteLink.addEventListener('input', function() {
+    inviteLink.value = inviteLink.value.toUpperCase()
+})
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
