@@ -22,9 +22,10 @@ if (!roomId) {
     roomId = 'main'
 }
 
-let displayName = sessionStorage.getItem('display_name')
+let displayName = document.getElementById("user_pseudo").innerText
+
 if (!displayName) {
-    window.location = '/?page=lobby2'
+    window.location = '/?page=lobby'
 }
 
 let localTracks = []
@@ -57,13 +58,10 @@ let joinRoomInit = async () => {
     client.on('user-published', handleUserPublished)
     client.on('user-left', handleUserLeft)
 
-    //joinStream()
+    joinStream()
 }
 
 let joinStream = async () => {
-
-    document.getElementById('join-btn').style.display = 'none'
-    document.getElementsByClassName('stream__actions')[0].style.display = 'flex'
 
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks({}, {encoderConfig:{
         width: {min: 640, ideal:1920, max:1920},
@@ -80,22 +78,6 @@ let joinStream = async () => {
     localTracks[1].play(`user-${uid}`)
 
     await client.publish([localTracks[0], localTracks[1]])
-}
-
-let switchToCamera = async () => {
-    let player = `<div class="video__container" id="user-container-${uid}" >
-                    <div class="video-player" id="user-${uid}"></div>
-                </div>`
-    displayFrame.insertAdjacentHTML('beforeend', player)
-
-    await localScreenTracks[0].setMuted(true)
-    await localScreenTracks[1].setMuted(true)
-
-    document.getElementById('mic-btn').classList.remove('active')
-    document.getElementById('screen-btn').classList.remove('active')
-
-    localTracks[1].play(`user-${uid}`)
-    await client.publish([localTracks[1]])
 }
 
 let handleUserPublished = async (user, mediaType) => {
@@ -156,10 +138,14 @@ let toggleMic = async (e) => {
     if(localTracks[0].muted) {
         await localTracks[0].setMuted(false)
         button.classList.add('active')
+        document.getElementById('mic-btn').style.backgroundColor = 'rgb(12, 16, 23)';
+        document.getElementById('mic-btn').style.border = '1px solid #03e9f4';
     }
     else {
         await localTracks[0].setMuted(true)
         button.classList.remove('active')
+        document.getElementById('mic-btn').style.backgroundColor = 'rgb(255, 80, 80)';
+        document.getElementById('mic-btn').style.border = '1px solid rgb(255, 80, 80)';
     }
 }
 
@@ -168,65 +154,19 @@ let toggleCamera = async (e) => {
     if(localTracks[1].muted) {
         await localTracks[1].setMuted(false)
         button.classList.add('active')
+        document.getElementById('camera-btn').style.backgroundColor = 'rgb(12, 16, 23)';
+        document.getElementById('camera-btn').style.border = '1px solid #03e9f4';
     }
     else {
         await localTracks[1].setMuted(true)
         button.classList.remove('active')
-    }
-}
-
-let toggleScreen = async (e) => {
-    let screenButton = e.currentTarget
-    let cameraButton = document.getElementById('camera-btn')
-
-    if(!sharingScreen){
-        sharingScreen = true
-        screenButton.classList.add('active')
-        cameraButton.classList.remove('active')
-        cameraButton.style.display = 'none'
-
-        localScreenTracks = await AgoraRTC.createScreenVideoTrack()
-
-        document.getElementById(`user-container-${uid}`).remove()
-        displayFrame.style.display = 'block'
-
-        let player = `<div class="video__container" id="user-container-${uid}" >
-                        <div class="video-player" id="user-${uid}"></div>
-                    </div>`
-
-        displayFrame.insertAdjacentHTML('beforeend', player)
-        document.getElementById(`user-container-${uid}`).addEventListener('click', expandVideoFrame)
-
-        userIdInDisplayFrame = `user-container-${uid}`
-
-        localScreenTracks.play(`user-${uid}`)
-
-        await client.unpublish([localTracks[1]])
-        await client.publish([localScreenTracks])
-
-        let videoFrames = document.getElementsByClassName('video__container')
-
-        for(let i = 0; videoFrames.length > i; i++){
-            if(videoFrames[i].id != userIdInDisplayFrame){
-              videoFrames[i].style.height = '100px'
-              videoFrames[i].style.width = '100px'
-            }
-          }
-    }
-    else {
-        sharingScreen = false
-        cameraButton.style.display = 'block'
-        document.getElementById(`user-container-${uid}`).remove()
-        await client.unpublish([localScreenTracks])
-
-        switchToCamera()
+        document.getElementById('camera-btn').style.backgroundColor = 'rgb(255, 80, 80)';
+        document.getElementById('camera-btn').style.border = '1px solid rgb(255, 80, 80)';
     }
 }
 
 let leaveStream = async (e) => {
     e.preventDefault()
-    document.getElementById('join-btn').style.display = 'block'
-    document.getElementsByClassName('stream__actions')[0].style.display = 'none'
 
     for(let i = 0; localTracks.length > i; i++){
         await localTracks[i].stop()
@@ -253,12 +193,13 @@ let leaveStream = async (e) => {
     }
 
     channel.sendMessage({text:JSON.stringify({type: 'user_left', 'uid': uid})})
+
+    leaveChannel()
+    window.location.href = '/?page=lobby'
 }
 
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
-document.getElementById('screen-btn').addEventListener('click', toggleScreen)
-document.getElementById('join-btn').addEventListener('click', joinStream)
 document.getElementById('leave-btn').addEventListener('click', leaveStream)
 
 joinRoomInit()
