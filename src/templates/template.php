@@ -14,7 +14,7 @@
     <title><?= $page_title; ?></title>
 	<?= $head_metas ;?>
 	<?php
-	if (!strpos($_SERVER['REQUEST_URI'], 'call')) {
+	if (!strpos($_SERVER['REQUEST_URI'], 'call') && !strpos($_SERVER['REQUEST_URI'], 'room')) {
 			echo '<link rel="stylesheet" href="assets/CSS/header.css">';
 			echo '<link rel="stylesheet" href=assets/CSS/footer.css>';
 		}
@@ -24,7 +24,7 @@
      
 	<div>
 		<?php
-		if (!strpos($_SERVER['REQUEST_URI'], 'call')) {
+		if (!strpos($_SERVER['REQUEST_URI'], 'call') && !strpos($_SERVER['REQUEST_URI'], 'room')) {
 			include_once __DIR__ . '/partials/menu.php';
 		}
 		?>
@@ -35,7 +35,7 @@
 
 	
 		<?php 
-		if (!strpos($_SERVER['REQUEST_URI'], 'call')) {
+		if (!strpos($_SERVER['REQUEST_URI'], 'call') && !strpos($_SERVER['REQUEST_URI'], 'room')) {
 			include_once __DIR__ . '/partials/footer.php';
 		}
 		 ?>
