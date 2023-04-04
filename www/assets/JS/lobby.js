@@ -93,7 +93,7 @@ form.addEventListener('submit', (e) => {
                     console.log(inviteLink.value)
                     console.log(`/?page=call&room=${inviteLink.value}&background=${xhr.responseText}`)
                     bg = xhr.responseText
-                    window.location = `/?page=call&room=${inviteLink.value}&background=${bg}`
+                    window.location = `/?page=room&room=${inviteLink.value}&background=${bg}`
                 }
           };
         }
