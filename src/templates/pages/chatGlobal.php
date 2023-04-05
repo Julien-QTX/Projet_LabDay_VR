@@ -81,11 +81,6 @@ ob_start();
                     }
                     document.getElementById('chatBox').appendChild(newDiv);
                 }
-                
-                // supprime les messages
-                const del = new XMLHttpRequest();
-                del.open('DELETE', '/actions/deleteMessage.php');
-                del.send(`id=${jsonData[jsonData.length-1].id}`);
 
                 // Scroll to the bottom of the chat box
                 if (autoScrollEnabled) {
@@ -93,6 +88,12 @@ ob_start();
                     chatBoxElement.scrollTop = chatBoxElement.scrollHeight;
                 }
             }
+
+            // supprime les messages
+            const del = new XMLHttpRequest();
+            del.open('POST', '/actions/deleteMessage.php');
+            del.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            del.send();
 
             lastDataLength = jsonData.length;
 
