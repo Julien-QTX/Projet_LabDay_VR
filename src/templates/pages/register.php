@@ -25,7 +25,7 @@ ob_start();
     </div>
 
     <div class="user-box">
-        <input type="text" name="pseudo" id="pseudo" required>
+        <input type="text" name="pseudo" id="pseudo" required maxlength="15">
         <label for="pseudo">Pseudo</label>
     </div>
 
