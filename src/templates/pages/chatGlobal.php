@@ -19,6 +19,15 @@ ob_start();
 
 <p style="display:none" id="user-pseudo"><?= $info['pseudo'] ?></p>
 
+<div id="divLangue">
+    <label for="langue">Choix de server</label>
+
+    <select name="langue" id="langue">
+        <option value="FR" selected>Francais</option>
+        <option value="EN">Anglais</option>
+    </select>
+</div>
+
 <div id="chat">
     <div id="chatBox"></div>
 
@@ -29,7 +38,6 @@ ob_start();
     ?>
     
     <form id="formSendMessage">
-        <!-- <label for="sendMessage" id="sendMessagePH">Envoyer un message</label> -->
         <input type="text" id="sendMessage" name="sendMessage">
         <button id="submit">Envoyer</button>
     </form>
@@ -40,10 +48,16 @@ ob_start();
     let autoScrollEnabled = true;
     let lastDataLength = 0;
     let pseudo = document.getElementById('user-pseudo').innerHTML;
+    let langueSelected = document.getElementById('langue').value;
+
+    document.getElementById('langue').addEventListener('change', () => {
+        langueSelected = document.getElementById('langue').value;
+    });
 
     setInterval(() => {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', '/actions/getChatGlobal.php');
+        xhr.open('POST', '/actions/getChatGlobal.php');
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = () => {
             // Parse le JSON data
             const jsonData = JSON.parse(xhr.responseText);
@@ -82,8 +96,8 @@ ob_start();
             lastDataLength = jsonData.length;
 
         };
-        xhr.send();
-    }, 1000);
+        xhr.send(`langue=${encodeURIComponent(langueSelected)}`);
+    }, 100);
 
     document.getElementById("chatBox").addEventListener("click", () => {
     autoScrollEnabled = !autoScrollEnabled;
@@ -99,12 +113,10 @@ ob_start();
         const xhr2 = new XMLHttpRequest();
         xhr2.open('POST', '/actions/sendMessages.php');
         xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr2.send(`message=${encodeURIComponent(message)}&user_id=${encodeURIComponent(user_id)}`);
+        xhr2.send(`message=${encodeURIComponent(message)}&user_id=${encodeURIComponent(user_id)}&langue=${encodeURIComponent(langueSelected)}`);
 
         document.getElementById('sendMessage').value = '';
     });
-
-    //let submitButton = document.getElementById('submit');
 
 </script>
 

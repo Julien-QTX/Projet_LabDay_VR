@@ -7,12 +7,13 @@ if (empty($_POST['message'])) {
 }
 $messageToDB = htmlspecialchars($_POST['message']);
 $user_id = $_POST['user_id'];
+$langue = $_POST['langue'];
 
 $getUsername = $db->prepare("SELECT pseudo FROM users WHERE user_id=?");
 $getUsername->execute([$user_id]);
 $username = $getUsername->fetch();
 
-$create_user = $db->prepare("INSERT INTO ChatGlobal(user_id, pseudo, `message`) VALUES(?, ?, ?)");
+$create_user = $db->prepare("INSERT INTO ChatGlobal(user_id, pseudo, `message`, langue) VALUES(?, ?, ?, ?)");
 $create_user->execute([
-    $user_id, $username[0], $messageToDB
+    $user_id, $username[0], $messageToDB, $langue
 ]);
