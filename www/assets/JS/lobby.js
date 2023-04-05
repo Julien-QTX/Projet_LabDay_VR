@@ -61,7 +61,7 @@ form.addEventListener('submit', (e) => {
         xhr.open('POST', '/actions/rooms.php?action=add&room='+randomString+'&background='+background);
         xhr.onload = () => {
             console.log(`${xhr.responseText}`)
-            window.location.href = `/?page=call&room=${randomString}&background=${background}`
+            window.location.href = `/?page=room&room=${randomString}&background=${background}`
         };
         xhr.send();
 
@@ -91,9 +91,9 @@ form.addEventListener('submit', (e) => {
                     console.log(`${xhr.responseText}`)
             
                     console.log(inviteLink.value)
-                    console.log(`/?page=call&room=${inviteLink.value}&background=${xhr.responseText}`)
+                    console.log(`/?page=room&room=${inviteLink.value}&background=${xhr.responseText}`)
                     bg = xhr.responseText
-                    window.location = `/?page=call&room=${inviteLink.value}&background=${bg}`
+                    window.location = `/?page=room&room=${inviteLink.value}&background=${bg}`
                 }
           };
         }
