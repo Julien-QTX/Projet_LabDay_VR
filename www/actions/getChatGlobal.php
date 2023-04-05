@@ -4,6 +4,7 @@ require_once __DIR__ . "/../../src/init.php";
 
 $langue = $_POST['langue'];
 
+//get messages from the last hour
 $usr_cnt = $db->prepare("SELECT * from ChatGlobal WHERE date >= now() - INTERVAL 1 HOUR AND langue = ?;");
 $usr_cnt->execute([$langue]);
 $info = $usr_cnt->fetchAll();

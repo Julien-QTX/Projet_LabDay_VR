@@ -35,7 +35,6 @@ ob_start();
 
                     <?php
 
-                    //echo __DIR__;
                     include_once __DIR__ . '/../../utils/alert_errors.php';
 
                     ?>
@@ -49,7 +48,6 @@ ob_start();
                     <label for="background">Choix de l'environnement</label>
                         <select name="background" id="background_selection">
                             <option value="default">--</option>
-
                         </select>
                     </div>
 

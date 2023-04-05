@@ -33,12 +33,6 @@ ob_start();
 
 <div id="chat">
     <div id="chatBox"></div>
-
-    <?php
-
-    include_once __DIR__ . '/../../utils/alert_errors.php';
-
-    ?>
     
     <form id="formSendMessage">
         <input type="text" id="sendMessage" name="sendMessage">
@@ -65,7 +59,6 @@ ob_start();
             // Parse le JSON data
             const jsonData = JSON.parse(xhr.responseText);
 
-            /* console.log(jsonData) */
             if (jsonData.length !== lastDataLength) {
 
                 // Clear the chat box
@@ -88,11 +81,13 @@ ob_start();
                     }
                     document.getElementById('chatBox').appendChild(newDiv);
                 }
-
+                
+                // supprime les messages
                 const del = new XMLHttpRequest();
                 del.open('DELETE', '/actions/deleteMessage.php');
                 del.send(`id=${jsonData[jsonData.length-1].id}`);
 
+                // Scroll to the bottom of the chat box
                 if (autoScrollEnabled) {
                     const chatBoxElement = document.getElementById("chatBox");
                     chatBoxElement.scrollTop = chatBoxElement.scrollHeight;
@@ -105,12 +100,14 @@ ob_start();
         xhr.send(`langue=${encodeURIComponent(langueSelected)}`);
     }, 100);
 
+    // Toggle auto scroll
     document.getElementById("chatBox").addEventListener("click", () => {
     autoScrollEnabled = !autoScrollEnabled;
     });
 
     let form = document.getElementById('formSendMessage');
 
+    // Send message
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         let message = document.getElementById('sendMessage').value;

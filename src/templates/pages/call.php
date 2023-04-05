@@ -26,7 +26,6 @@ ob_start();
 
     <div id="videos">
         <video class="video-player" id="user-1" autoplay playsinline></video>
-        <!--<video class="video-player" id="user-2" autoplay playsinline></video>-->
     </div>
 
     <div id="controls">

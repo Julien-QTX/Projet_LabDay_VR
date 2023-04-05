@@ -45,6 +45,7 @@ let background = urlParams.get('background')
 
 let validBackgrounds = ["default", "contact", "egypt", "checkerboard", "forest", "goaland", "yavapai", "goldmine", "threetowers", "poison", "arches", "tron", "japan", "dream", "volcano", "starry", "osiris", "moon"]
 
+// if the background is not in the list, set it to default
 if (!validBackgrounds.includes(background)) {
     console.error("background not in list")
     environment.setAttribute('environment', 'preset:default')
@@ -52,6 +53,7 @@ if (!validBackgrounds.includes(background)) {
 else {
     environment.setAttribute('environment', 'preset:'+background)
 }
+
 let username = document.getElementById("user_pseudo").innerText
 
 let init = async () => {
@@ -59,7 +61,6 @@ let init = async () => {
     client = await AgoraRTM.createInstance(APP_ID)
     await client.login({uid, token})
 
-    //index.html?room=23423
     channel = client.createChannel(roomId)
     await channel.join()
 
@@ -98,11 +99,12 @@ let handleUserLeft = (MemberId) => {
     numberOfUsers--
     clearInterval(interval)
 }
+
 let otherUsername;
 
+// what to do when a message is received
 let handleMessageFromPeer = async (message, MemberId) => {
     message = JSON.parse(message.text)
-    //console.log('Message:', message)
 
     if (message.type === 'offer') {
         createAnswer(MemberId, message.offer)
@@ -125,9 +127,8 @@ let handleMessageFromPeer = async (message, MemberId) => {
 
 }
 
+// what to do when a new user joins the channel
 let handleUserJoined = async (MemberId) => {
-    //alert("zaerhjdsv")
-    //console.log("ça marche ou pas ?")
     console.log('A new user has joined the channel:',  MemberId)
     createOffer(MemberId)
     
@@ -140,10 +141,6 @@ let handleUserJoined = async (MemberId) => {
 let aFrameVideo = document.getElementById("a-frame-user-2")
 let yourself = document.getElementById("camera").object3D
 let head = document.getElementById('head')
-//let avatar = document.getElementById('a-frame-user-2').object3D
-//userNameDisplay.setAttribute('value', username)
-
-//console.log(aFrameVideo)
 
 let createPeerConnection = async (MemberId) => {
     peerConnection = new RTCPeerConnection(servers)
@@ -166,12 +163,11 @@ let createPeerConnection = async (MemberId) => {
     //SEND DATA
     dataChannel = peerConnection.createDataChannel("position");
 
+    // send your position to the other user every 10ms
     dataChannel.onopen = () => {
         console.log('Data channel opened')
-        //const pseudo = {pseudo : username}
-        //dataChannel.send(JSON.stringify(pseudo))
         interval = setInterval(() => {
-            const position = yourself.position //{x: Math.random() * 100, y: Math.random() * 100}
+            const position = yourself.position
             let cam = document.getElementById('camera')
             const rotation = cam.getAttribute("rotation")
             const coordinates = {
@@ -195,24 +191,24 @@ let createPeerConnection = async (MemberId) => {
     peerConnection.ondatachannel = (event) => {
         const dataChannel = event.channel;
       
+        //receive the other user's position
         dataChannel.onmessage = event => {
           const coordinates = JSON.parse(event.data);
-          //console.log(coordinates)
           if (coordinates.hasOwnProperty('pseudo')) {
             userNameDisplay.setAttribute('value', coordinates.pseudo)
           }
           const position = coordinates.position
           const rotation = coordinates.rotation
           if (aFrameVideo.hasLoaded) {
-            //console.log(aFrameVideo.getAttribute('position'))
+
             aFrameVideo.setAttribute('position', {"x" : position.x, "y" : position.y - 1.5, "z" : position.z})
-            //aFrameVideo.setAttribute('rotation', rotation)
             head.setAttribute('rotation', rotation)
             textEntity.setAttribute('position', {"x" : position.x, "y" : position.y + 1.5, "z" : position.z})
             textEntity.setAttribute('rotation', rotation)
-          } else {
+
+          } 
+          else {
             aFrameVideo.addEventListener('loaded', function () {
-              //console.log(aFrameVideo.getAttribute('position'))
               aFrameVideo.setAttribute('position', position)
               aFrameVideo.setAttribute('rotation', rotation)
             });
@@ -285,6 +281,7 @@ let leaveChannel = async () => {
     
 }
 
+// turn the camera on and off
 let toggleCamera = async () => {
 
     console.log(numberOfUsers)
@@ -303,6 +300,7 @@ let toggleCamera = async () => {
     }
 }
 
+// turn the microphone on and off
 let toggleMic = async () => {
     let audioTrack = localStream.getTracks().find(track => track.kind === 'audio')
 
@@ -322,18 +320,6 @@ window.addEventListener('beforeunload', leaveChannel)
 
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
-
-document.getElementById('leave-btn').addEventListener('click', function() {
-    if (numberOfUsers == 1 || numberOfUsers == 0) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', '/actions/rooms.php?action=delete&room='+roomId);
-        xhr.onload = () => {
-            console.log(`${xhr.responseText}`)
-        };
-        xhr.send();
-    }
-})
-
 document.getElementById('leave-btn').addEventListener('click', leaveChannel)
 
 let cam = document.getElementById('camera')
@@ -345,6 +331,7 @@ let keydownEvents = true
 
 let messageInput = document.getElementById('message-input')
 
+// blocks keydown events when the user is typing in the message input
 messageInput.addEventListener('focusin', function() {
     
     keydownEvents = false
@@ -356,8 +343,10 @@ messageInput.addEventListener('focusout', function() {
     console.log(keydownEvents)
 })
 
+// keydown shortcuts and events
 document.onkeydown = function (e) {
     if (keydownEvents) {
+
         if (e.key == 'c') {
             toggleCamera();
         }
@@ -371,12 +360,10 @@ document.onkeydown = function (e) {
 
         if (e.key == 'e') {
             up = true
-            //yourself.position.y += 0.1
         }
 
         if (e.key == 'a') {
             down = true
-            //yourself.position.y -= 0.1
         }
 
         if (e.code == 'Space' && yourself.position.y <= 5) {
@@ -388,30 +375,25 @@ document.onkeydown = function (e) {
     }
 };
 
-  document.onkeyup = function(e) {
+document.onkeyup = function(e) {
 
     if (e.key == 'e') {
         up = false
-        //yourself.position.y += 0.1
     }
 
     if (e.key == 'a') {
         down = false
-        //yourself.position.y -= 0.1
     }
 
-  }
+}
 
-
-
-  setInterval(function () {
-    if (up) {
-      camPos.y += 0.5;
-    } else if (down) {
-      camPos.y -= 0.5;
-    }
-    cam.setAttribute('position', camPos);
-  }, 16);
+setInterval(function () {
+if (up) {
+    camPos.y += 0.5;
+} else if (down) {
+    camPos.y -= 0.5;
+}
+cam.setAttribute('position', camPos);
+}, 16);
 
 init();
-

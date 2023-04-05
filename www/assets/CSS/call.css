@@ -1,11 +1,3 @@
-/*body{
-    width: 100%;
-    background-image: url("/assets/images/stars.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-}*/
-
 html {
     overflow: hidden;
     height: 100%;
@@ -27,7 +19,6 @@ html {
   * {
     margin: 0;
     padding: 0;
-   /* box-sizing: border-box;*/
 }
 
 #videos {
@@ -45,7 +36,6 @@ html {
 }
 
 #user-1 {
-    /*transform: rotateY('180deg');*/
     -webkit-transform:rotateY(180deg);
 }
 
@@ -85,7 +75,6 @@ html {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /*width: fit-content;*/
 }
 
 #leave-btn {

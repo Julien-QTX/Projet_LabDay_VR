@@ -12,6 +12,7 @@ ob_start();
 <h1>Bienvenue sur VRC </h1>
 
 <script>
+// On récupère le nombre d'utilisateurs
 const xhr = new XMLHttpRequest();
 xhr.open('GET', '/actions/getUserCount.php');
 xhr.onload = () => {
@@ -28,12 +29,9 @@ setInterval(() => {
 }, 1000);
 </script>
 
-
-
 <h3 id="utilis"></h3>
 
 <button class="appel" onclick="window.location = '/?page=lobby'"><a href="/?page=lobby" class="lien">Lancer un appel VR</a></button>
-
 
 <?php
 $page_content = ob_get_clean();

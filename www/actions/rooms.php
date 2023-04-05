@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/../../src/init.php';
 
-
+//get a room by its id
 function getRoom($db, $room_id) {
     $usr_info = $db->prepare("SELECT background FROM rooms WHERE room_id = ?");
     $usr_info->execute([$room_id]);
@@ -11,11 +11,13 @@ function getRoom($db, $room_id) {
     echo $result['background'];
 }
 
+//add a room to the database
 function addRoom($db, $users, $room_id, $bg) {
     $create_room = $db->prepare("INSERT INTO rooms(`users`, room_id, background) VALUES(?, ?, ?)");
     $create_room->execute([$users, $room_id, $bg]);
 }
 
+//delete a room from the database
 function delRoom($db, $room_id) {
     $delete_room = $db->prepare("DELETE FROM rooms WHERE room_id = ?");
     $delete_room->execute([$room_id]);

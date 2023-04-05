@@ -9,7 +9,6 @@
         </div>
 
     <?php } else { ?>
-        
 
         <li><a href="/?page=profile">Profil</a></li> 
         <li><a href="/?page=lobby">Appel</a></li>

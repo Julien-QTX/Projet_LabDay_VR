@@ -13,7 +13,7 @@ ob_start();
 ?>
 <link rel="stylesheet" href="assets/CSS/profile.css">
 <?php
-
+    // Get user info
     include_once __DIR__ . '/../../utils/alert_errors.php';
 
     $usr_info = $db->prepare("SELECT * FROM users WHERE user_id=?");

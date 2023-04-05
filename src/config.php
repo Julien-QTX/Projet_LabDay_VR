@@ -1,5 +1,5 @@
 <?php
-
+//database info
 $config = [];
 $config['db'] = [
     'host' => 'localhost',

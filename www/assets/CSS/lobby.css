@@ -9,23 +9,9 @@ body {
 }
 
 #form-container {
-    /*width: 90%;
-    max-width: 600px;
-    /*border-radius: 10px;
-    background-color: #141e30;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin: 100px auto;
-    /*transform: translate(-50%, -50%);
-    background: rgba(0,0,0,.5);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;*/
     width: 400px;
     padding: 40px;
     margin: 9% auto;
-    /*transform: translate(-50%, -50%);*/
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
@@ -33,14 +19,6 @@ body {
 }
 
 #form_container_header {
-    /*border-radius: 10px 10px 0 0;
-    padding: 30px;
-    text-align: center;
-    background-color: #243B55;
-    margin: 0;
-    font-size: 18px;
-    /*font-size: 300;
-    line-height: 0;*/
     margin: 0 0 30px;
     padding: 0;
     color: #fff;
@@ -125,7 +103,6 @@ input:-webkit-autofill:active{
     border-radius: 3px;
     color: #FFF;
     cursor: pointer;
-    /*margin-left: 10px;*/
     margin: 5px 0 5px 10px;
 }
 
