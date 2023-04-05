@@ -47,6 +47,28 @@ ob_start();
 
     </div>
 
+    <section id="messages__container">
+
+        <div id="messages">
+
+        <div id="top">
+          <i class="fa-solid fa-xmark" id="chat-hider"></i>
+        </div>
+        
+            
+        </div>
+
+        <form id="message__form">
+            <input id="message-input" type="text" name="message" placeholder="Send a message...." />
+        </form>
+
+    </section>
+
+    <div id="chat-displayer">
+      <img src="assets/images/message.png" width=50 alt="">
+    </div>
+    
+
     <a-scene>
         <a-asset>
             <video src="" id="user-2" autoplay playsinline></video>
@@ -87,6 +109,7 @@ ob_start();
 
     <script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>
     <script src="assets/JS/peerConnection.js" defer></script>
+    <script src="assets/JS/room_chat.js"></script>
     <!--<script src="assets/JS/trois.js"></script>-->
 
 <?php

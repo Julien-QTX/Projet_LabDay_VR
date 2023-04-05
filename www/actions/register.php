@@ -34,7 +34,6 @@ if ($pseudo_used->rowCount() != 0) {
 
 $fullname = htmlspecialchars($_POST['fullname'], ENT_QUOTES, null, true);
 $pseudo = htmlspecialchars($_POST['pseudo'], ENT_QUOTES, null, true);
-//$fullname = htmlspecialchars($_POST['fullname'], ENT_QUOTES);
     
 if (empty($_FILES['profile_pic']['name'])) {
     $target_file = './../assets/images/def.jpeg';

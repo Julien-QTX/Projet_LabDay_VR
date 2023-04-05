@@ -52,6 +52,7 @@ if (!validBackgrounds.includes(background)) {
 else {
     environment.setAttribute('environment', 'preset:'+background)
 }
+let username = document.getElementById("user_pseudo").innerText
 
 let init = async () => {
 
@@ -62,10 +63,18 @@ let init = async () => {
     channel = client.createChannel(roomId)
     await channel.join()
 
+    await client.addOrUpdateLocalUserAttributes({'name': username})
+
+    channel.on('MemberJoined', handleMemberJoined)
+    channel.on('MemberLeft', handleMemberLeft)
+    channel.on('ChannelMessage', handleChannelMessage)
+
     channel.on('MemberJoined', handleUserJoined)
     channel.on('MemberLeft', handleUserLeft)
 
     client.on('MessageFromPeer', handleMessageFromPeer)
+
+    addBotMessageToDom(`Welcome to the room, ${username}`)
 
     localStream = await navigator.mediaDevices.getUserMedia(constraints);
     document.getElementById('user-1').srcObject = localStream
@@ -73,7 +82,7 @@ let init = async () => {
 }
 
 let interval
-let username = document.getElementById("user_pseudo").innerText
+
 let userNameDisplay = document.getElementById("username")
 let textEntity = document.getElementById("text_entity")
 
@@ -84,6 +93,7 @@ let handleUserLeft = (MemberId) => {
     numberOfUsers--
     clearInterval(interval)
 }
+let otherUsername;
 
 let handleMessageFromPeer = async (message, MemberId) => {
     message = JSON.parse(message.text)
@@ -105,6 +115,7 @@ let handleMessageFromPeer = async (message, MemberId) => {
 
     if (message.type === 'pseudo') {
         userNameDisplay.setAttribute('value', message.pseudo)
+        otherUsername = message.pseudo
     }
 
 }
@@ -334,48 +345,56 @@ let camPos = cam.getAttribute("position")
 var up = false
 var down = false
 
+let keydownEvents = true
+
+let messageInput = document.getElementById('message-input')
+
+messageInput.addEventListener('focusin', function() {
+    
+    keydownEvents = false
+    console.log(keydownEvents)
+})
+
+messageInput.addEventListener('focusout', function() {
+    keydownEvents = true
+    console.log(keydownEvents)
+})
+
 document.onkeydown = function (e) {
-    if (e.key == 'c') {
-        toggleCamera();
-    }
-    if (e.key == 'm') {
-        toggleMic();
-    }
-    if (e.key == 'Escape') {
-        //console.log(channel)
-        //console.log(e.key);
-        //console.log(leaveChannel())
-        //mmalert(e.key)
-        leaveChannel();
-        window.location = '/?page=lobby'
-    }
+    if (keydownEvents) {
+        if (e.key == 'c') {
+            toggleCamera();
+        }
+        if (e.key == 'm') {
+            toggleMic();
+        }
+        if (e.key == 'Escape') {
+            //console.log(channel)
+            //console.log(e.key);
+            //console.log(leaveChannel())
+            //mmalert(e.key)
+            leaveChannel();
+            window.location = '/?page=lobby'
+        }
 
-    if (e.key == 'e') {
-        up = true
-        //yourself.position.y += 0.1
-    }
+        if (e.key == 'e') {
+            up = true
+            //yourself.position.y += 0.1
+        }
 
-    if (e.key == 'a') {
-        down = true
-        //yourself.position.y -= 0.1
-    }
+        if (e.key == 'a') {
+            down = true
+            //yourself.position.y -= 0.1
+        }
 
-    if (e.code == 'Space' && yourself.position.y <= 5) {
-        up = true
-        setTimeout(function() {
-            up = false
-        }, 500)
+        if (e.code == 'Space' && yourself.position.y <= 5) {
+            up = true
+            setTimeout(function() {
+                up = false
+            }, 500)
+        }
     }
-
-    /*[].forEach.call(hiddenElements, function (el) {
-      el.classList.remove('hidden');
-    });
-    info.classList.add('hidden');
-    key.innerHTML = e.key;
-    code.innerHTML = e.code;
-    keyCode.innerHTML = e.keyCode;
-    keyCodeLarge.innerHTML = e.keyCode;*/
-  };
+};
 
   document.onkeyup = function(e) {
 
@@ -390,6 +409,8 @@ document.onkeydown = function (e) {
     }
 
   }
+
+
 
   setInterval(function () {
     if (up) {
