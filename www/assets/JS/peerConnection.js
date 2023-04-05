@@ -79,6 +79,11 @@ let init = async () => {
     localStream = await navigator.mediaDevices.getUserMedia(constraints);
     document.getElementById('user-1').srcObject = localStream
 
+    const xhr = new XMLHttpRequest();
+    console.log('/actions/rooms.php?action=add&room='+roomId+'&background='+background)
+    xhr.open('POST', '/actions/rooms.php?action=add&room='+roomId+'&background='+background);
+    xhr.send();
+
 }
 
 let interval
@@ -284,15 +289,6 @@ let toggleCamera = async () => {
 
     console.log(numberOfUsers)
 
-    /*if (numberOfUsers == 1 || numberOfUsers == 0) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', '/actions/rooms.php?action=delete&room='+roomId);
-        xhr.onload = () => {
-            console.log(`${xhr.responseText}`)
-        };
-        xhr.send();
-    }*/
-
     let videoTrack = localStream.getTracks().find(track => track.kind === 'video')
 
     if (videoTrack.enabled) {
@@ -369,10 +365,6 @@ document.onkeydown = function (e) {
             toggleMic();
         }
         if (e.key == 'Escape') {
-            //console.log(channel)
-            //console.log(e.key);
-            //console.log(leaveChannel())
-            //mmalert(e.key)
             leaveChannel();
             window.location = '/?page=lobby'
         }

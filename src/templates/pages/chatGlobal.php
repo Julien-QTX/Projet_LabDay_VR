@@ -20,11 +20,14 @@ ob_start();
 <p style="display:none" id="user-pseudo"><?= $info['pseudo'] ?></p>
 
 <div id="divLangue">
-    <label for="langue">Choix de server</label>
+    <label for="langue">Choix de langue</label>
 
     <select name="langue" id="langue">
         <option value="FR" selected>Francais</option>
         <option value="EN">Anglais</option>
+        <option value="DE">Allemand</option>
+        <option value="ES">Espagnol</option>
+        <option value="PO">Portugais</option>
     </select>
 </div>
 
@@ -73,7 +76,6 @@ ob_start();
 
                     let newDiv = document.createElement('div');
                     
-
                     if(jsonData[i].pseudo === pseudo) {
                         newDiv.className = 'you-messageBox';
                         newDiv.innerHTML = `<div class="you">Vous</div>`;
@@ -86,6 +88,10 @@ ob_start();
                     }
                     document.getElementById('chatBox').appendChild(newDiv);
                 }
+
+                const del = new XMLHttpRequest();
+                del.open('DELETE', '/actions/deleteMessage.php');
+                del.send(`id=${jsonData[jsonData.length-1].id}`);
 
                 if (autoScrollEnabled) {
                     const chatBoxElement = document.getElementById("chatBox");

@@ -5,17 +5,17 @@ let roomId2 = urlParams2.get('room')
 let handleMemberJoined = async (MemberId) => {
     console.error('A new member joined the channel')
     console.log('A new member joined the channel: ' + MemberId)
-    addMemberToDom(MemberId)
+    //addMemberToDom(MemberId)
 
     let members = await channel.getMembers()
-    updateMemberTotal(members)
+    //updateMemberTotal(members)
 
     let {name} = await client.getUserAttributesByKeys(MemberId, ['name'])
     
     addBotMessageToDom(`Welcome to the room, ${name} !`)
 }
 
-let addMemberToDom = async (MemberId) => {
+/*let addMemberToDom = async (MemberId) => {
     let {name} = await client.getUserAttributesByKeys(MemberId, ['name'])
 
     let membersWrapper = document.getElementById('member__list')
@@ -25,17 +25,17 @@ let addMemberToDom = async (MemberId) => {
                     </div>`
 
     membersWrapper.insertAdjacentHTML('beforeend', memberItem)
-}
+}*/
 
-let updateMemberTotal = async (members) => {
+/*let updateMemberTotal = async (members) => {
     let total = document.getElementById('members__count')
     total.innerText = members.length
-}
+}*/
 
 let handleMemberLeft = async (MemberId) => {
-    removeMemberFromDom(MemberId)
+    //removeMemberFromDom(MemberId)
     let members = await channel.getMembers()
-    updateMemberTotal(members)
+    //updateMemberTotal(members)
 }
 
 let removeMemberFromDom = async (MemberId) => {
