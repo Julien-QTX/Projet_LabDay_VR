@@ -1,68 +1,30 @@
-const form = document.querySelector('form');
-form.addEventListener('submit', (event) => {
-  event.preventDefault(); // Empêcher l'envoi du formulaire
-  const searchInput = document.querySelector('#search');
-  const searchTerm = searchInput.value;
-  fetch(`/users?search=${encodeURIComponent(searchTerm)}`)
-    .then(response => response.json())
-    .then(users => {
-      // Afficher les utilisateurs correspondants
-    })
-    .catch(error => {
-      console.error(error);
-    });
-});
+let form = document.getElementsByClassName('bar')[0]
+let input = document.getElementById('search')
+let username = document.getElementById('username').innerText
+let errorMessage = document.getElementById("p");
 
-function envoyerDemande(id) {
-    fetch('/demandes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id: id })
-    })
-      .then(response => {
-        // Afficher un message de confirmation
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+form.addEventListener('submit', function(e) {
+    e.preventDefault()
 
-  fetch('/demandes')
-  .then(response => response.json())
-  .then(demandes => {
-    // Afficher les demandes d'amis en attente
-    demandes.forEach(demande => {
-      const div = document.createElement('div');
-      div.innerHTML = `
-        <p>${demande.from} vous a envoyé une demande d'amis</p>
-        <button onclick="accepterDemande(${demande.id})">Accepter</button>
-        <button onclick="refuserDemande(${demande.id})">Refuser</button>
-      `;
-      document.body.appendChild(div);
-    });
-  })
-  .catch(error => {
-    console.error(error);
-  });
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/actions/amis.php?action=add&other='+input.value);
+    xhr.onload = () => {
+        console.log(xhr.responseText)
+        if(isNaN(xhr.responseText) || xhr.responseText == "") {
+            console.log('h')
+            errorMessage.style.display = "inline"
+            errorMessage.innerText = "Cet utilisateur n'existe pas";
+            errorMessage.classList.add("alert", "alert-error");
+            errorMessage.style.color = "red";
+            errorMessage.style.fontSize = "16px";
+            errorMessage.style.textAlign = "center";
+            errorMessage.style.margin = "5px 0"
+        }
+        else {
+            errorMessage.style.display = "none"
+        }
+    };
+    xhr.send();
+    e.target.reset()
 
-function accepterDemande(id) {
-  fetch(`/demandes/${id}`, { method: 'PUT' })
-    .then(response => {
-      // Afficher un message de confirmation
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function refuserDemande(id) {
-  fetch(`/demandes/${id}`, { method: 'DELETE' })
-    .then(response => {
-      // Afficher un message de confirmation
-    })
-    .catch(error => {
-      console.error(error);
-});
-}
+})

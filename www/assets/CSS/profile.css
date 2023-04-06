@@ -35,7 +35,7 @@ a:active {
 }
   
 
-#infos, #ami{
+#infos{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -64,7 +64,7 @@ a:active {
     max-width: 100px;
 }
 
-i {
+#infos i {
     position: absolute;
     right: 5%;
     top: 5%;
@@ -78,96 +78,125 @@ i {
 }
 
 .bar{
+  
+  width: 25%;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+
+#research {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  background-color: rgb(11,15,21);
+  border: 2px solid #03e9f4;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 0px;
+  letter-spacing: 4px
+}
+
+button:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 125%;
+}
+
+.demandeAmi, #ami {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
+  border: 2px solid #03e9f4;
+  width: fit-content;
+  margin: 5% auto;
+  padding: 0 6%;
+  border-radius: 10px;
 }
 
-.bar input{
-  width: 60%;   
-  margin: auto; 
-  height: 5vh;
-  border-radius: 5px;
+.friend-request {
+  display: flex;
+  align-items: center;
 }
 
-button{
-  width: 55%;   
-  margin: 1vh auto 0; 
-  height: 5vh;
-  border-radius: 5px;
-} 
+.friend-request a {
+  margin-right: 8px;
+}
 
-button:hover{
-  background: #2196F3;
-} 
+.fa-check {
+  color: rgb(40, 186, 40);
+}
 
-.container {
-  display: block;
+.fa-xmark {
+  color: crimson;
+}
+
+.user-box {
   position: relative;
-  margin-bottom: 12px;
-  cursor: pointer;
-  text-align: center;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 20px;
-  position: relative;
-  margin: -12px auto;
+  width: fit-content;
+  margin: 30px auto;
 }
 
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+.user-box input {
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
 }
 
-.checkmark {
+.user-box label {
   position: absolute;
-  top: 0;
+  top:0;
   left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
 }
 
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-  border-radius: 5px;
-
+.user-box input:focus ~ label,
+.user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
 }
 
-.container input:checked ~ .checkmark {
-  background-color: #2196F3;
-  border-radius: 5px;
-
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #243b55 inset !important;
+  -webkit-text-fill-color: #fff;
 }
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
 
 @media screen and (max-width:480px) {
 

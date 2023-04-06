@@ -36,7 +36,7 @@ ob_start();
     </div>
 
     <h3><?= $info['name']; ?></h3>
-    <h3><?= $info['pseudo']; ?></h3>
+    <h3 id="username"><?= $info['pseudo']; ?></h3>
     <h3><?= $info['email']; ?></h3>
 
     <a href="/?page=profile_modif"><i class="fa-solid fa-pen"></i></a>
@@ -44,102 +44,138 @@ ob_start();
 
 <form class="bar">
 
-
-    <?php
+    <label for="search">Ajouter un ami :</label>
+    <span id="p"></span>
+    <div id="research">
+        <div class="user-box">
+            <input type="text" name="search" id="search" required>
+            <label for="search">Nom complet</label>
+        </div>
+        <button type="submit">Rechercher</button>
+    </div>
     
-    $usr_info = $db->prepare("SELECT * FROM users");
-    $data = $usr_info->fetchAll();
-
-    for($i=0; $i < sizeof($data); $i++){
-
-        if(!in_array($data[$i]['pseudo'], $user_check)){
-            $data[$i]['pseudo'] . "<a href='../../../www/actions/amis.php?action=add&pseudo=" . $data[$i]['pseudo'] . "'>Inviter un ami</a>";
-        }    
-        
-    }
-
-     
-
-    ?>
-
-
-
-
-    <label for="search">Rechercher un utilisateur :</label>
-    <input type="text" id="search" name="search">
-    <button type="submit">Rechercher</button>
 </form>
 
-<div class="demandeAmi">
+<div id="ami">
+
+    <h3>Amis</h3>
 
     <?php 
 
-    $usr_info = $db->prepare("SELECT * FROM amis WHERE username_1 = :username_1 OR username_2 = :username_2");
+    $usr_info = $db->prepare("SELECT * FROM amis WHERE username_1 = :username_1 OR username_2 = :username_1 AND is_pending=0");
     $usr_info->execute([
-        "username_1" => $_SESSION['user_id'],
+        "username_1" => $_SESSION['user_id']
+    ]);
+
+    $data = $usr_info->fetchAll();
+    
+    for($i=0; $i < sizeof($data); $i++){
+
+        $usr_info = $db->prepare("SELECT * FROM users WHERE user_id=?");
+        if($data[$i]['username_1'] == $_SESSION['user_id']) {
+            $usr_info->execute([
+            $data[$i]['username_2']
+            ]);
+        }
+        else {
+            $usr_info->execute([
+            $data[$i]['username_1']
+            ]);
+        }
+        
+        $other_name = $usr_info->fetch();
+
+        echo '<div class="friend">';
+
+        echo "<div id='pfp'>
+                <img src=". $other_name['img'] ." alt='profile picture' id='pic'>
+            </div>";
+        echo $other_name['pseudo'];
+        //echo "<a href='../../../www/actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_1'] ."'> Supprimer</a>";
+        echo '</div>';
+        echo '<br />';
+}
+
+    ?>
+        
+</div>
+
+<div class="demandeAmi">
+
+    <h3>Demandes d'amis</h3>
+
+    <h4>Demandes Reçues</h4>
+
+    <?php 
+
+    $usr_info = $db->prepare("SELECT * FROM amis WHERE username_2 = :username_2 AND is_pending=1");
+    $usr_info->execute([
         "username_2" => $_SESSION['user_id']
     ]);
 
     $data = $usr_info->fetchAll();
 
-    for($i=0; $i < sizeof($data); $i++){
+    for($i=0; $i < sizeof($data); $i++){ 
 
-        if($data[$i]['is_pending'] == true && $data[$i]['username_2'] == $_SESSION['user_id']){
-            echo $data[$i]['username_1'] . "<a href='../../../www/actions/amis.php?action=accepte&id=" . $data[$i]['id'] . "'>Accepté</a> <a href='../../../www/actions/amis.php?action=delete&id=" . $data[$i]['id'] . "'>Refusé</a>";
-            $user_check[] = $data[$i]['username_1'];
-        }    
+        $usr_info = $db->prepare("SELECT pseudo FROM users WHERE user_id=?");
+        $usr_info->execute([
+            $data[$i]['username_1']
+        ]);
+        $other_name = $usr_info->fetch();
+
+        //if($data[$i]['is_pending'] == true && $data[$i]['username_2'] == $_SESSION['user_id']){
+
+            echo "<div class='friend-request'>";
+
+            echo "<p>Demande de ". $other_name['pseudo']; "</p>";
+            echo "<a href='actions/amis.php?action=accepte&you=" . $_SESSION['user_id'] . "&other=". $data[$i]['username_1'] ."'> <i class='fa-solid fa-check'></i></a>";
+            echo "<a href='actions/amis.php?action=delete&you=" . $_SESSION['user_id'] . "&other=". $data[$i]['username_1'] . "'><i class='fa-solid fa-xmark' id='chat-hider'></i></a>";
+
+            echo "</div>";
+
+        //}    
         
     }
     ?>
 
-</div>
+    <h4>Demandes Envoyées</h4>
 
+    <?php
 
-<div id="ami">
+    $usr_info = $db->prepare("SELECT * FROM amis WHERE username_1 = :username_1 AND is_pending=1");
+    $usr_info->execute([
+        "username_1" => $_SESSION['user_id']
+    ]);
 
-    <?php 
+    $data = $usr_info->fetchAll();
+
+    for($i=0; $i < sizeof($data); $i++){ 
+
+        $usr_info = $db->prepare("SELECT pseudo FROM users WHERE user_id=?");
+        $usr_info->execute([
+            $data[$i]['username_2']
+        ]);
+        $other_name = $usr_info->fetch();
+
+        //if($data[$i]['username_1'] == $_SESSION['user_id']){
     
-    for($i=0; $i < sizeof($data); $i++){
+          //  if($data[$i]['is_pending']) {
 
-        if($data[$i]['username_1'] == $_SESSION['user_id']){
+                echo "<div class='friend-request'>";
+                echo $other_name['pseudo'];
+                echo " (En attente d'être accepté) ";
+                echo "<a href='actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_2'] ."'> Supprimer</a>";
+                echo "</div>";
 
-            echo $data[$i]['username_2']  . "<a href='../../../www/actions/amis.php?action=delete&id=" . $data[$i]['id'] . "'>Supprimer</a>";
-            $user_check[] = $data[$i]['username_2'];
-
-            if($data[$i]['is_pending'] == true){
-                echo "(En attente d'être accepté)";
-            }    
-        }
-        else{
-            if($data[$i]['is_pending'] == false){
-                echo $data[$i]['username_1']  . "<a href='../../../www/actions/amis.php?action=delete&id=" . $data[$i]['id'] . "'>Supprimer</a>";
-                $user_check[] = $data[$i]['username_1'];
-            } 
-        }
-        echo '<br />';
+            //}
+       //}
     }
-
+    
     ?>
-    <table cellpadding="25" style="text-align: center;">
-        <thead>
-            <th>ami(e)</th>
-            <th>PP</th>
-            <th>Pseudo</th>
-        </thead>
-        <tr>
-            <td>
-                <label class="container">
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-            </td>
-            <td><img src="" alt=""></td> 
-            <td> <?php //echo $_POST['pseudo']?> </td>
-        </tr>
-    </table>
-        
+
 </div>
-<script src="./ami.js"></script>
+
+<script src="assets/JS/ami.js"></script>
 
 <?php
 

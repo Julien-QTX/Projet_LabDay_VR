@@ -1,21 +1,60 @@
 <?php
-require_once "../../src/db.php";
+require_once "../../src/init.php";
 
-if($_GET['action'] == "delete" || $_GET['action'] == "deny"){
-    $db->query("DELETE FROM amis WHERE id= " . $_GET['id']);
-    header('Location:../../src/templates/pages/profile.php');
-}
-if($_GET['action'] == "add"){
-    $query= $db->prepare("INSERT INTO amis(username_1, username_2, is_pending) VALUE :username_1, :username_2, :is_pending");
+if($_GET['action'] == "delete"){
+    $query= $db->prepare("DELETE FROM amis WHERE username_1 = ? AND username_2 = ? OR username_1 = ? AND username_2 = ?");
     $query->execute([
-        "username_1" => $_SESSION['user_id'],
-        "username_2" => $_SESSION['pseudo'],
-        "is_pending" => 1
+        $_GET['other'],
+        $_GET['you'],
+        $_GET['you'],
+        $_GET['other']
     ]);
-    header('Location:../../src/templates/pages/profile.php');
+    header("Location: /?page=profile");
+    //$db->query("DELETE FROM amis WHERE id= " . $_GET['id']);
 }
+
+if($_GET['action'] == "add"){
+
+    $query= $db->prepare("SELECT user_id FROM users WHERE pseudo = ?");
+    $query->execute([
+        $_GET['other']
+    ]);
+    $other_id = $query->fetch();
+
+    if($query->rowCount() == 0){
+        die();
+        display_errors('hello', '/?page=profile');
+    }
+
+    $query= $db->prepare("SELECT * FROM amis WHERE username_1=? AND username_2=? OR username_1=? AND username_2=?");
+    $query->execute([
+        $_SESSION['user_id'],
+        $other_id['user_id'],
+        $other_id['user_id'],
+        $_SESSION['user_id'],
+    ]);
+
+    if($query->rowCount() != 0){
+        die();
+        display_errors('hello', '/?page=profile');
+    }
+
+    $query = $db->prepare("INSERT INTO amis(username_1, username_2, is_pending) VALUES (?, ?, ?)");
+    $query->execute([
+        $_SESSION['user_id'],
+        $other_id['user_id'],
+        1
+    ]);
+
+    echo $other_id['user_id'];
+}
+
 if($_GET['action'] == "accepte"){
-    $db->query("UPDATE amis SET is_pending = 0 WHERE id=" . $_GET['id']);
-    header('Location:../../src/templates/pages/profile.php');
+    $query= $db->prepare("UPDATE amis SET is_pending = 0 WHERE username_1 = ? AND username_2 = ?");
+    $query->execute([
+        $_GET['other'],
+        $_GET['you']
+    ]);
+    header("Location: /?page=profile");
 }
 ?>
