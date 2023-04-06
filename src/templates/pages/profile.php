@@ -49,7 +49,7 @@ ob_start();
     <div id="research">
         <div class="user-box">
             <input type="text" name="search" id="search" required>
-            <label for="search">Nom complet</label>
+            <label for="search">Pseudo</label>
         </div>
         <button type="submit">Rechercher</button>
     </div>
@@ -86,11 +86,12 @@ ob_start();
         $other_name = $usr_info->fetch();
 
         if(!$data[$i]['is_pending']) {
-echo '<div class="friend">';
 
-        echo "<div id='pfp'>
-                <img src=". $other_name['img'] ." alt='profile picture' id='pic'>
-            </div>";
+        echo '<div class="friend">';
+
+        echo "<div id='pfp'>";
+        echo '<img src="'. $other_name['img'] .'" alt="profile picture" id="pic">';
+        echo  "</div>";
         echo $other_name['pseudo'];
         //echo "<a href='../../../www/actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_1'] ."'> Supprimer</a>";
         echo '</div>';
@@ -165,11 +166,11 @@ echo '<div class="friend">';
     
           //  if($data[$i]['is_pending']) {
 
-                echo "<div class='friend-request'>";
+                echo "<div class='friend-request'> <p>";
                 echo $other_name['pseudo'];
                 echo " (En attente d'être accepté) ";
-                echo "<a href='actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_2'] ."'> Supprimer</a>";
-                echo "</div>";
+                echo "<a href='actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_2'] ."'> Annuler</a>";
+                echo "</p></div>";
 
             //}
        //}

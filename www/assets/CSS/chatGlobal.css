@@ -67,7 +67,7 @@ body{
     font-size: 0.7em;
     overflow-wrap: break-word;
     border: 1px solid #03e9f4;
-    border-radius: 15%;
+    border-radius: 15px;
     width: fit-content;
     max-width: 50%;
     word-wrap: break-word;
@@ -91,7 +91,7 @@ body{
     font-size: 0.7em;
     overflow-wrap: break-word;
     border: 1px solid #03e9f4;
-    border-radius: 15%;
+    border-radius: 15px;
     width: fit-content;
     max-width: 50%;
     word-wrap: break-word;

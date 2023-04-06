@@ -24,10 +24,10 @@ ob_start();
 
     <select name="langue" id="langue">
         <option value="FR" selected>Francais</option>
-        <option value="EN">Anglais</option>
-        <option value="DE">Allemand</option>
-        <option value="ES">Espagnol</option>
-        <option value="PO">Portugais</option>
+        <option value="EN">English</option>
+        <option value="DE">Deutsch</option>
+        <option value="ES">Español</option>
+        <option value="PO">Português</option>
     </select>
 </div>
 
