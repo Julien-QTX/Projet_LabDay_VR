@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule .* test.php
+RewriteRule .* index.php
