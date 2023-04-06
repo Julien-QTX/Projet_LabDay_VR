@@ -9,7 +9,9 @@ ob_start();
 ?>
 <link rel="stylesheet" href="assets/CSS/home.css">
 
+
 <h1>Bienvenue sur VRC </h1>
+
 
 <script>
 const xhr = new XMLHttpRequest();
