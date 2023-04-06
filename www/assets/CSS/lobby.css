@@ -1,0 +1,135 @@
+html {
+    background-color: #141e30;
+}
+
+body {
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
+    color: #FFF;
+}
+
+#form-container {
+    width: 400px;
+    padding: 40px;
+    margin: 9% auto;
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+#form_container_header {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}
+
+#form-container .user_box {
+    position: relative;
+}
+
+#form-container .user_box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+#form-container .user_box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+#form-container .user_box input:focus ~ label,
+#form-container .user_box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
+  }
+
+  input[type='submit'] {
+    background-color: rgb(11,15,21);
+    border: 2px solid #03e9f4;
+    border-radius: 5px;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 0px;
+    letter-spacing: 4px;
+    cursor: pointer;
+}
+
+  input[type='submit']:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 100px #03e9f4;
+  }
+
+  input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px rgb(11,15,21) inset !important;
+    -webkit-text-fill-color: #fff;
+}
+
+#background_selection {
+    background-color: #141e30;
+    border: 2px solid #03E9F4;
+    border-radius: 3px;
+    color: #FFF;
+    cursor: pointer;
+    margin: 5px 0 5px 10px;
+}
+
+#bg-slct {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#form-container #bg-slct label {
+    position: inherit;
+}
+
+#create-join {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #141e30;
+    border: 2px solid #03E9F4;
+    border-radius: 3px;
+    color: #FFF;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 10%;
+}

@@ -1,0 +1,52 @@
+html {
+  background: #141e30;
+}
+
+  body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
+    color: #fff;
+  }
+
+h1 {
+    text-align: center;
+    margin-top: 75px;
+}
+
+#utilis{
+  text-align: center;
+  margin-top: 25px;
+}
+
+.appel{
+    display: flex;
+    flex-direction:row;
+    width: 20%;
+    margin: 25vh auto;
+    text-decoration: none;
+    border-radius: 10px;
+    background: linear-gradient(#141e30, #243b55);
+    padding: 20px;
+    cursor: pointer;
+}
+
+.lien{
+    display: flex;
+    flex-direction:center;
+    text-align: center;
+    margin: auto;
+    color: #16d7e2;
+    text-decoration: none;
+    font-size: 2em;
+}
+
+@media screen and (max-width:480px) {
+
+    .appel {
+      margin: 10vh auto;
+      width: 45%;
+    }
+
+}
