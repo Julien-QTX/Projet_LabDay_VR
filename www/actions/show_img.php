@@ -14,3 +14,5 @@ if (!$tab[0]['img'] == '') {
 else {
     echo file_get_contents(__DIR__.'/../assets/images/def.jpeg');
 }
+
+?>
