@@ -64,10 +64,138 @@ a:active {
     max-width: 100px;
 }
 
-i {
+#infos i {
     position: absolute;
     right: 5%;
     top: 5%;
+}
+
+#searchbar{
+  width: 60%;
+  margin: auto;
+  padding:15px;
+  border-radius: 10px;
+}
+
+.bar{
+  
+  width: 25%;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+
+#research {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  background-color: rgb(11,15,21);
+  border: 2px solid #03e9f4;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 0px;
+  letter-spacing: 4px
+}
+
+button:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 125%;
+}
+
+.demandeAmi, #ami {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #03e9f4;
+  width: fit-content;
+  margin: 5% auto;
+  padding: 0 6%;
+  border-radius: 10px;
+}
+
+.friend-request {
+  display: flex;
+  align-items: center;
+}
+
+.friend-request a {
+  margin-right: 8px;
+}
+
+.fa-check {
+  color: rgb(40, 186, 40);
+}
+
+.fa-xmark {
+  color: crimson;
+}
+
+.user-box {
+  position: relative;
+  width: fit-content;
+  margin: 30px auto;
+}
+
+.user-box input {
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+}
+
+.user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.user-box input:focus ~ label,
+.user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #243b55 inset !important;
+  -webkit-text-fill-color: #fff;
 }
 
 @media screen and (max-width:480px) {

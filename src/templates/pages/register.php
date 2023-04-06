@@ -24,10 +24,10 @@ ob_start();
             <label for="fullname">Nom complet</label>
         </div>
 
-        <div class="user-box">
-            <input type="text" name="pseudo" id="pseudo" required>
-            <label for="pseudo">Pseudo</label>
-        </div>
+    <div class="user-box">
+        <input type="text" name="pseudo" id="pseudo" required maxlength="15">
+        <label for="pseudo">Pseudo</label>
+    </div>
 
         <div class="user-box">
             <input type="text" name="email" id="email" required>
