@@ -103,13 +103,11 @@ ob_start();
         </a-entity>
         
         <a-entity environment="preset:arches;" id="environment"></a-entity>
-        <!--<a-box id="box-n-1" position="3 5 -10" rotation="0 0 0"></a-box>-->
     </a-scene>
 
     <script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>
     <script src="assets/JS/peerConnection.js" defer></script>
     <script src="assets/JS/room_chat.js"></script>
-    <!--<script src="assets/JS/trois.js"></script>-->
 
 <?php
 $page_content = ob_get_clean();

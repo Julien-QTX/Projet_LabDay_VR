@@ -92,7 +92,7 @@ form.addEventListener('submit', (e) => {
     }
 })
 
-// Liste des environnements possibles
+// Lists of possible backgrounds
 let validBackgrounds = ["contact", "egypt", "checkerboard", "forest", "goaland", "yavapai", "goldmine", "threetowers", "poison", "arches", "tron", "japan", "dream", "volcano", "starry", "osiris", "moon"]
 
 //add options to background selection

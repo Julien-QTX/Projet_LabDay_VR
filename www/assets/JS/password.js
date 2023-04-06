@@ -1,5 +1,4 @@
 // function to show and hide password in login and register page
-
 let passEye = document.getElementById('pass-eye');
 let cpassEye = document.getElementById('cpass-eye');
 let pass = document.getElementById('password');

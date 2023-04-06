@@ -6,13 +6,13 @@ session_start();
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db.php';
 
-//fonctions utilitaires
+//utility functions
 require_once __DIR__ . '/utils/errors.php';
 
-//pages existantes sur notre site internet
+//existing pages on the website
 $pages = ['home', 'login', 'register', 'profile', 'call', 'lobby', 'profile_modif', 'chatGlobal'];
 
-//init variables vides pour le template
+//init variables empty for the template by default
 $head_metas = "";
 $page_content = "";
 $page_scripts = "";

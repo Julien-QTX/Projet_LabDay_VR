@@ -12,7 +12,7 @@ ob_start();
 <h1>Bienvenue sur VRC </h1>
 
 <script>
-// On récupère le nombre d'utilisateurs
+// get the number of users in the database
 const xhr = new XMLHttpRequest();
 xhr.open('GET', '/actions/getUserCount.php');
 xhr.onload = () => {

@@ -89,7 +89,7 @@ ob_start();
                 }
             }
 
-            // supprime les messages
+            // deletes messages older than 1 hour
             const del = new XMLHttpRequest();
             del.open('POST', '/actions/deleteMessage.php');
             del.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
