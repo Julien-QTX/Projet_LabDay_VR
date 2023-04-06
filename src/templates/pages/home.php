@@ -7,7 +7,7 @@ $page_title = "Accueil";
 ob_start();
 
 ?>
-<link rel="stylesheet" href="assets/CSS/home.css">
+<link rel="stylesheet" href="www/assets/CSS/home.css">
 
 
 <h1>Bienvenue sur VRC </h1>
@@ -16,14 +16,14 @@ ob_start();
 <script>
 // get the number of users in the database
 const xhr = new XMLHttpRequest();
-xhr.open('GET', '/actions/getUserCount.php');
+xhr.open('GET', '/www/actions/getUserCount.php');
 xhr.onload = () => {
     document.getElementById("utilis").innerHTML = `Utilisateurs: ${xhr.responseText}`;
 };
 xhr.send();
 setInterval(() => {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/actions/getUserCount.php');
+    xhr.open('GET', '/www/actions/getUserCount.php');
     xhr.onload = () => {
         document.getElementById("utilis").innerHTML = `Utilisateurs: ${xhr.responseText}`;
     };

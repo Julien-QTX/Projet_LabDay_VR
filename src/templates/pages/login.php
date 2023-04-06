@@ -2,7 +2,7 @@
 
 $page_title = "Connexion";
 
-$head_metas = "<link rel=stylesheet href=assets/CSS/login.css>";
+$head_metas = "<link rel=stylesheet href=www/assets/CSS/login.css>";
 
 ob_start();
 
@@ -14,7 +14,7 @@ ob_start();
 
         <h2>Connexion</h2>
 
-        <form form action="/actions/login.php" method="post" id="login_form">
+        <form form action="/www/actions/login.php" method="post" id="login_form">
             
             <?php
 
@@ -30,7 +30,7 @@ ob_start();
             <div class="user-box">
                 <input type="password" id="password" name="password" required>
                 <label for="password">Mot de Passe</label>
-                <img src="assets/images/ceye2.png" width="25" id="pass-eye">
+                <img src="www/assets/images/ceye2.png" width="25" id="pass-eye">
             </div>
         
             <button class="sub" type="submit">connexion</button>
@@ -40,7 +40,7 @@ ob_start();
     </div>
 </div>
 
-<script src="assets/JS/password.js"></script>
+<script src="www/assets/JS/password.js"></script>
 
 <?php
 

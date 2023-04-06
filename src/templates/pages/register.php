@@ -2,7 +2,7 @@
 
 $page_title = "Inscription";
 
-$head_metas = "<link rel=stylesheet href=assets/CSS/register.css>";
+$head_metas = "<link rel=stylesheet href=www/assets/CSS/register.css>";
 
 ob_start();
 
@@ -11,7 +11,7 @@ ob_start();
     <div class="login-box">
         <h2>Inscription</h2>
 
-        <form action="actions/register.php" method="post" enctype="multipart/form-data">
+        <form action="/www/actions/register.php" method="post" enctype="multipart/form-data">
 
             <?php
 
@@ -37,13 +37,13 @@ ob_start();
         <div class="user-box pass-box">
             <input type="password" name="password" id="password" required>
             <label for="fullname">Mot de Passe</label>
-            <img src="assets/images/ceye2.png" width="25" id="pass-eye">
+            <img src="www/assets/images/ceye2.png" width="25" id="pass-eye">
         </div>
 
         <div class="user-box">
             <input type="password" name="cpassword" id="cpassword" required>
             <label for="fullname">Confirmation du Mot de Passe</label>
-            <img src="assets/images/ceye2.png" width="25" id="cpass-eye">
+            <img src="www/assets/images/ceye2.png" width="25" id="cpass-eye">
         </div>
 
         <div class="user-box">
@@ -58,7 +58,7 @@ ob_start();
     </div>
 </div>
 
-<script src="assets/JS/password.js"></script>
+<script src="www/assets/JS/password.js"></script>
 
 <?php
 

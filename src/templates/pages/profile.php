@@ -12,7 +12,7 @@ $page_title = "Accueil";
 ob_start();
 
 ?>
-<link rel="stylesheet" href="assets/CSS/profile.css">
+<link rel="stylesheet" href="www/assets/CSS/profile.css">
 <?php
     // Get user info
     include_once __DIR__ . '/../../utils/alert_errors.php';
@@ -133,8 +133,8 @@ ob_start();
             echo "<div class='friend-request'>";
 
             echo "<p>Demande de ". $other_name['pseudo']; "</p>";
-            echo "<a href='actions/amis.php?action=accepte&you=" . $_SESSION['user_id'] . "&other=". $data[$i]['username_1'] ."'> <i class='fa-solid fa-check'></i></a>";
-            echo "<a href='actions/amis.php?action=delete&you=" . $_SESSION['user_id'] . "&other=". $data[$i]['username_1'] . "'><i class='fa-solid fa-xmark' id='chat-hider'></i></a>";
+            echo "<a href='www/actions/amis.php?action=accepte&you=" . $_SESSION['user_id'] . "&other=". $data[$i]['username_1'] ."'> <i class='fa-solid fa-check'></i></a>";
+            echo "<a href='www/actions/amis.php?action=delete&you=" . $_SESSION['user_id'] . "&other=". $data[$i]['username_1'] . "'><i class='fa-solid fa-xmark' id='chat-hider'></i></a>";
 
             echo "</div>";
 
@@ -169,7 +169,7 @@ ob_start();
                 echo "<div class='friend-request'> <p>";
                 echo $other_name['pseudo'];
                 echo " (En attente d'être accepté) ";
-                echo "<a href='actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_2'] ."'> Annuler</a>";
+                echo "<a href='www/actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_2'] ."'> Annuler</a>";
                 echo "</p></div>";
 
             //}
@@ -180,7 +180,7 @@ ob_start();
 
 </div>
 
-<script src="assets/JS/ami.js"></script>
+<script src="www/assets/JS/ami.js"></script>
 
 <?php
 

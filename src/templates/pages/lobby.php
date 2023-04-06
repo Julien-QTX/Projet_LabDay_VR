@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../init.php';
 
-$head_metas = "<link rel=stylesheet href=assets/CSS/lobby.css>";
+$head_metas = "<link rel=stylesheet href=www/assets/CSS/lobby.css>";
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: /?page=login');
@@ -61,7 +61,7 @@ ob_start();
     
 </body>
 
-<script src="assets/JS/lobby.js"></script>
+<script src="www/assets/JS/lobby.js"></script>
 
 <?php
 $page_content = ob_get_clean();

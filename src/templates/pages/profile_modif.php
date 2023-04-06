@@ -11,7 +11,7 @@ $page_title = "Profile";
 ob_start();
 
 ?>
-<link rel="stylesheet" href="assets/CSS/profile_modif.css">
+<link rel="stylesheet" href="www/assets/CSS/profile_modif.css">
 <?php
     // Get user info
     $usr_info = $db->prepare("SELECT * FROM users WHERE user_id=?");
@@ -21,7 +21,7 @@ ob_start();
 
 <div class="center">
     <div class="login-box">
-        <form action="actions/edit.php" method="post" enctype="multipart/form-data">
+        <form action="www/actions/edit.php" method="post" enctype="multipart/form-data">
 
             <?php
 

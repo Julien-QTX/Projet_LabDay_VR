@@ -15,7 +15,7 @@
         <li><a href="/?page=chatGlobal">Chat global</a></li>
 
         <div class="side_btns">
-            <li class="logout_btn"><a href="/actions/logout.php">Déconnexion</a></li>
+            <li class="logout_btn"><a href="/www/actions/logout.php">Déconnexion</a></li>
         </div>
     
     <?php    } ?>

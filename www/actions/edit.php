@@ -57,6 +57,7 @@ else {
         if(move_uploaded_file($_FILES['profile_pic']['tmp_name'],$target_file)) {
 
             $hashed_password = hash('sha256', $_POST['password']);
+            $target_file = './www/assets/users_pfp/'.$filename;
 
             $create_user = $db->prepare("UPDATE users SET `name` = ?, `pseudo` = ?, img = ? WHERE user_id = ? ");
             $create_user->execute([

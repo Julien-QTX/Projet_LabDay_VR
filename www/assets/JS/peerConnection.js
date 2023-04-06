@@ -81,8 +81,8 @@ let init = async () => {
     document.getElementById('user-1').srcObject = localStream
 
     const xhr = new XMLHttpRequest();
-    console.log('/actions/rooms.php?action=add&room='+roomId+'&background='+background)
-    xhr.open('POST', '/actions/rooms.php?action=add&room='+roomId+'&background='+background);
+    console.log('www//actions/rooms.php?action=add&room='+roomId+'&background='+background)
+    xhr.open('POST', 'www//actions/rooms.php?action=add&room='+roomId+'&background='+background);
     xhr.send();
 
 }
@@ -269,7 +269,7 @@ let leaveChannel = async () => {
 
     if (numberOfUsers == 1 || numberOfUsers == 0) {
         const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', '/actions/rooms.php?action=delete&room='+roomId);
+        xhr.open('DELETE', '/www/actions/rooms.php?action=delete&room='+roomId);
         xhr.onload = () => {
             console.log(`${xhr.responseText}`)
         };

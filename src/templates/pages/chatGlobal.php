@@ -15,7 +15,7 @@ $page_title = "Chat Global";
 ob_start();
 
 ?>
-<link rel="stylesheet" href="assets/CSS/chatGlobal.css">
+<link rel="stylesheet" href="www/assets/CSS/chatGlobal.css">
 
 <p style="display:none" id="user-pseudo"><?= $info['pseudo'] ?></p>
 
@@ -53,7 +53,7 @@ ob_start();
 
     setInterval(() => {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/actions/getChatGlobal.php');
+        xhr.open('POST', '/www/actions/getChatGlobal.php');
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = () => {
             // Parse le JSON data
@@ -91,7 +91,7 @@ ob_start();
 
             // deletes messages older than 1 hour
             const del = new XMLHttpRequest();
-            del.open('POST', '/actions/deleteMessage.php');
+            del.open('POST', '/www/actions/deleteMessage.php');
             del.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             del.send();
 
@@ -115,7 +115,7 @@ ob_start();
         let user_id = <?= $_SESSION['user_id'] ?>;
 
         const xhr2 = new XMLHttpRequest();
-        xhr2.open('POST', '/actions/sendMessages.php');
+        xhr2.open('POST', '/www/actions/sendMessages.php');
         xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr2.send(`message=${encodeURIComponent(message)}&user_id=${encodeURIComponent(user_id)}&langue=${encodeURIComponent(langueSelected)}`);
 

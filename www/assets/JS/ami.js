@@ -7,7 +7,7 @@ form.addEventListener('submit', function(e) {
     e.preventDefault()
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/actions/amis.php?action=add&other='+input.value);
+    xhr.open('POST', '/www/actions/amis.php?action=add&other='+input.value);
     xhr.onload = () => {
         console.log(xhr.responseText)
         if(isNaN(xhr.responseText) || xhr.responseText == "") {

@@ -54,7 +54,7 @@ form.addEventListener('submit', (e) => {
         const index = Math.floor(Math.random() * characters.length);
         randomString += characters[index];
         }
-        xhr.open('POST', '/actions/rooms.php?action=add&room='+randomString+'&background='+background);
+        xhr.open('POST', '/www/actions/rooms.php?action=add&room='+randomString+'&background='+background);
         xhr.onload = () => {
             window.location.href = `/?page=call&room=${randomString}&background=${background}`
         };
@@ -69,7 +69,7 @@ form.addEventListener('submit', (e) => {
         var bg = ""
         
         //check if room exists
-        xhr.open('GET', '/actions/rooms.php?action=show&room='+inviteLink.value);
+        xhr.open('GET', '/www/actions/rooms.php?action=show&room='+inviteLink.value);
         xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.responseText.includes('<')) {

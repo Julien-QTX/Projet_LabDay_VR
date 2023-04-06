@@ -15,7 +15,7 @@ $page_title = "Appel";
 ob_start();
 
 ?>
-<link rel="stylesheet" href="assets/CSS/call.css">
+<link rel="stylesheet" href="www/assets/CSS/call.css">
 <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 <!--   used for the pretty environment   -->
 <script src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"></script>
@@ -31,16 +31,16 @@ ob_start();
     <div id="controls">
 
         <div class="control-container" id="camera-btn">
-            <img src="assets/images/camera2.png" width="70">
+            <img src="www/assets/images/camera2.png" width="70">
         </div>
 
         <div class="control-container" id="mic-btn">
-            <img src="assets/images/mic2.png" width="70">
+            <img src="www/assets/images/mic2.png" width="70">
         </div>
 
         <a href="/?page=lobby">
             <div class="control-container" id="leave-btn">
-                <img src="assets/images/phone2.png" width="70">
+                <img src="www/assets/images/phone2.png" width="70">
             </div>
         </a>
 
@@ -64,7 +64,7 @@ ob_start();
     </section>
 
     <div id="chat-displayer">
-      <img src="assets/images/message.png" width=50 alt="">
+      <img src="www/assets/images/message.png" width=50 alt="">
     </div>
     
 
@@ -105,9 +105,9 @@ ob_start();
         <a-entity environment="preset:arches;" id="environment"></a-entity>
     </a-scene>
 
-    <script src="assets/JS/agora-rtm-sdk-1.5.1.js"></script>
-    <script src="assets/JS/peerConnection.js" defer></script>
-    <script src="assets/JS/room_chat.js"></script>
+    <script src="www/assets/JS/agora-rtm-sdk-1.5.1.js"></script>
+    <script src="www/assets/JS/peerConnection.js" defer></script>
+    <script src="www/assets/JS/room_chat.js"></script>
 
 <?php
 $page_content = ob_get_clean();

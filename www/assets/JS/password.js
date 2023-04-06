@@ -15,12 +15,12 @@ function switchEye(eye, input) {
     console.log(eye.src)
     if (eye.src.includes("ceye2")) {
         console.log('was open')
-        eye.src = "assets/images/oeye2.png";
+        eye.src = "www/assets/images/oeye2.png";
         input.type = 'text'
     }
     else {
         console.log('was closed')
-        eye.src = "assets/images/ceye2.png";
+        eye.src = "www/assets/images/ceye2.png";
         input.type = 'password'
     }
 }

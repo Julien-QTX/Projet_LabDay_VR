@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="assets/images/vr.png" type="image/x-icon">
+	<link rel="shortcut icon" href="www/assets/images/vr.png" type="image/x-icon">
 	<link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -15,8 +15,8 @@
 	<?= $head_metas ;?>
 	<?php
 	if (!strpos($_SERVER['REQUEST_URI'], 'call')) {
-			echo '<link rel="stylesheet" href="assets/CSS/header.css">';
-			echo '<link rel="stylesheet" href=assets/CSS/footer.css>';
+			echo '<link rel="stylesheet" href="www/assets/CSS/header.css">';
+			echo '<link rel="stylesheet" href=www/assets/CSS/footer.css>';
 		}
 	?>
   </head>

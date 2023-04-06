@@ -43,7 +43,7 @@ $pseudo = htmlspecialchars($_POST['pseudo'], ENT_QUOTES, null, true);
     
 //create the user
 if (empty($_FILES['profile_pic']['name'])) {
-    $target_file = './../assets/images/def.jpeg';
+    $target_file = './www/assets/images/def.jpeg';
 
     $hashed_password = hash('sha256', $_POST['password']);
 
@@ -57,7 +57,7 @@ if (empty($_FILES['profile_pic']['name'])) {
 //create the user with the profile picture
 else {
     $filename = $_FILES['profile_pic']['name'];
-    $target_file = './../assets/users_pfp/'.$filename;
+    $target_file =  './../assets/users_pfp/'.$filename;
 
     // file extension
     $file_extension = pathinfo($target_file, PATHINFO_EXTENSION);
@@ -73,6 +73,7 @@ else {
         if(move_uploaded_file($_FILES['profile_pic']['tmp_name'],$target_file)) {
 
             $hashed_password = hash('sha256', $_POST['password']);
+            $target_file = './www/assets/users_pfp/'.$filename;
 
             $create_user = $db->prepare("INSERT INTO users(`name`, pseudo, email, `password`, img) VALUES(?, ?, ?, ?, ?)");
             $create_user->execute([
