@@ -134,13 +134,26 @@ let handleMessageFromPeer = async (message, MemberId) => {
                 'shirt': jsonData[3],
                 'pants': jsonData[4]
             }
-            client.sendMessageToPeer({text:JSON.stringify({'type':'avatar', 'avatar':avatarColors})}, MemberId)
+            let skinParts = document.getElementsByClassName('skin')
+            let shirt = document.getElementsByClassName('shirt')[0]
+            let pants = document.getElementsByClassName('pants')
+
+            for (let i = 0; i < skinParts.length; i++) {
+                skinParts[i].setAttribute('color', jsonData[2])  
+            }
+
+            shirt.setAttribute('color', jsonData[3])  
+
+            for (let i = 0; i < pants.length; i++) {
+                pants[i].setAttribute('color', jsonData[4])  
+            }
+            //client.sendMessageToPeer({text:JSON.stringify({'type':'avatar', 'avatar':avatarColors})}, MemberId)
         }
         xhr.send();
 
     }
 
-    if (message.type === 'avatar') {
+    /*if (message.type === 'avatar') {
 
         console.log(message.avatar)
 
@@ -158,7 +171,7 @@ let handleMessageFromPeer = async (message, MemberId) => {
             pants[i].setAttribute('color', message.avatar.pants)  
         }
 
-    }
+    }*/
 
 }
 

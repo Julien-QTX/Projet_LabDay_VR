@@ -16,9 +16,9 @@ $getAvatar = $db->prepare('SELECT * FROM avatars WHERE user_id = ?');
 $getAvatar->execute([$_SESSION['user_id']]);
 $result = $getAvatar->fetch();
 
-echo $result['skin_color'];
-echo $result['shirt_color'];
-echo $result['pants_color']
+//echo $result['skin_color'];
+//echo $result['shirt_color'];
+//echo $result['pants_color']
 
 ?>
 

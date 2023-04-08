@@ -94,12 +94,10 @@ ob_start();
         echo '<img src="'. $other_name['img'] .'" alt="profile picture" id="pic">';
         echo  "</div>";
         echo $other_name['pseudo'];
-        //echo "<a href='../../../www/actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_1'] ."'> Supprimer</a>";
         echo '</div>';
         echo '<br />';
         }
 
-        
 }
 
     ?>
@@ -163,18 +161,12 @@ ob_start();
         ]);
         $other_name = $usr_info->fetch();
 
-        //if($data[$i]['username_1'] == $_SESSION['user_id']){
-    
-          //  if($data[$i]['is_pending']) {
-
-                echo "<div class='friend-request'> <p>";
-                echo $other_name['pseudo'];
-                echo " (En attente d'être accepté) ";
-                echo "<a href='www/actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_2'] ."'> Annuler</a>";
-                echo "</p></div>";
-
-            //}
-       //}
+        echo "<div class='friend-request'> <p>";
+        echo $other_name['pseudo'];
+        echo " (En attente d'être accepté) ";
+        echo "<a href='www/actions/amis.php?action=delete&you=".$_SESSION['user_id'] . "&other=". $data[$i]['username_2'] ."'> Annuler</a>";
+        echo "</p></div>";
+       
     }
     
     ?>

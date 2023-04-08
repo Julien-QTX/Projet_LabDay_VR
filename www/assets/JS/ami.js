@@ -21,7 +21,14 @@ form.addEventListener('submit', function(e) {
             errorMessage.style.margin = "5px 0"
         }
         else {
-            errorMessage.style.display = "none"
+            errorMessage.style.display = "inline"
+            errorMessage.innerText = "Demande envoyée";
+            errorMessage.classList.add("alert", "alert-error");
+            errorMessage.style.color = "green";
+            errorMessage.style.fontSize = "16px";
+            errorMessage.style.textAlign = "center";
+            errorMessage.style.margin = "5px 0"
+            //errorMessage.style.display = "none"
         }
     };
     xhr.send();
