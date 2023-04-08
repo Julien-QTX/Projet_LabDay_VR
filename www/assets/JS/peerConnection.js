@@ -123,6 +123,41 @@ let handleMessageFromPeer = async (message, MemberId) => {
     if (message.type === 'pseudo') {
         userNameDisplay.setAttribute('value', message.pseudo)
         otherUsername = message.pseudo
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/www/actions/avatar.php?action=get&name='+message.pseudo);
+        xhr.onload = () => {
+            const jsonData = JSON.parse(xhr.responseText);
+            console.error(jsonData)
+            let avatarColors = {
+                'skin': jsonData[2],
+                'shirt': jsonData[3],
+                'pants': jsonData[4]
+            }
+            client.sendMessageToPeer({text:JSON.stringify({'type':'avatar', 'avatar':avatarColors})}, MemberId)
+        }
+        xhr.send();
+
+    }
+
+    if (message.type === 'avatar') {
+
+        console.log(message.avatar)
+
+        let skinParts = document.getElementsByClassName('skin')
+        let shirt = document.getElementsByClassName('shirt')[0]
+        let pants = document.getElementsByClassName('pants')
+
+        for (let i = 0; i < skinParts.length; i++) {
+            skinParts[i].setAttribute('color', message.avatar.skin)  
+        }
+
+        shirt.setAttribute('color', message.avatar.shirt)  
+
+        for (let i = 0; i < pants.length; i++) {
+            pants[i].setAttribute('color', message.avatar.pants)  
+        }
+
     }
 
 }

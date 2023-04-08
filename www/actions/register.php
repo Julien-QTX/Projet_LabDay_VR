@@ -90,6 +90,9 @@ else {
 
 $_SESSION['user_id'] = $db->lastInsertId();
 
+$create_avatar = $db->prepare ("INSERT INTO avatars(user_id) VALUES (?) ");
+$create_avatar->execute([$_SESSION['user_id']]);
+
 header('Location: /?page=home')
 
 ?>

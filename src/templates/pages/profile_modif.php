@@ -17,6 +17,12 @@ ob_start();
     $usr_info = $db->prepare("SELECT * FROM users WHERE user_id=?");
     $usr_info->execute([$_SESSION['user_id']]);
     $info = $usr_info->fetch();
+
+    $getAvatar = $db->prepare('SELECT * FROM avatars WHERE user_id = ?');
+    $getAvatar->execute([$_SESSION['user_id']]);
+    $result = $getAvatar->fetch();
+
+    //echo $result['skin_color']
 ?>
 
 <div class="center">
@@ -50,7 +56,7 @@ ob_start();
                 <label for="profile_pic">Image de Profil</label>
             </div>
 
-            <button type="submit">Modifier</button>
+            <button type="submit">Sauvegarder</button>
 
         </form>
 

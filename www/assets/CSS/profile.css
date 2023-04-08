@@ -64,10 +64,16 @@ a:active {
     max-width: 100px;
 }
 
-#infos i {
+#infos #profile {
     position: absolute;
     right: 5%;
     top: 5%;
+}
+
+#infos #avatar {
+  position: absolute;
+  right: 5%;
+  top: 15%;
 }
 
 #searchbar{

@@ -39,7 +39,8 @@ ob_start();
     <h3 id="username"><?= $info['pseudo']; ?></h3>
     <h3><?= $info['email']; ?></h3>
 
-    <a href="/?page=profile_modif"><i class="fa-solid fa-pen"></i></a>
+    <a href="/?page=profile_modif" id="profile"><i class="fa-solid fa-pen"></i> Profil</a>
+    <a href="/?page=avatar_modif" id="avatar"><i class="fa-solid fa-pen"></i> Avatar</a>
 </div>
 
 <form class="bar">
