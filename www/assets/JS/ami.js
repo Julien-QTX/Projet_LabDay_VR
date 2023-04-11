@@ -10,25 +10,27 @@ form.addEventListener('submit', function(e) {
     xhr.open('POST', '/www/actions/amis.php?action=add&other='+input.value);
     xhr.onload = () => {
         console.log(xhr.responseText)
-        if(isNaN(xhr.responseText) || xhr.responseText == "") {
-            console.log('h')
-            errorMessage.style.display = "inline"
-            errorMessage.innerText = "Cet utilisateur n'existe pas";
-            errorMessage.classList.add("alert", "alert-error");
-            errorMessage.style.color = "red";
-            errorMessage.style.fontSize = "16px";
-            errorMessage.style.textAlign = "center";
-            errorMessage.style.margin = "5px 0"
-        }
-        else {
-            errorMessage.style.display = "inline"
-            errorMessage.innerText = "Demande envoyée";
-            errorMessage.classList.add("alert", "alert-error");
-            errorMessage.style.color = "green";
-            errorMessage.style.fontSize = "16px";
-            errorMessage.style.textAlign = "center";
-            errorMessage.style.margin = "5px 0"
-            //errorMessage.style.display = "none"
+        errorMessage.style.fontSize = "16px";
+        errorMessage.style.textAlign = "center";
+        errorMessage.style.margin = "5px 0"
+        switch (xhr.responseText) {
+            case 'Non-existent':
+                errorMessage.innerText = "Cet utilisateur n'existe pas";
+                errorMessage.style.display = "inline";
+                errorMessage.style.color = "red";
+                break;
+            
+            case 'Friends':
+                errorMessage.innerText = "Vous êtes déjà amis";
+                errorMessage.style.display = "inline";
+                errorMessage.style.color = "red";
+                break;
+        
+            default:
+                errorMessage.innerText = "Demande envoyée";
+                errorMessage.style.display = "inline"
+                errorMessage.style.color = "green";
+                break;
         }
     };
     xhr.send();

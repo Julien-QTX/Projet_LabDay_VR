@@ -28,7 +28,7 @@ let peerConnection;
 const servers = {
     iceServers:[
         {
-            urls:['stun:stun1.1.google.com.19302', 'stun:stun2.1.google.com.19302']
+            urls:['stun:stun1.l.google.com:19302', 'stun:stun2.l.google.com:19302']
         }
     ]
 }
@@ -81,8 +81,8 @@ let init = async () => {
     document.getElementById('user-1').srcObject = localStream
 
     const xhr = new XMLHttpRequest();
-    console.log('www//actions/rooms.php?action=add&room='+roomId+'&background='+background)
-    xhr.open('POST', 'www//actions/rooms.php?action=add&room='+roomId+'&background='+background);
+    console.log('www/actions/rooms.php?action=add&room='+roomId+'&background='+background)
+    xhr.open('POST', 'www/actions/rooms.php?action=add&room='+roomId+'&background='+background);
     xhr.send();
 
 }
@@ -128,12 +128,12 @@ let handleMessageFromPeer = async (message, MemberId) => {
         xhr.open('GET', '/www/actions/avatar.php?action=get&name='+message.pseudo);
         xhr.onload = () => {
             const jsonData = JSON.parse(xhr.responseText);
-            console.error(jsonData)
-            let avatarColors = {
+            //console.error(jsonData)
+            /*let avatarColors = {
                 'skin': jsonData[2],
                 'shirt': jsonData[3],
                 'pants': jsonData[4]
-            }
+            }*/
             let skinParts = document.getElementsByClassName('skin')
             let shirt = document.getElementsByClassName('shirt')[0]
             let pants = document.getElementsByClassName('pants')
@@ -147,31 +147,10 @@ let handleMessageFromPeer = async (message, MemberId) => {
             for (let i = 0; i < pants.length; i++) {
                 pants[i].setAttribute('color', jsonData[4])  
             }
-            //client.sendMessageToPeer({text:JSON.stringify({'type':'avatar', 'avatar':avatarColors})}, MemberId)
         }
         xhr.send();
 
     }
-
-    /*if (message.type === 'avatar') {
-
-        console.log(message.avatar)
-
-        let skinParts = document.getElementsByClassName('skin')
-        let shirt = document.getElementsByClassName('shirt')[0]
-        let pants = document.getElementsByClassName('pants')
-
-        for (let i = 0; i < skinParts.length; i++) {
-            skinParts[i].setAttribute('color', message.avatar.skin)  
-        }
-
-        shirt.setAttribute('color', message.avatar.shirt)  
-
-        for (let i = 0; i < pants.length; i++) {
-            pants[i].setAttribute('color', message.avatar.pants)  
-        }
-
-    }*/
 
 }
 
@@ -193,7 +172,14 @@ let head = document.getElementById('head')
 let createPeerConnection = async (MemberId) => {
     peerConnection = new RTCPeerConnection(servers)
 
+    console.error(peerConnection.iceConnectionState)
+
+    setInterval(2000, function() {
+        checkConnection()
+    })
+
     remoteStream = new MediaStream()
+    console.log(remoteStream)
     document.getElementById('user-2').srcObject = remoteStream
     document.getElementById('user-2').style.display = 'block'
 
@@ -209,7 +195,11 @@ let createPeerConnection = async (MemberId) => {
     })
 
     //SEND DATA
-    dataChannel = peerConnection.createDataChannel("position");
+    let dataChannel = peerConnection.createDataChannel("position");
+
+    console.log(dataChannel)
+
+    console.log(peerConnection.iceConnectionState)
 
     // send your position to the other user every 10ms
     dataChannel.onopen = () => {
@@ -278,7 +268,19 @@ let createPeerConnection = async (MemberId) => {
         }
     }
 
+    peerConnection.oniceconnectionstatechange = () => {
+        console.error('Ice connection ' + peerConnection.iceConnectionState)
+    }
+
 }
+
+let checkConnection = async () => {
+    peerConnection.oniceconnectionstatechange = () => {
+    console.error('Ice connection ' + peerConnection.iceConnectionState)
+}
+}
+
+
 
 let createOffer = async (MemberId) => {
 

@@ -22,6 +22,7 @@ if($_GET['action'] == "add"){
     $other_id = $query->fetch();
 
     if($query->rowCount() == 0){
+        echo 'Non-existent';
         die();
         display_errors('hello', '/?page=profile');
     }
@@ -35,6 +36,7 @@ if($_GET['action'] == "add"){
     ]);
 
     if($query->rowCount() != 0){
+        echo 'Friends';
         die();
         display_errors('hello', '/?page=profile');
     }
@@ -46,7 +48,7 @@ if($_GET['action'] == "add"){
         1
     ]);
 
-    echo $other_id['user_id'];
+    echo 'Good';
 }
 
 if($_GET['action'] == "accepte"){
