@@ -2,8 +2,8 @@
 require_once "../../src/init.php";
 
 function update($db) {
-    $update_avatar = $db->prepare('UPDATE avatars SET skin_color=?, shirt_color=?, pants_color=? WHERE user_id = ?');
-    $update_avatar->execute(['#' . $_GET['skin'], '#' . $_GET['shirt'], '#' . $_GET['pants'], $_SESSION['user_id']]);
+    $update_avatar = $db->prepare('UPDATE avatars SET skin_color=?, shirt_color=?, pants_color=?, hair_color=? WHERE user_id = ?');
+    $update_avatar->execute(['#' . $_GET['skin'], '#' . $_GET['shirt'], '#' . $_GET['pants'], '#' . $_GET['hair'] , $_SESSION['user_id']]);
 }
 
 function get($db) {
