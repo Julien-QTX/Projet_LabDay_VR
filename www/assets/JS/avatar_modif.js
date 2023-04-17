@@ -45,7 +45,7 @@ window.addEventListener('beforeunload', function() {
     skinColor = skinParts[0].getAttribute('color').slice(1, 7)
     shirtColor = shirt.getAttribute('color').slice(1, 7)
     pantsColor = pants[0].getAttribute('color').slice(1, 7)
-    hairColor = hair[0].getAttribute('material').substring(7, 14)
+    hairColor = hair[0].getAttribute('material').color.slice(1, 7)
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/www/actions/avatar.php?action=update&skin='+skinColor+'&shirt='+shirtColor+'&pants='+pantsColor+'&hair='+hairColor);
     xhr.send();
