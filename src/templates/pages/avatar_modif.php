@@ -18,7 +18,9 @@ $result = $getAvatar->fetch();
 
 //echo $result['skin_color'];
 //echo $result['shirt_color'];
-//echo $result['pants_color']
+//echo $result['pants_color'];
+//echo $result['hair_color'];
+
 
 ?>
 
@@ -30,11 +32,56 @@ $result = $getAvatar->fetch();
 
     <a-camera wasd-controls-enabled="false" look-controls-enabled="false"></a-camera>
 
-    <a-entity id="a-frame-user-2" position="0 0.9 -2" scale="1 1 1">
+    <a-entity id="a-frame-user-2" position="0 0.9 -2" scale="1 1 1" rotation="0 45 0">
         <a-entity position="0 1.6 0">
         <a-box color="<?= $result['skin_color'] ?>" position="0 -0.4 0" depth="0.1" height="0.2" width="0.2" class="skin"></a-box>
         <!--<a-box color="red" position="0 -0.08 0" scale="0.5 0.5 0.5"></a-box>-->
-        <a-entity id="head" geometry="primitive:box;" material="src:#user-2" position="0 -0.08 0" scale="0.5 0.5 0.5"></a-entity>
+        <a-entity position="0 -0.08 0" scale="0.5 0.5 0.5" id="head">
+              <a-entity>
+              <a-entity
+                  position="0 0.5 0"
+                  rotation="-90 0 0"
+                  geometry="primitive: plane; width: 1; height: 1"
+                  material="color: <?= $result['hair_color'] ?>; side: double"
+                  class="hair"
+              ></a-entity>
+              <a-entity
+                  position="0 -0.5 0"
+                  rotation="90 0 0"
+                  geometry="primitive: plane; width: 1; height: 1"
+                  material="color: <?= $result['skin_color'] ?>; side: double"
+                  class="skin"
+              ></a-entity>
+              <a-entity
+                  position="0 0 0.5"
+                  rotation="0 0 0"
+                  geometry="primitive: plane; width: 1; height: 1"
+                  material="color: black; side: double; src:#user-2"
+              ></a-entity>
+              <a-entity
+                  position="0 0 -0.5"
+                  rotation="0 180 0"
+                  geometry="primitive: plane; width: 1; height: 1"
+                  material="color: <?= $result['hair_color'] ?>; side: double"
+                  class="hair"
+              ></a-entity>
+              <a-entity
+                  position="-0.5 0 0"
+                  rotation="0 -90 0"
+                  geometry="primitive: plane; width: 1; height: 1"
+                  material="color: <?= $result['hair_color'] ?>; side: double"
+                  class="hair"
+              ></a-entity>
+              <a-entity
+                  position="0.5 0 0"
+                  rotation="0 90 0"
+                  geometry="primitive: plane; width: 1; height: 1"
+                  material="color: <?= $result['hair_color'] ?>; side: double"
+                  class="hair"
+              ></a-entity>
+              </a-entity>
+      
+            </a-entity>
         </a-entity>
         <a-entity id="torso" rotation="0 90 0" position="0 1.2 0">
         <a-box color="<?= $result['shirt_color'] ?>" position="0 -0.4 0" depth="0.5" height="0.8" width="0.3" class="shirt"></a-box>
@@ -69,6 +116,11 @@ $result = $getAvatar->fetch();
     <div class="color-input">
         <label for="pants">Couleur du pantalon</label>
         <input type="color" name="pants" id="pants-color">
+    </div>
+
+    <div class="color-input">
+        <label for="hair">Couleur des cheveux</label>
+        <input type="color" name="hair" id="hair-color">
     </div>
 </form>
 

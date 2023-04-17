@@ -168,6 +168,19 @@ ob_start();
         echo "</p></div>";
        
     }
+
+    $usr_info = $db->prepare("SELECT * FROM avatars WHERE user_id=?");
+    $usr_info->execute([
+        $_SESSION['user_id']
+    ]);
+    $result = $usr_info->fetch();
+
+    if(empty($result)) {
+        $usr_info = $db->prepare("INSERT INTO avatars(user_id) VALUES(?)");
+        $usr_info->execute([
+            $_SESSION['user_id']
+        ]);
+    }
     
     ?>
 

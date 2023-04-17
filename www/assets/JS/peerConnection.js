@@ -132,11 +132,13 @@ let handleMessageFromPeer = async (message, MemberId) => {
             /*let avatarColors = {
                 'skin': jsonData[2],
                 'shirt': jsonData[3],
-                'pants': jsonData[4]
+                'pants': jsonData[4],
+                'hair': jsonData[5]
             }*/
             let skinParts = document.getElementsByClassName('skin')
             let shirt = document.getElementsByClassName('shirt')[0]
             let pants = document.getElementsByClassName('pants')
+            let hair = document.getElementsByClassName('hair')
 
             for (let i = 0; i < skinParts.length; i++) {
                 skinParts[i].setAttribute('color', jsonData[2])  
@@ -146,6 +148,10 @@ let handleMessageFromPeer = async (message, MemberId) => {
 
             for (let i = 0; i < pants.length; i++) {
                 pants[i].setAttribute('color', jsonData[4])  
+            }
+
+            for (let i = 0; i < hair.length; i++) {
+                hair[i].setAttribute('material', `color: ${jsonData[5]} ; side: double`)  
             }
         }
         xhr.send();
