@@ -1,6 +1,4 @@
-import { AGORA_APP_ID } from "./agora_app_id";
-
-let APP_ID  = AGORA_APP_ID;
+let APP_ID  = "3de2def185854a95bc99de2294eb2522";
 
 let token = null;
 let uid = String(Math.floor(Math.random() * 10000));
