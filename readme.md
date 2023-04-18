@@ -4,7 +4,7 @@ Ce projet a été réalisé dans le cadre du <strong>Labday</strong>, un projet 
 
 Il s'agit d'un site permettant à des utilisateurs de passer des appels dans un monde virtuel de leur choix.
 
-## Lien vers notre site : [VRCall.tech](https://vrcall.tech)      
+## Lien vers notre site : <a href="vrcall.tech" target="_blank">VRCall.tech</a>
 
 ## 🙇 Auteurs
 #### Adam Boissy
