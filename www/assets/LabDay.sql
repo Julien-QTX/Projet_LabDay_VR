@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : jeu. 06 avr. 2023 à 12:01
+-- Généré le : mer. 19 avr. 2023 à 07:00
 -- Version du serveur :  5.7.34
 -- Version de PHP : 7.4.21
 
@@ -31,6 +31,21 @@ CREATE TABLE `amis` (
   `username_1` int(11) NOT NULL,
   `username_2` int(11) NOT NULL,
   `is_pending` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `avatars`
+--
+
+CREATE TABLE `avatars` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `skin_color` varchar(7) NOT NULL DEFAULT '#FFE4C4',
+  `shirt_color` varchar(7) NOT NULL DEFAULT '#6B8E23',
+  `pants_color` varchar(7) NOT NULL DEFAULT '#0000CD',
+  `hair_color` varchar(7) NOT NULL DEFAULT '#6F4E37'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -81,6 +96,12 @@ CREATE TABLE `users` (
 --
 
 --
+-- Index pour la table `avatars`
+--
+ALTER TABLE `avatars`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `ChatGlobal`
 --
 ALTER TABLE `ChatGlobal`
@@ -101,6 +122,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
+
+--
+-- AUTO_INCREMENT pour la table `avatars`
+--
+ALTER TABLE `avatars`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `ChatGlobal`

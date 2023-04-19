@@ -148,6 +148,7 @@ ob_start();
 
     <script src="www/assets/JS/agora-rtm-sdk-1.5.1.js"></script>
     <script src="www/assets/JS/peerConnection.js" defer></script>
+    <script src="www/assets/JS/agora_app_id.js"></script>
     <script src="www/assets/JS/room_chat.js"></script>
 
 <?php

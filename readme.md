@@ -6,6 +6,20 @@ Il s'agit d'un site permettant à des utilisateurs de passer des appels dans un 
 
 ## Lien vers notre site : <a href="https://vrcall.tech" target="_blank">VRCall.tech</a>
 
+## Initialisation
+Remplacer les informations dans le fichier config.php par vos informations de connexion à la base de données. <br>
+Importer le fichier LabDay.sql situé dans le dossier assets pour copier la base de données.
+
+Dans le fichier peerConnection.js remplacez la première ligne <br>
+
+```js
+let APP_ID  = YOUR_APP_ID
+```
+Pour cela, allez sur le site <a href="agora.io">agora.io</a>, créez vous un compte, et générez un nouveau projet, ce qui vous donnera un id que vous mettrez à la place de YOUR_APP_ID. <br>
+
+Pour lancer le projet, utilisez un serveur tel que MAMP pour pouvoir lire le PHP. 
+        
+
 ## 🙇 Auteurs
 #### Adam Boissy
  [@Shad0wz93](https://github.com/Shad0wz93)
@@ -15,4 +29,3 @@ Il s'agit d'un site permettant à des utilisateurs de passer des appels dans un 
  [@BastienVitour](https://github.com/BastienVitour)
 #### Jean Fourest
  [@JeanFourest](https://github.com/JeanFourest)
-        
