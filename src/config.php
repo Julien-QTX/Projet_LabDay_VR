@@ -5,6 +5,9 @@ $config['db'] = [
     'host' => 'localhost',
     'name' => 'LabDay',
     'user' => 'root',
-    'pass' => 'root',
-    'port' => 8888
+    'pass' => '',
+    //'port' => 8888
+
+    //Windows Julien
+    'port' => 3306
 ];
