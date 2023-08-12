@@ -10,7 +10,7 @@ require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/utils/errors.php';
 
 //existing pages on the website
-$pages = ['home', 'login', 'register', 'profile', 'call', 'lobby', 'profile_modif', 'chatGlobal', 'avatar_modif'];
+$pages = ['home', 'login', 'register', 'profile', 'call', 'lobby', 'profile_modif', 'chatGlobal', 'avatar_modif', 'aframe'];
 
 //init variables empty for the template by default
 $head_metas = "";
