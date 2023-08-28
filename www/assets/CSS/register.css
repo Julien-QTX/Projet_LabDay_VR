@@ -50,6 +50,17 @@ html {
     background: transparent;
     border-top: none;
   }
+
+.login-box .user-box input#password {
+  padding: 10px 35px 10px 0;
+  box-sizing: border-box;
+}
+
+.login-box .user-box input#cpassword {
+  padding: 10px 35px 10px 0;
+  box-sizing: border-box;
+}
+
   .login-box .user-box label {
     position: absolute;
     top:0;
@@ -129,4 +140,16 @@ button, img {
       width: 100%;
     }
 
+}
+
+i.fas {
+  color: #fff;
+  position: absolute;
+  left: 288px;
+  bottom: 48px;
+  cursor: pointer;
+}
+
+i.fa-eye {
+  left: 289px;
 }

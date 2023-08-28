@@ -37,13 +37,13 @@ ob_start();
         <div class="user-box pass-box">
             <input type="password" name="password" id="password" required>
             <label for="fullname">Mot de Passe</label>
-            <img src="www/assets/images/ceye2.png" width="25" id="pass-eye">
+            <i class="fas fa-eye-slash fa-2xs" id="pass-eye"></i>
         </div>
 
         <div class="user-box">
             <input type="password" name="cpassword" id="cpassword" required>
             <label for="fullname">Confirmation du Mot de Passe</label>
-            <img src="www/assets/images/ceye2.png" width="25" id="cpass-eye">
+            <i class="fas fa-eye-slash fa-2xs" id="cpass-eye"></i>
         </div>
 
         <div class="user-box">

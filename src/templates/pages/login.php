@@ -30,7 +30,8 @@ ob_start();
             <div class="user-box">
                 <input type="password" id="password" name="password" required>
                 <label for="password">Mot de Passe</label>
-                <img src="www/assets/images/ceye2.png" width="25" id="pass-eye">
+                <i class="fas fa-eye-slash fa-2xs" id="pass-eye"></i>
+                <!-- <img src="www/assets/images/ceye2.png" width="25" id="pass-eye"> -->
             </div>
         
             <button class="sub" type="submit">connexion</button>

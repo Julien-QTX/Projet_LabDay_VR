@@ -12,15 +12,14 @@ cpassEye.addEventListener("click", () => {
 });
 
 function switchEye(eye, input) {
-    console.log(eye.src)
-    if (eye.src.includes("ceye2")) {
-        console.log('was open')
-        eye.src = "www/assets/images/oeye2.png";
+    if (eye.classList.value.includes("fa-eye-slash")) {
+        eye.classList.remove('fa-eye-slash')
+        eye.classList.add('fa-eye')
         input.type = 'text'
     }
     else {
-        console.log('was closed')
-        eye.src = "www/assets/images/ceye2.png";
+        eye.classList.remove('fa-eye')
+        eye.classList.add('fa-eye-slash')
         input.type = 'password'
     }
 }

@@ -38,6 +38,10 @@ if ($pseudo_used->rowCount() != 0) {
     display_errors("Ce pseudo est déjà utilisé", "/?page=register");
 }
 
+if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$/', $_POST['password'])) {
+    display_errors('Mot de passe pas assez fort', '/?page=register');
+}
+
 $fullname = htmlspecialchars($_POST['fullname'], ENT_QUOTES, null, true);
 $pseudo = htmlspecialchars($_POST['pseudo'], ENT_QUOTES, null, true);
     
@@ -56,7 +60,9 @@ if (empty($_FILES['profile_pic']['name'])) {
 
 //create the user with the profile picture
 else {
-    $filename = $_FILES['profile_pic']['name'];
+    // $filename = $_FILES['profile_pic']['name'];
+    $hrt = hrtime();
+    $filename = strval($hrt[0]) . strval($hrt[1]).'.'.pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
     $target_file =  './../assets/users_pfp/'.$filename;
 
     // file extension
@@ -84,6 +90,9 @@ else {
         else {
             display_errors($target_file, "/?page=register");
         }
+    }
+    else {
+        display_errors($target_file, "/?page=register");
     }
 
 }
